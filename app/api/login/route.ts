@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   
   // Pass all validation, generate auth token and authorize user
 
-  const authToken = encrypt(body.phone + [...Array(36)].map(() => Math.random().toString(36)[2]).join(''));
+  const authToken = encrypt(body.phone + user.id);
   await setAuthCookie(authToken);
 
   return NextResponse.json({ success: true, error: null }, { status: 200 });
