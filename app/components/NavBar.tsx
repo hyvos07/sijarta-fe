@@ -17,6 +17,12 @@ export default function NavBar() {
             </Link>
           </div>
           <div className="flex space-x-4">
+            <Link 
+              href="/profile"
+              className="hover:text-gray-300"
+            >
+              Profile
+            </Link>
             <button 
               onClick={handleLogout}
               className="hover:text-gray-300"
