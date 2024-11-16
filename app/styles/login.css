@@ -1,3 +1,7 @@
 .focus-border:focus {
     border-color: #3b82f6 !important;
   }
+
+.spinner-border {
+    border-color: #000 transparent transparent transparent;
+  }
