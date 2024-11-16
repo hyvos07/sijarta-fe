@@ -1,5 +1,5 @@
 import { User, Convert } from '../types/user';
-import userJson from '../data/user.json';
+import userJson from '../mocks/user.json';
 
 export const userService = {
     getAllUser: async (): Promise<User[]> => {

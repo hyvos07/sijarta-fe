@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { encrypt } from '../../functions/cipher'
 import { setAuthCookie } from '../../functions/auth/auth'
+import { userService } from '@/app/db/services/user';
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -13,10 +14,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false, error: 'Phone number must be 12 to 13 digits long' }, { status: 401 });
   }
   
-  // TODO: validate if phone number exist di DB
-  // if (body.password !== 'password' || body.phone !== '081234567890') {
-
-  if (body.password !== 'password') {
+  // Validate if phone number exists in DB
+  const user = await userService.getUserByPhone(body.phone);
+  if (!user || user.pwd !== body.password) {
     return NextResponse.json({ success: false, error: 'Phone number or password is incorrect' }, { status: 401 });
   }
   
