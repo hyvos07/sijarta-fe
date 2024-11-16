@@ -22,6 +22,8 @@ export default function LoginPage() {
       router.push('/')
       router.refresh()
     }
+
+    // TODO: Kalo nggak oke display error di login page
   }
 
   return (

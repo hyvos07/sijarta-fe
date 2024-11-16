@@ -8,8 +8,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-    title: 'Login | Sijarta',
-    description: 'Simple Next.js Authentication Example',
+    title: 'Welcome | SIJARTA',
+    description: 'Sistem Informasi Jasa Rumah Tangga - by AKV',
+    icons: {
+        icon: "favicon.ico",
+    },
 }
 
 export default function RootLayout({
