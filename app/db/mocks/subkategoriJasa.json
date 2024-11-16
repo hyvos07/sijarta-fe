@@ -1,0 +1,62 @@
+[
+    {
+        "Id": "9b449030-5748-46bb-b3bb-71979b6ffea5",
+        "NamaSubKategori": "Cuci Kering dan Setrika",
+        "Deskripsi": "Layanan binatu yang mencakup cuci kering, penyetrikaan, dan pelipatan pakaian. Cocok untuk bahan-bahan halus yang memerlukan perawatan khusus.",
+        "KategoriJasaId": "d54404a1-5810-4883-9486-1bd600bd645d"
+    },
+    {
+        "Id": "2d6831c2-5b46-46e3-958b-8e568c6762f2",
+        "NamaSubKategori": "Pengasuh Bayi (Baby Sitter)",
+        "Deskripsi": "Layanan pengasuhan bayi profesional yang meliputi perawatan harian, makan, tidur, dan menjaga kenyamanan serta kesehatan bayi.",
+        "KategoriJasaId": "96addf33-ee51-468c-b826-cc31b9180ef2"
+    },
+    {
+        "Id": "86cf46cc-2e7c-49e9-9ad8-a7aff0f5274a",
+        "NamaSubKategori": "Servis AC dan Kulkas",
+        "Deskripsi": "Perbaikan dan perawatan rutin untuk perangkat pendingin seperti AC dan kulkas, termasuk penggantian freon, pembersihan, dan perbaikan unit.",
+        "KategoriJasaId": "a7b47102-5bd6-4eac-82a0-94fd38d8ef5a"
+    },
+    {
+        "Id": "2e6abf6d-7e03-4382-8264-f0e4689fbd39",
+        "NamaSubKategori": "Servis Televisi dan Audio",
+        "Deskripsi": "Layanan perbaikan untuk televisi, home theater, speaker, dan perangkat audio lain yang mencakup troubleshooting dan penggantian komponen.",
+        "KategoriJasaId": "a7b47102-5bd6-4eac-82a0-94fd38d8ef5a"
+    },
+    {
+        "Id": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
+        "NamaSubKategori": "Pembersihan Harian",
+        "Deskripsi": "Layanan kebersihan rutin yang mencakup menyapu, mengepel, membersihkan debu, dan menjaga kebersihan umum di dalam rumah setiap hari.",
+        "KategoriJasaId": "c1d070dc-9c0d-4af8-81f9-8723087b5ae0"
+    },
+    {
+        "Id": "5a0590d9-d1d0-404f-8203-6420ef57e542",
+        "NamaSubKategori": "Jasa Bongkar Pasang Furnitur",
+        "Deskripsi": "Membantu membongkar, memindahkan, dan memasang kembali furnitur besar seperti lemari, tempat tidur, atau rak di lokasi baru.",
+        "KategoriJasaId": "b843763a-075f-46a7-9057-2f68510cb0b6"
+    },
+    {
+        "Id": "b20135ee-92ee-4a62-ac5b-53c6b3423c3d",
+        "NamaSubKategori": "Cuci Sepatu dan Tas",
+        "Deskripsi": "Layanan khusus membersihkan sepatu, tas, dan aksesori lainnya, termasuk perawatan bahan kulit dan suede untuk menjaga kualitasnya.",
+        "KategoriJasaId": "d54404a1-5810-4883-9486-1bd600bd645d"
+    },
+    {
+        "Id": "3f9ac327-3627-4718-b7b6-a0a2db8866e8",
+        "NamaSubKategori": "Jasa Packing Profesional",
+        "Deskripsi": "Layanan pengemasan profesional untuk memastikan barang-barang pribadi, furnitur, dan barang elektronik terlindungi selama proses pindahan.",
+        "KategoriJasaId": "b843763a-075f-46a7-9057-2f68510cb0b6"
+    },
+    {
+        "Id": "03170d2f-8a86-4553-9983-9a2be1be9480",
+        "NamaSubKategori": "Pembersihan Halaman dan Taman",
+        "Deskripsi": "Pembersihan halaman dan taman, termasuk penyapuan daun, pengaturan tanaman, dan perawatan kebersihan area luar rumah.",
+        "KategoriJasaId": "c1d070dc-9c0d-4af8-81f9-8723087b5ae0"
+    },
+    {
+        "Id": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
+        "NamaSubKategori": "Pengasuh Sementara (Backup Nanny)",
+        "Deskripsi": "Layanan pengasuh sementara yang dapat diandalkan saat pengasuh tetap sedang berhalangan, baik untuk sehari atau dalam keadaan darurat.",
+        "KategoriJasaId": "96addf33-ee51-468c-b826-cc31b9180ef2"
+    }
+]

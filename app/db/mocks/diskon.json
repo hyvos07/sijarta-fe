@@ -1,0 +1,102 @@
+[
+    {
+        "Kode": "WAILMER101",
+        "Potongan": 8000,
+        "MinTrPemesanan": 10000
+    },
+    {
+        "Kode": "WAILMER102",
+        "Potongan": 15000,
+        "MinTrPemesanan": 20000
+    },
+    {
+        "Kode": "WAILMER103",
+        "Potongan": 20000,
+        "MinTrPemesanan": 25000
+    },
+    {
+        "Kode": "WAILMER104",
+        "Potongan": 60000,
+        "MinTrPemesanan": 77777
+    },
+    {
+        "Kode": "WAILMER105",
+        "Potongan": 3000,
+        "MinTrPemesanan": 5000
+    },
+    {
+        "Kode": "WAILMER106",
+        "Potongan": 40000,
+        "MinTrPemesanan": 50000
+    },
+    {
+        "Kode": "WAILMER107",
+        "Potongan": 25000,
+        "MinTrPemesanan": 40000
+    },
+    {
+        "Kode": "WAILMER108",
+        "Potongan": 30000,
+        "MinTrPemesanan": 40000
+    },
+    {
+        "Kode": "WAILMER109",
+        "Potongan": 5000,
+        "MinTrPemesanan": 10000
+    },
+    {
+        "Kode": "WAILMER110",
+        "Potongan": 45000,
+        "MinTrPemesanan": 60000
+    },
+    {
+        "Kode": "WAILMER201",
+        "Potongan": 35000,
+        "MinTrPemesanan": 45000
+    },
+    {
+        "Kode": "WAILMER202",
+        "Potongan": 30000,
+        "MinTrPemesanan": 50000
+    },
+    {
+        "Kode": "WAILMER203",
+        "Potongan": 12000,
+        "MinTrPemesanan": 20000
+    },
+    {
+        "Kode": "WAILMER204",
+        "Potongan": 20000,
+        "MinTrPemesanan": 30000
+    },
+    {
+        "Kode": "WAILMER205",
+        "Potongan": 80000,
+        "MinTrPemesanan": 100000
+    },
+    {
+        "Kode": "WAILMER206",
+        "Potongan": 50000,
+        "MinTrPemesanan": 75000
+    },
+    {
+        "Kode": "WAILMER207",
+        "Potongan": 20000,
+        "MinTrPemesanan": 45000
+    },
+    {
+        "Kode": "WAILMER208",
+        "Potongan": 5000,
+        "MinTrPemesanan": 10000
+    },
+    {
+        "Kode": "WAILMER209",
+        "Potongan": 10000,
+        "MinTrPemesanan": 15000
+    },
+    {
+        "Kode": "WAILMER210",
+        "Potongan": 20000,
+        "MinTrPemesanan": 25000
+    }
+]

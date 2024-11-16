@@ -1,0 +1,62 @@
+[
+    {
+        "Kode": "WAILMER101",
+        "JmlHariBerlaku": 1,
+        "KuotaPenggunaan": 10,
+        "Harga": 1000
+    },
+    {
+        "Kode": "WAILMER102",
+        "JmlHariBerlaku": 2,
+        "KuotaPenggunaan": 9,
+        "Harga": 2000
+    },
+    {
+        "Kode": "WAILMER103",
+        "JmlHariBerlaku": 3,
+        "KuotaPenggunaan": 8,
+        "Harga": 3000
+    },
+    {
+        "Kode": "WAILMER104",
+        "JmlHariBerlaku": 4,
+        "KuotaPenggunaan": 7,
+        "Harga": 4000
+    },
+    {
+        "Kode": "WAILMER105",
+        "JmlHariBerlaku": 5,
+        "KuotaPenggunaan": 6,
+        "Harga": 5000
+    },
+    {
+        "Kode": "WAILMER106",
+        "JmlHariBerlaku": 6,
+        "KuotaPenggunaan": 5,
+        "Harga": 6000
+    },
+    {
+        "Kode": "WAILMER107",
+        "JmlHariBerlaku": 7,
+        "KuotaPenggunaan": 4,
+        "Harga": 7000
+    },
+    {
+        "Kode": "WAILMER108",
+        "JmlHariBerlaku": 8,
+        "KuotaPenggunaan": 3,
+        "Harga": 8000
+    },
+    {
+        "Kode": "WAILMER109",
+        "JmlHariBerlaku": 9,
+        "KuotaPenggunaan": 2,
+        "Harga": 9000
+    },
+    {
+        "Kode": "WAILMER110",
+        "JmlHariBerlaku": 10,
+        "KuotaPenggunaan": 1,
+        "Harga": 10000
+    }
+]

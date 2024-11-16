@@ -1,0 +1,47 @@
+[
+    {
+        "Id": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
+        "NamaBank": "BRI",
+        "NomorRekening": "540695113",   
+        "NPWP": "405319382379672",
+        "LinkFoto": "https://dummyimage.com/npwp/0",
+        "Rating": 2.4,
+        "JmlPesananSelesai": 172
+    },
+    {
+        "Id": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
+        "NamaBank": "MANDIRI",
+        "NomorRekening": "1310007977954",
+        "NPWP": "407961060757403",
+        "LinkFoto": "https://dummyimage.com/npwp/1",
+        "Rating": 3.4,
+        "JmlPesananSelesai": 64
+    },
+    {
+        "Id": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
+        "NamaBank": "BRI",
+        "NomorRekening": "379701509787534",
+        "NPWP": "877794206274467",
+        "LinkFoto": "https://dummyimage.com/npwp/2",
+        "Rating": 3.9,
+        "JmlPesananSelesai": 289
+    },
+    {
+        "Id": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
+        "NamaBank": "BNI",
+        "NomorRekening": "196660532",
+        "NPWP": "900407087325812",
+        "LinkFoto": "https://dummyimage.com/npwp/3",
+        "Rating": 4.5,
+        "JmlPesananSelesai": 26
+    },
+    {
+        "Id": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
+        "NamaBank": "BCA",
+        "NomorRekening": "5220304399",
+        "NPWP": "751359668025758",
+        "LinkFoto": "https://dummyimage.com/npwp/9",
+        "Rating": 1.8,
+        "JmlPesananSelesai": 50
+    }
+]

@@ -1,0 +1,102 @@
+[
+    {
+        "Id": "23e115b7-ebef-48a6-be35-725f3ad92744",
+        "Nama": "Budiono Siregar",
+        "JenisKelamin": "L",
+        "NoHP": "088902387726",
+        "Pwd": "akuCintaLestari",
+        "TglLahir": "1983-03-12",
+        "Alamat": "Jl. Sudirman No. 45, Karet Tengsin, Tanah Abang, Jakarta Pusat",
+        "SaldoMyPay": 1000000
+    },
+    {
+        "Id": "36759dfd-b661-44b9-83ab-7cbeb42fec65",
+        "Nama": "Ujang Koesman",
+        "JenisKelamin": "L",
+        "NoHP": "087899365824",
+        "Pwd": "password123",
+        "TglLahir": "2005-03-10",
+        "Alamat": "Jl. Kemang Raya No. 88, Bangka, Mampang Prapatan, Jakarta Selatan",
+        "SaldoMyPay": 200000
+    },
+    {
+        "Id": "f20104d8-a4b8-47c2-b337-7d3c2b9c2a63",
+        "Nama": "Indra Ridwan Lesmana",
+        "JenisKelamin": "L",
+        "NoHP": "089798375532",
+        "Pwd": "k3b4kar4N",
+        "TglLahir": "1997-09-30",
+        "Alamat": "Jl. Gajah Mada No. 12, Glodok, Taman Sari, Jakarta Barat",
+        "SaldoMyPay": 350000
+    },
+    {
+        "Id": "6dcee1e7-8e68-4b53-b300-171352434f92",
+        "Nama": "Lestari",
+        "JenisKelamin": "P",
+        "NoHP": "081881879342",
+        "Pwd": "kerjakerjakerja",
+        "TglLahir": "2009-06-18",
+        "Alamat": "Jl. Thamrin No. 10, Kebon Melati, Menteng, Jakarta Pusat",
+        "SaldoMyPay": 600000
+    },
+    {
+        "Id": "1fa544e3-ba14-4a28-a3cd-ba37eddb8279",
+        "Nama": "Rebecca Simarmata",
+        "JenisKelamin": "P",
+        "NoHP": "089923974923",
+        "Pwd": "akuPunya20JTpower",
+        "TglLahir": "1982-07-21",
+        "Alamat": "Jl. Panglima Polim No. 72, Melawai, Kebayoran Baru, Jakarta Selatan",
+        "SaldoMyPay": 520000
+    },
+    {
+        "Id": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
+        "Nama": "Eko Raharjo Iskandar",
+        "JenisKelamin": "L",
+        "NoHP": "085291274923",
+        "Pwd": "#sebanyakmungk1n",
+        "TglLahir": "2004-01-08",
+        "Alamat": "Jl. Pluit Utara No. 19, Pluit, Penjaringan, Jakarta Utara",
+        "SaldoMyPay": 860000
+    },
+    {
+        "Id": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
+        "Nama": "Iskandar Ling",
+        "JenisKelamin": "P",
+        "NoHP": "083312338845",
+        "Pwd": "W1LLSm1th",
+        "TglLahir": "1958-12-06",
+        "Alamat": "Jl. Matraman Raya No. 99, Utan Kayu Selatan, Matraman, Jakarta Timur",
+        "SaldoMyPay": 760000
+    },
+    {
+        "Id": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
+        "Nama": "Andrew Hutagalung",
+        "JenisKelamin": "L",
+        "NoHP": "081847058842",
+        "Pwd": "w34kENT1TY",
+        "TglLahir": "2007-06-21",
+        "Alamat": "Jl. Kuningan Barat No. 55, Kuningan, Setiabudi, Jakarta Selatan",
+        "SaldoMyPay": 5000000
+    },
+    {
+        "Id": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
+        "Nama": "Angela Kestari",
+        "JenisKelamin": "P",
+        "NoHP": "089642372352",
+        "Pwd": "@kank@hm@dg@",
+        "TglLahir": "2007-02-24",
+        "Alamat": "Jl. Kota Bambu Selatan No. 31, Kota Bambu, Palmerah, Jakarta Barat",
+        "SaldoMyPay": 10000
+    },
+    {
+        "Id": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
+        "Nama": "Vanessa Chintya",
+        "JenisKelamin": "P",
+        "NoHP": "081381728925",
+        "Pwd": "1234567890",
+        "TglLahir": "2003-11-09",
+        "Alamat": "Jl. Duren Sawit No. 14, Pondok Kelapa, Duren Sawit, Jakarta Timur",
+        "SaldoMyPay": 20000
+    }
+]
