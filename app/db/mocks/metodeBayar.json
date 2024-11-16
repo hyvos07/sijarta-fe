@@ -1,0 +1,26 @@
+[
+    {
+        "Id": "3db174dc-b17d-41b2-b61c-743089f642f5",
+        "Nama": "MyPay"
+    },
+    {
+        "Id": "e50c67c1-533a-4a2a-a04f-a74efa77aaeb",
+        "Nama": "GoPay"
+    },
+    {
+        "Id": "7d55fd2f-3d91-44f6-8770-46b66fad7671",
+        "Nama": "OVO"
+    },
+    {
+        "Id": "d38a6298-ca8a-40df-baec-5c63aefc7d80",
+        "Nama": "Virtual Account BCA"
+    },
+    {
+        "Id": "e8018adc-d869-41c1-84ce-182c4b5b1ab4",
+        "Nama": "Virtual Account BNI"
+    },
+    {
+        "Id": "6a73f89c-58cd-4d8a-b251-c2f7e7d61671",
+        "Nama": "Virtual Account Mandiri"
+    }
+]
