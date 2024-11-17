@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server'
 import { encrypt } from '../../functions/cipher'
-import { setAuthCookie } from '../../functions/auth/auth'
-import { userService } from '@/app/db/services/user';
+import { setAuthCookie, setTypeCookie } from '../../functions/auth/auth'
+import { userService } from '@/app/db/services/user'
+import { pelangganService } from '@/app/db/services/pelanggan';
+import { use } from 'react';
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -22,8 +24,11 @@ export async function POST(request: Request) {
   
   // Pass all validation, generate auth token and authorize user
 
-  const authToken = encrypt(body.phone + [...Array(36)].map(() => Math.random().toString(36)[2]).join(''));
+  const authToken = encrypt(body.phone + user.id);
   await setAuthCookie(authToken);
+
+  const userType = await pelangganService.getPelangganByID(user.id) !== null ? 'pelanggan' : 'pekerja';
+  await setTypeCookie(userType);
 
   return NextResponse.json({ success: true, error: null }, { status: 200 });
 }
