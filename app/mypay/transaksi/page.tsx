@@ -1,6 +1,6 @@
 import NavBar from "@/app/components/NavBar";
 import { getUser } from "@/app/functions/auth/getUser";
-import TransaksiForm from "./TransaksiForm";
+import TransaksiForm from "./TransaksiContent";
 import { getTypeCookie } from "@/app/functions/auth/auth";
 
 export default async function Page() {
