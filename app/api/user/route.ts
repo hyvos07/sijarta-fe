@@ -1,49 +1,94 @@
 import { NextResponse } from 'next/server';
-import { getUser } from '../../functions/auth/getUser';
+import { cookies } from 'next/headers';
 import fs from 'fs';
 import path from 'path';
+import { getUserFromToken } from '@/app/db/services/auth';
 
-// Fungsi untuk memuat file JSON dengan validasi
-const loadJSON = (filePath: string): any[] => {
+// Fungsi untuk memuat file JSON
+const loadJSON = (filePath: string) => {
   try {
-    if (!fs.existsSync(filePath)) {
-      console.error(`File not found: ${filePath}`);
-      return [];
-    }
-    const data = fs.readFileSync(filePath, 'utf-8');
+    const fullPath = path.join(process.cwd(), filePath);
+    const data = fs.readFileSync(fullPath, 'utf-8');
     return JSON.parse(data);
   } catch (error) {
-    console.error(`Error loading JSON from ${filePath}:`, error);
-    return [];
+    console.error(`Error loading ${filePath}:`, error);
+    return null; // Mengembalikan null jika terjadi error
   }
 };
 
-// Path file JSON
-const workersFilePath = path.join(process.cwd(), 'db/mocks/pekerja.json');
-
-// Muat data dari file JSON
-const workers = loadJSON(workersFilePath);
-
-// API GET Handler
-export async function GET(request: Request) {
+export async function GET() {
   try {
-    // Mendapatkan user dari token
-    const user = await getUser();
+    const cookieStore = cookies();
+    const token = (await cookieStore).get('auth-token')?.value;
+
+    if (!token) {
+      return NextResponse.json(
+        { role: null, data: null, error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
+    const user = await getUserFromToken(token);
 
     if (!user) {
-      return NextResponse.json({ error: 'Pengguna tidak ditemukan atau tidak memiliki autentikasi' }, { status: 401 });
+      return NextResponse.json(
+        { role: null, data: null, error: 'Invalid token' },
+        { status: 401 }
+      );
     }
 
-    // Mengecek apakah user adalah pekerja
-    const worker = workers.find((w: any) => w.Id === user.id);
-    if (worker) {
-      return NextResponse.json({ role: 'pekerja', data: worker });
+    // Memuat data JSON
+    const users = loadJSON('app/db/mocks/user.json');
+    const pelanggan = loadJSON('app/db/mocks/pelanggan.json');
+    const pekerja = loadJSON('app/db/mocks/pekerja.json');
+
+    if (!users || !pelanggan || !pekerja) {
+      return NextResponse.json(
+        { role: null, data: null, error: 'Data file missing' },
+        { status: 500 }
+      );
     }
 
-    // Jika user adalah pengguna biasa
-    return NextResponse.json({ role: 'pengguna', data: user });
+    // Mencari data pengguna berdasarkan ID
+    const currentUser = users.find((u: any) => u.Id === user.id);
+
+    if (!currentUser) {
+      return NextResponse.json(
+        { role: null, data: null, error: 'User not found' },
+        { status: 404 }
+      );
+    }
+
+    // Cek apakah ID ada di pelanggan.json
+    const isPelanggan = pelanggan.some((p: any) => p.Id === user.id);
+
+    if (isPelanggan) {
+      return NextResponse.json(
+        { role: 'pelanggan', data: { name: currentUser.Nama }, error: null },
+        { status: 200 }
+      );
+    }
+
+    // Cek apakah ID ada di pekerja.json
+    const isPekerja = pekerja.some((p: any) => p.Id === user.id);
+
+    if (isPekerja) {
+      return NextResponse.json(
+        { role: 'pekerja', data: { name: currentUser.Nama }, error: null },
+        { status: 200 }
+      );
+    }
+
+    // Jika tidak ditemukan di kedua file
+    return NextResponse.json(
+      { role: 'Unknown', data: null, error: null },
+      { status: 200 }
+    );
   } catch (error: any) {
-    console.error('Error handling GET request:', error.message);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error('Error in GET /api/user:', error);
+    return NextResponse.json(
+      { role: null, data: null, error: 'Internal Server Error' },
+      { status: 500 }
+    );
   }
 }
