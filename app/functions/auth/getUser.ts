@@ -4,7 +4,7 @@ import { userService } from '../../db/services/user';
 
 export const getUser = async () => {
     const authToken = (await cookies()).get("auth-token")?.value;
-    if (!authToken) {a
+    if (!authToken) {
         throw new Error("No auth token found");
     }
 
