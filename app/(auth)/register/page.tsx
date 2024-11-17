@@ -57,23 +57,40 @@ const RegisterPage = () => {
     setFormData((prev) => ({ ...prev, gender: e.target.value as 'L' | 'P' }));
   };
 
-  const validateForm = () => {
-    if (!formData.name || !formData.password || !formData.confirmPassword || !formData.phone || !formData.birthDate || !formData.address) {
+  const validateForm = async () => {
+    if (!formData.phone || !formData.password || !formData.confirmPassword) {
       setError('All fields are required.');
       return false;
     }
+  
+    // Validate phone number length
+    if (formData.phone.length < 12 || formData.phone.length > 13) {
+      setError('Phone number must be between 12 and 13 digits.');
+      return false;
+    }
+  
+    // Check if phone number is unique by making an API call
+    const phoneResponse = await fetch(`/api/check-phone?phone=${formData.phone}`);
+    const phoneData = await phoneResponse.json();
+  
+    if (phoneData.exists) {
+      setError('Phone number is already registered.');
+      return false;
+    }
+  
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match.');
       return false;
     }
-
-    if (role === 'Pekerja' && (!formData.bank || !formData.accountNumber || !formData.npwp || !formData.photoUrl)) {
+  
+    if (role === 'Pekerja' && (!formData.name || !formData.npwp || !formData.bank || !formData.accountNumber)) {
       setError('All fields are required for Pekerja.');
       return false;
     }
-
+  
     return true;
   };
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
