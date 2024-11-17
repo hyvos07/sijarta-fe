@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 const mockDatabase = new Map<string, { role: string; phone: string; password: string; name?: string; npwp?: string; bank?: string; accountNumber?: string }>();
 
 interface RegisterData {
-  role: 'Pengguna' | 'Pekerja';
+  role: 'Pelanggan' | 'Pekerja';
   phone: string;
   password: string;
   name?: string;

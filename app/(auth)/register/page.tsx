@@ -5,44 +5,60 @@ import { useRouter } from 'next/navigation'; // Use next/navigation for client-s
 import '../../styles/login.css';
 
 interface UserForm {
-  phone: string;
+  name: string;
   password: string;
   confirmPassword: string;
-  name?: string;
-  npwp?: string;
+  phone: string;
+  birthDate: string;
+  address: string;
+  gender: 'L' | 'P'; // L for Laki-laki, P for Perempuan
   bank?: string;
   accountNumber?: string;
+  npwp?: string;
+  photoUrl?: string;
 }
 
 const RegisterPage = () => {
-  const [role, setRole] = useState<'Pengguna' | 'Pekerja' | ''>('');
+  const [role, setRole] = useState<'Pelanggan' | 'Pekerja' | ''>('');
   const [formData, setFormData] = useState<UserForm>({
-    phone: '',
+    name: '',
     password: '',
     confirmPassword: '',
+    phone: '',
+    birthDate: '',
+    address: '',
+    gender: 'L', // Default to Laki-laki
   });
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const banks = ['GoPay', 'OVO', 'Virtual Account BCA', 'Virtual Account BNI', 'Virtual Account Mandiri'];
 
-  const handleRoleSelection = (selectedRole: 'Pengguna' | 'Pekerja') => {
+  const handleRoleSelection = (selectedRole: 'Pelanggan' | 'Pekerja') => {
     setRole(selectedRole);
     setFormData({
-      phone: '',
+      name: '',
       password: '',
       confirmPassword: '',
+      phone: '',
+      birthDate: '',
+      address: '',
+      gender: 'L', // Reset gender to default
     });
     setError(null);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, gender: e.target.value as 'L' | 'P' }));
+  };
+
   const validateForm = () => {
-    if (!formData.phone || !formData.password || !formData.confirmPassword) {
+    if (!formData.name || !formData.password || !formData.confirmPassword || !formData.phone || !formData.birthDate || !formData.address) {
       setError('All fields are required.');
       return false;
     }
@@ -50,10 +66,12 @@ const RegisterPage = () => {
       setError('Passwords do not match.');
       return false;
     }
-    if (role === 'Pekerja' && (!formData.name || !formData.npwp || !formData.bank || !formData.accountNumber)) {
+
+    if (role === 'Pekerja' && (!formData.bank || !formData.accountNumber || !formData.npwp || !formData.photoUrl)) {
       setError('All fields are required for Pekerja.');
       return false;
     }
+
     return true;
   };
 
@@ -89,10 +107,10 @@ const RegisterPage = () => {
       {!role ? (
         <div className="space-y-3">
           <button
-            onClick={() => handleRoleSelection('Pengguna')}
+            onClick={() => handleRoleSelection('Pelanggan')}
             className="w-full px-2 py-2 md:py-2.5 bg-stone-100 text-black font-medium rounded hover:bg-white transition-transform transform hover:scale-105 active:scale-95"
           >
-            Register as Pengguna
+            Register as Pelanggan
           </button>
           <button
             onClick={() => handleRoleSelection('Pekerja')}
@@ -106,10 +124,10 @@ const RegisterPage = () => {
           <div>
             <input
               type="text"
-              name="phone"
-              value={formData.phone}
+              name="name"
+              value={formData.name}
               onChange={handleInputChange}
-              placeholder="Phone Number"
+              placeholder="Name"
               className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-sm focus:outline focus:outline-blue-500"
               required
             />
@@ -136,30 +154,63 @@ const RegisterPage = () => {
               required
             />
           </div>
+          <div>
+            <label>Gender: </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="L"
+                checked={formData.gender === 'L'}
+                onChange={handleGenderChange}
+              />
+              Laki-laki
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="P"
+                checked={formData.gender === 'P'}
+                onChange={handleGenderChange}
+              />
+              Perempuan
+            </label>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              placeholder="Phone Number"
+              className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-sm focus:outline focus:outline-blue-500"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="date"
+              name="birthDate"
+              value={formData.birthDate}
+              onChange={handleInputChange}
+              className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-sm focus:outline focus:outline-blue-500"
+              required
+            />
+          </div>
+          <div>
+            <textarea
+              name="address"
+              value={formData.address}
+              onChange={handleInputChange}
+              placeholder="Address"
+              className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-sm focus:outline focus:outline-blue-500"
+              required
+            />
+          </div>
+
           {role === 'Pekerja' && (
             <>
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name || ''}
-                  onChange={handleInputChange}
-                  placeholder="Full Name"
-                  className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-sm focus:outline focus:outline-blue-500"
-                  required
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="npwp"
-                  value={formData.npwp || ''}
-                  onChange={handleInputChange}
-                  placeholder="NPWP"
-                  className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-sm focus:outline focus:outline-blue-500"
-                  required
-                />
-              </div>
               <div>
                 <select
                   name="bank"
@@ -187,21 +238,38 @@ const RegisterPage = () => {
                   required
                 />
               </div>
+              <div>
+                <input
+                  type="text"
+                  name="npwp"
+                  value={formData.npwp || ''}
+                  onChange={handleInputChange}
+                  placeholder="NPWP"
+                  className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-sm focus:outline focus:outline-blue-500"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="url"
+                  name="photoUrl"
+                  value={formData.photoUrl || ''}
+                  onChange={handleInputChange}
+                  placeholder="Profile Photo URL"
+                  className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-sm focus:outline focus:outline-blue-500"
+                  required
+                />
+              </div>
             </>
           )}
-          {error && <p className="text-red-500">{error}</p>}
+
+          {error && <div className="text-red-500 text-sm">{error}</div>}
+
           <button
             type="submit"
-            className="w-full px-2 py-2 md:py-2.5 bg-stone-100 text-black font-medium rounded hover:bg-white mt-6 transition-transform transform hover:scale-105 active:scale-95 flex items-center justify-center"
+            className="w-full py-3 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-300"
           >
-            Submit
-          </button>
-          <button
-            type="button"
-            onClick={() => setRole('')}
-            className="w-full px-2 py-2 md:py-2.5 bg-stone-100 text-black font-medium rounded hover:bg-white mt-3 transition-transform transform hover:scale-105 active:scale-95 flex items-center justify-center"
-          >
-            Back
+            Register
           </button>
         </form>
       )}
