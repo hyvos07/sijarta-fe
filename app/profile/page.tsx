@@ -93,37 +93,41 @@ export default function ProfilePage() {
     <div className="max-w-6xl mx-auto p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* Data Profil */}
       <div className="bg-gray-100 p-6 rounded-lg">
-        <h1 className="text-2xl font-semibold mb-4">Profil {userData.role === 'pelanggan' ? 'Pelanggan' : 'Pekerja'}</h1>
-        <p><strong>Nama:</strong> {userData.name}</p>
+      <h1 className="text-2xl font-semibold mb-4">
+        Profil {userData.role === 'pelanggan' ? 'Pelanggan' : 'Pekerja'}
+      </h1>
+      <p><strong>Nama:</strong> {userData.name}</p>
+      {userData.role === 'pelanggan' && (
         <p><strong>Level:</strong> {userData.level}</p>
-        <p><strong>Jenis Kelamin:</strong> {userData.gender}</p>
-        <p><strong>No HP:</strong> {userData.phone}</p>
-        <p><strong>Tanggal Lahir:</strong> {userData.birthdate}</p>
-        <p><strong>Alamat:</strong> {userData.address}</p>
-        <p><strong>Saldo MyPay:</strong> {userData.mypayBalance}</p>
-        {userData.role === 'pekerja' && (
-          <>
-            <p><strong>Nama Bank:</strong> {userData.bankName}</p>
-            <p><strong>No Rekening:</strong> {userData.bankAccount}</p>
-            <p><strong>NPWP:</strong> {userData.npwp}</p>
-            <p><strong>Rating:</strong> {userData.rating}</p>
-            <p><strong>Jumlah Pesanan Selesai:</strong> {userData.ordersCompleted}</p>
-            <p><strong>Kategori Pekerjaan:</strong>
-              <ul>
-                {userData.categories?.map((category, index) => (
-                  <li key={index}>{category}</li>
-                ))}
-              </ul>
-            </p>
-          </>
-        )}
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-          onClick={handleUpdate}
-        >
-          {isEditing ? 'Batal' : 'Update'}
-        </button>
-      </div>
+      )}
+      <p><strong>Jenis Kelamin:</strong> {userData.gender}</p>
+      <p><strong>No HP:</strong> {userData.phone}</p>
+      <p><strong>Tanggal Lahir:</strong> {userData.birthdate}</p>
+      <p><strong>Alamat:</strong> {userData.address}</p>
+      <p><strong>Saldo MyPay:</strong> {userData.mypayBalance}</p>
+      {userData.role === 'pekerja' && (
+        <>
+          <p><strong>Nama Bank:</strong> {userData.bankName}</p>
+          <p><strong>No Rekening:</strong> {userData.bankAccount}</p>
+          <p><strong>NPWP:</strong> {userData.npwp}</p>
+          <p><strong>Rating:</strong> {userData.rating}</p>
+          <p><strong>Jumlah Pesanan Selesai:</strong> {userData.ordersCompleted}</p>
+          <p><strong>Kategori Pekerjaan:</strong>
+            <ul>
+              {userData.categories?.map((category, index) => (
+                <li key={index}>{category}</li>
+              ))}
+            </ul>
+          </p>
+        </>
+      )}
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+        onClick={handleUpdate}
+      >
+        {isEditing ? 'Batal' : 'Update'}
+      </button>
+    </div>
 
       {/* Form Edit */}
       {isEditing && (
