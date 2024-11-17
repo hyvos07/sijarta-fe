@@ -15,7 +15,7 @@ interface UserForm {
 }
 
 const RegisterPage = () => {
-  const [role, setRole] = useState<'Pengguna' | 'Pekerja' | ''>('');
+  const [role, setRole] = useState<'Pengguna' | 'Pekerja' | ''>(''); 
   const [formData, setFormData] = useState<UserForm>({
     phone: '',
     password: '',
@@ -72,7 +72,12 @@ const RegisterPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        setError(errorData.message || 'An error occurred.');
+        if (response.status === 409 && errorData.redirect) {
+          alert(errorData.message);
+          router.push(errorData.redirect); // Redirect to login
+        } else {
+          setError(errorData.message || 'An error occurred.');
+        }
         return;
       }
 
@@ -189,20 +194,15 @@ const RegisterPage = () => {
               </div>
             </>
           )}
-          {error && <p className="text-red-500">{error}</p>}
-          <button
-            type="submit"
-            className="w-full px-2 py-2 md:py-2.5 bg-stone-100 text-black font-medium rounded hover:bg-white mt-6 transition-transform transform hover:scale-105 active:scale-95 flex items-center justify-center"
-          >
-            Submit
-          </button>
-          <button
-            type="button"
-            onClick={() => setRole('')}
-            className="w-full px-2 py-2 md:py-2.5 bg-stone-100 text-black font-medium rounded hover:bg-white mt-3 transition-transform transform hover:scale-105 active:scale-95 flex items-center justify-center"
-          >
-            Back
-          </button>
+          {error && <div className="text-red-500">{error}</div>}
+          <div className="w-full flex justify-center">
+            <button
+              type="submit"
+              className="w-full py-3 bg-primary text-white rounded-lg"
+            >
+              Register
+            </button>
+          </div>
         </form>
       )}
     </div>
