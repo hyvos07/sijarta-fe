@@ -1,27 +1,37 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { User } from '@/app/db/types/user';
-import { TrMyPay } from '@/app/db/types/trMypay';
+import { Convert, TrMyPay } from '@/app/db/types/trMypay';
 import CircularLoading from "../components/CircularLoading";
 import TRCard from "../components/mypay/TRCard";
 import { kategoriTrMyPayService } from '@/app/db/services/kategoriTrMypay';
 import InfoCard from '../components/mypay/InfoCard';
 
-interface MyPayContentProps {
-    user: User;
-    transaksi: TrMyPay[];
-    saldoMyPay: number;
+async function getAllTransaksi(id: string) {
+    const response = await fetch(`/api/tr-mypay?id=${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const data = await response.json();
+
+    return Convert.toTrMyPay(data.transaksi);
 }
 
-export default function MyPayContent({ user, transaksi, saldoMyPay }: MyPayContentProps) {
+export default function MyPayContent({ user }: { user: User }) {
     const [isLoading, setIsLoading] = useState(true);
     const [transactions, setTransactions] = useState<JSX.Element[]>([]);
+    
+    const saldoMyPay = user?.saldoMyPay || 0;
 
     useEffect(() => {
         const fetchKategori = async () => {
             try {
+                const transaksi = getAllTransaksi(user.id);
                 const enrichedTransactions = await Promise.all(
-                    transaksi.map(async (tr) => {
+                    (await transaksi).map(async (tr) => {
                         const kategori = await kategoriTrMyPayService.getKategoriById(tr.kategoriID);
                         return (
                             <TRCard tgl={tr.tgl} nominal={tr.nominal} kategori={kategori} key={tr.id} id={tr.id} userID={tr.userID} kategoriID={tr.kategoriID} />
@@ -37,14 +47,14 @@ export default function MyPayContent({ user, transaksi, saldoMyPay }: MyPayConte
         };
 
         fetchKategori();
-    }, [transaksi]);
+    }, [user.id]);
 
     return (
-        <div className="mx-4 md:mx-12 my-6 mb-8 md:p-4 p-2">
+        <div className="mx-4 md:mx-12 my-6 mb-8 p-4">
             {/* <button className="text-white py-4 rounded mb-6" onClick={() => { window.location.href = '/'; }}>
                 ⟵ &nbsp; Back
             </button> */}
-            <h1 className="text-2xl md:text-4xl font-semibold mb-12">
+            <h1 className="text-3xl md:text-4xl font-semibold mb-12">
                 MyPay
             </h1>
             < InfoCard noHP={user.noHP} saldoMyPay={saldoMyPay} />
