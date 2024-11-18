@@ -6,6 +6,13 @@ import CircularLoading from './components/CircularLoading';
 export default function Home() {
   const [role, setRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState<{
+    id: number;
+    name: string;
+    subcategories: { id: number; name: string }[];
+  }[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const [expandedCategory, setExpandedCategory] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchRole = async () => {
@@ -25,6 +32,36 @@ export default function Home() {
     };
 
     fetchRole();
+
+    // Dummy data untuk kategori dan subkategori
+    const dummyCategories = [
+      {
+        id: 1,
+        name: 'Kebersihan Rumah',
+        subcategories: [
+          { id: 101, name: 'Kebersihan Rumah Tangga' },
+          { id: 102, name: 'Deep Cleaning' },
+        ],
+      },
+      {
+        id: 2,
+        name: 'Layanan Perbaikan',
+        subcategories: [
+          { id: 201, name: 'Perbaikan AC' },
+          { id: 202, name: 'Perbaikan Elektronik' },
+        ],
+      },
+      {
+        id: 3,
+        name: 'Perawatan Diri',
+        subcategories: [
+          { id: 301, name: 'Pijat' },
+          { id: 302, name: 'Perawatan Rambut' },
+        ],
+      },
+    ];
+
+    setCategories(dummyCategories);
   }, []);
 
   if (loading) {
@@ -45,9 +82,69 @@ export default function Home() {
             <p className="font-semibold text-6xl tracking-wide">SIJARTA</p>
           </div>
           <p className="text-lg text-center">Sistem Informasi Jasa Rumah Tangga</p>
-          <p className="text-lg">
+          <p className="text-lg mb-8">
             Your Role: <strong>{role}</strong>
           </p>
+
+          {/* Search bar and category selector */}
+          <div className="w-full max-w-2xl flex gap-4 items-center">
+            <input
+              type="text"
+              placeholder="Cari kategori atau subkategori..."
+              className="w-full p-3 border border-gray-300 rounded-lg"
+            />
+            <select
+              onChange={(e) => setSelectedCategory(Number(e.target.value) || null)}
+              className="p-3 border border-gray-300 rounded-lg"
+              style={{color:'black'}}
+            >
+              <option value="">Semua Kategori</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id} style={{color:'black'}}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Render kategori dan subkategori */}
+          <div className="w-full max-w-2xl mt-6" style={{backgroundColor:'#333', color:'white'}}>
+            {categories
+              .filter(
+                (category) =>
+                  !selectedCategory || category.id === selectedCategory
+              )
+              .map((category) => (
+                <div
+                  key={category.id}
+                  className="mb-4 border border-gray-300 rounded-lg overflow-hidden"
+                  style={{color:'black'}}
+                >
+                  <button
+                    onClick={() =>
+                      setExpandedCategory(
+                        expandedCategory === category.id ? null : category.id
+                      )
+                    }
+                    className="w-full p-4 text-left font-bold bg-gray-100 hover:bg-gray-200"
+                  >
+                    {category.name}
+                  </button>
+                  {expandedCategory === category.id && (
+                    <div className="p-4 bg-white">
+                      {category.subcategories.map((subcategory) => (
+                        <p
+                          key={subcategory.id}
+                          className="text-gray-700 hover:text-gray-900"
+                        >
+                          {subcategory.name}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+          </div>
         </main>
       </div>
     </>
