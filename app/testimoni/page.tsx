@@ -203,7 +203,7 @@ const TestimoniPage = () => {
 												<button
 													style={{
 														padding: '10px 15px',
-														backgroundColor: '#4caf50',
+														backgroundColor: '#333',
 														color: '#fff',
 														border: 'none',
 														borderRadius: '5px',
@@ -297,7 +297,7 @@ const TestimoniPage = () => {
                     onClick={closeModal}
                     style={{
                       padding: '10px 15px',
-                      backgroundColor: '#f44336',
+                      backgroundColor: '#000000',
                       color: '#fff',
                       border: 'none',
                       borderRadius: '5px',
@@ -310,7 +310,7 @@ const TestimoniPage = () => {
                     type="submit"
                     style={{
                       padding: '10px 15px',
-                      backgroundColor: '#4caf50',
+                      backgroundColor: '#333',
                       color: '#fff',
                       border: 'none',
                       borderRadius: '5px',
