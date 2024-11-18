@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react';
 interface UserProfile {
   name: string;
   role: 'pelanggan' | 'pekerja';
-  level: string;
-  gender: 'L' | 'P';
-  phone: string;
-  birthdate: string;
-  address: string;
-  mypayBalance: string;
+  level?: string;
+  gender?: 'L' | 'P';
+  phone?: string;
+  birthdate?: string;
+  address?: string;
+  mypayBalance?: string;
   bankName?: string;
   bankAccount?: string;
   npwp?: string;
@@ -48,11 +48,11 @@ export default function ProfilePage() {
             birthdate: data.data.birthdate || '',
             address: data.data.address || '',
             mypayBalance: data.data.mypayBalance || '',
-            bankName: data.data.bankName || '',
-            bankAccount: data.data.bankAccount || '',
-            npwp: data.data.npwp || '',
-            rating: data.data.rating || '',
-            ordersCompleted: data.data.ordersCompleted || 0,
+            bankName: data.data.NamaBank || '',
+            bankAccount: data.data.NomorRekening || '',
+            npwp: data.data.NPWP || '',
+            rating: data.data.Rating ? data.data.Rating.toString() : '',
+            ordersCompleted: data.data.JmlPesananSelesai || 0,
             categories: data.data.categories || [],
           });
           setFormData(data.data);
@@ -92,46 +92,47 @@ export default function ProfilePage() {
   return (
     <div className="max-w-6xl mx-auto p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* Data Profil */}
-      <div className="bg-gray-100 p-6 rounded-lg">
-      <h1 className="text-2xl font-semibold mb-4">
-        Profil {userData.role === 'pelanggan' ? 'Pelanggan' : 'Pekerja'}
-      </h1>
-      <p><strong>Nama:</strong> {userData.name}</p>
-      {userData.role === 'pelanggan' && (
-        <p><strong>Level:</strong> {userData.level}</p>
-      )}
-      <p><strong>Jenis Kelamin:</strong> {userData.gender}</p>
-      <p><strong>No HP:</strong> {userData.phone}</p>
-      <p><strong>Tanggal Lahir:</strong> {userData.birthdate}</p>
-      <p><strong>Alamat:</strong> {userData.address}</p>
-      <p><strong>Saldo MyPay:</strong> {userData.mypayBalance}</p>
-      {userData.role === 'pekerja' && (
-        <>
-          <p><strong>Nama Bank:</strong> {userData.bankName}</p>
-          <p><strong>No Rekening:</strong> {userData.bankAccount}</p>
-          <p><strong>NPWP:</strong> {userData.npwp}</p>
-          <p><strong>Rating:</strong> {userData.rating}</p>
-          <p><strong>Jumlah Pesanan Selesai:</strong> {userData.ordersCompleted}</p>
-          <p><strong>Kategori Pekerjaan:</strong>
-            <ul>
-              {userData.categories?.map((category, index) => (
-                <li key={index}>{category}</li>
-              ))}
-            </ul>
-          </p>
-        </>
-      )}
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-        onClick={handleUpdate}
-      >
-        {isEditing ? 'Batal' : 'Update'}
-      </button>
-    </div>
+      <div className="bg-black text-white p-6 rounded-lg">
+        <h1 className="text-2xl font-semibold mb-4">
+          Profil {userData.role === 'pelanggan' ? 'Pelanggan' : 'Pekerja'}
+        </h1>
+        <p><strong>Nama:</strong> {userData.name}</p>
+        {userData.role === 'pelanggan' && (
+          <p><strong>Level:</strong> {userData.level}</p>
+        )}
+        <p><strong>Jenis Kelamin:</strong> {userData.gender}</p>
+        <p><strong>No HP:</strong> {userData.phone}</p>
+        <p><strong>Tanggal Lahir:</strong> {userData.birthdate}</p>
+        <p><strong>Alamat:</strong> {userData.address}</p>
+        <p><strong>Saldo MyPay:</strong> {userData.mypayBalance}</p>
+        {userData.role === 'pekerja' && (
+          <>
+            <p><strong>Nama Bank:</strong> {userData.bankName}</p>
+            <p><strong>No Rekening:</strong> {userData.bankAccount}</p>
+            <p><strong>NPWP:</strong> {userData.npwp}</p>
+            <p><strong>Rating:</strong> {userData.rating}</p>
+            <p><strong>Jumlah Pesanan Selesai:</strong> {userData.ordersCompleted}</p>
+            <div>
+              <p><strong>Kategori Pekerjaan:</strong></p>
+              <ul className="list-disc list-inside">
+                {userData.categories?.map((category, index) => (
+                  <li key={index}>{category}</li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
+        <button
+          className="bg-white text-black px-4 py-2 rounded mt-4"
+          onClick={handleUpdate}
+        >
+          {isEditing ? 'Batal' : 'Update'}
+        </button>
+      </div>
 
       {/* Form Edit */}
       {isEditing && (
-        <div className="bg-gray-100 p-6 rounded-lg">
+        <div className="bg-white text-black p-6 rounded-lg border border-black">
           <h2 className="text-xl font-semibold mb-4">Edit Data</h2>
           <div className="space-y-4">
             <div>
@@ -227,7 +228,7 @@ export default function ProfilePage() {
             )}
           </div>
           <button
-            className="bg-green-500 text-white px-4 py-2 rounded mt-4"
+            className="bg-black text-white px-4 py-2 rounded mt-4"
             onClick={handleSubmit}
           >
             Submit
