@@ -6,12 +6,14 @@ import '../../styles/login.css'
 export default function LoginPage() {
   const [credentials, setCredentials] = useState({ phone: '', password: '' })
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)  // Error state
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     setIsLoading(true)  // Show loading animation when login is submitted
+    setError(null)  // Reset any previous error
 
     const res = await fetch('/api/login', {
       method: 'POST',
@@ -26,9 +28,11 @@ export default function LoginPage() {
     if (res.ok) {
       router.push('/')
       router.refresh()
+    } else {
+      // Set error message if login fails
+      const errorData = await res.json()
+      setError(errorData.message || 'An error occurred during login. Please try again.') 
     }
-
-    // TODO: Kalo nggak oke display error di login page
   }
 
   return (
@@ -52,6 +56,12 @@ export default function LoginPage() {
           required
         />
       </div>
+      
+      {/* Display error message if there's any */}
+      {error && (
+        <p className="text-red-500 text-sm text-center mt-3">{error}</p>
+      )}
+      
       <button
         type="submit"
         className={`w-full px-2 py-2 md:py-2.5 bg-stone-100 text-black font-medium rounded hover:bg-white mt-6 ${isLoading ? 'animate-pulse' : ''} transition-transform transform hover:scale-105 active:scale-95 flex items-center justify-center`}

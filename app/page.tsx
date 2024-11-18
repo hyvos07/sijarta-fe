@@ -13,7 +13,7 @@ export default function Home() {
         const response = await fetch('/api/user/role');
         if (response.ok) {
           const data = await response.json();
-          setRole(data.role); // 'Pelanggan', 'Pekerja', atau 'Unknown'
+          setRole(data.role);
         } else {
           console.log(response);
         }
@@ -38,9 +38,12 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <div className="items-center justify-center min-h-[10000px] p-16 font-[family-name:var(--font-geist-sans)]">
+      <div className="items-center justify-center min-h-[100vh] p-16 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-4 items-center">
-          <p className="font-semibold text-6xl tracking-wide">SIJARTA</p>
+          <div className="flex items-center gap-4">
+            <img src="/images/logo.png" alt="SIJARTA Logo" className="h-14 w-14" />
+            <p className="font-semibold text-6xl tracking-wide">SIJARTA</p>
+          </div>
           <p className="text-lg text-center">Sistem Informasi Jasa Rumah Tangga</p>
           <p className="text-lg">
             Your Role: <strong>{role}</strong>
