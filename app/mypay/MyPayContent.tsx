@@ -29,9 +29,9 @@ export default function MyPayContent({ user }: { user: User }) {
     useEffect(() => {
         const fetchKategori = async () => {
             try {
-                const transaksi = getAllTransaksi(user.id);
+                const transaksi = await getAllTransaksi(user.id);
                 const enrichedTransactions = await Promise.all(
-                    (await transaksi).map(async (tr) => {
+                    transaksi.map(async (tr) => {
                         const kategori = await kategoriTrMyPayService.getKategoriById(tr.kategoriID);
                         return (
                             <TRCard tgl={tr.tgl} nominal={tr.nominal} kategori={kategori} key={tr.id} id={tr.id} userID={tr.userID} kategoriID={tr.kategoriID} />
