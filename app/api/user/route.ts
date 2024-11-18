@@ -4,8 +4,6 @@ import fs from 'fs';
 import path from 'path';
 import { getUserFromToken } from '@/app/functions/auth/getUser';
 
-
-// Fungsi untuk memuat file JSON
 const loadJSON = (filePath: string) => {
   try {
     const fullPath = path.join(process.cwd(), filePath);
@@ -13,7 +11,7 @@ const loadJSON = (filePath: string) => {
     return JSON.parse(data);
   } catch (error) {
     console.error(`Error loading ${filePath}:`, error);
-    return null; // Mengembalikan null jika terjadi error
+    return null;
   }
 };
 
@@ -38,7 +36,7 @@ export async function GET() {
       );
     }
 
-    // Memuat data JSON
+    // Load data JSON
     const users = loadJSON('app/db/mocks/user.json');
     const pelanggan = loadJSON('app/db/mocks/pelanggan.json');
     const pekerja = loadJSON('app/db/mocks/pekerja.json');
@@ -50,8 +48,10 @@ export async function GET() {
       );
     }
 
-    // Mencari data pengguna berdasarkan ID
+    // Find user data based on ID
     const currentUser = users.find((u: any) => u.Id === user.id);
+    const isPelanggan = pelanggan.find((p: any) => p.Id === user.id);
+    const isPekerja = pekerja.find((p: any) => p.Id === user.id);
 
     if (!currentUser) {
       return NextResponse.json(
@@ -60,27 +60,43 @@ export async function GET() {
       );
     }
 
-    // Cek apakah ID ada di pelanggan.json
-    const isPelanggan = pelanggan.some((p: any) => p.Id === user.id);
-
+    // Prepare full user data
     if (isPelanggan) {
-      return NextResponse.json(
-        { role: 'pelanggan', data: { name: currentUser.Nama }, error: null },
-        { status: 200 }
-      );
+      return NextResponse.json({
+        role: 'pelanggan',
+        data: {
+          name: currentUser.Nama,
+          gender: currentUser.JenisKelamin,
+          phone: currentUser.NoHP,
+          birthdate: currentUser.TglLahir,
+          address: currentUser.Alamat,
+          mypayBalance: currentUser.SaldoMyPay.toString(),
+          level: isPelanggan.Level
+        },
+        error: null
+      }, { status: 200 });
     }
-
-    // Cek apakah ID ada di pekerja.json
-    const isPekerja = pekerja.some((p: any) => p.Id === user.id);
 
     if (isPekerja) {
-      return NextResponse.json(
-        { role: 'pekerja', data: { name: currentUser.Nama }, error: null },
-        { status: 200 }
-      );
+      return NextResponse.json({
+        role: 'pekerja',
+        data: {
+          name: currentUser.Nama,
+          gender: currentUser.JenisKelamin,
+          phone: currentUser.NoHP,
+          birthdate: currentUser.TglLahir,
+          address: currentUser.Alamat,
+          mypayBalance: currentUser.SaldoMyPay.toString(),
+          bankName: isPekerja.NamaBank,
+          bankAccount: isPekerja.NomorRekening,
+          npwp: isPekerja.NPWP,
+          rating: isPekerja.Rating,
+          ordersCompleted: isPekerja.JmlPesananSelesai
+        },
+        error: null
+      }, { status: 200 });
     }
 
-    // Jika tidak ditemukan di kedua file
     return NextResponse.json(
       { role: 'Unknown', data: null, error: null },
       { status: 200 }

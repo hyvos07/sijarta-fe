@@ -48,11 +48,11 @@ export default function ProfilePage() {
             birthdate: data.data.birthdate || '',
             address: data.data.address || '',
             mypayBalance: data.data.mypayBalance || '',
-            bankName: data.data.NamaBank || '',
-            bankAccount: data.data.NomorRekening || '',
-            npwp: data.data.NPWP || '',
-            rating: data.data.Rating ? data.data.Rating.toString() : '',
-            ordersCompleted: data.data.JmlPesananSelesai || 0,
+            bankName: data.data.bankName || '',
+            bankAccount: data.data.bankAccount || '',
+            npwp: data.data.npwp || '',
+            rating: data.data.rating ? data.data.rating.toString() : '',
+            ordersCompleted: data.data.ordersCompleted || 0,
             categories: data.data.categories || [],
           });
           setFormData(data.data);
@@ -238,3 +238,4 @@ export default function ProfilePage() {
     </div>
   );
 }
+

@@ -1,18 +1,17 @@
-'use client'
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
+'use client';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function NavBar() {
-  const [role, setRole] = useState<'pelanggan' | 'pekerja' | null>(null)
-  const [name, setName] = useState('')
-  const [error, setError] = useState<string | null>(null)
+  const [role, setRole] = useState<'pelanggan' | 'pekerja' | null>(null);
+  const [name, setName] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchUserData() {
       try {
         const response = await fetch('/api/user');
 
-        // Jika respons tidak OK, tangani errornya
         if (!response.ok) {
           setError(`Error ${response.status}: ${response.statusText}`);
           return;
@@ -20,10 +19,9 @@ export default function NavBar() {
 
         const data = await response.json();
 
-        // Validasi respons JSON
         if (data.role && data.data) {
-          setRole(data.role); // Role: 'pengguna' atau 'pekerja'
-          setName(data.data.name); // Nama pengguna
+          setRole(data.role);
+          setName(data.data.name);
         } else {
           setError('Data pengguna tidak valid');
         }
@@ -51,14 +49,13 @@ export default function NavBar() {
       <div className="mx-auto px-4 sm:px-6 lg:px-16">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
+            <img src="/images/logo.png" alt="SIJARTA Logo" className="h-10 w-10 mr-2" />
             <Link href="/" className="text-xl font-bold hidden md:block md:tracking-wide">
-              Sijarta
+              SIJARTA
             </Link>
           </div>
           <div className="flex space-x-4">
             {error && <span className="text-red-500">{error}</span>}
-            
-            {/* Navbar untuk pelanggan */}
             {role === 'pelanggan' && (
               <>
                 <span className="font-bold">{name} (Pelanggan)</span>
@@ -69,8 +66,6 @@ export default function NavBar() {
                 <Link href="/profile" className="hover:text-gray-300">Profile</Link>
               </>
             )}
-            
-            {/* Navbar untuk Pekerja */}
             {role === 'pekerja' && (
               <>
                 <span className="font-bold">{name} (Pekerja)</span>
@@ -81,7 +76,6 @@ export default function NavBar() {
                 <Link href="/profile" className="hover:text-gray-300">Profile</Link>
               </>
             )}
-
             <button 
               onClick={handleLogout}
               className="hover:text-gray-300"
