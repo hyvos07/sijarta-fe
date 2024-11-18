@@ -54,7 +54,7 @@ export default function MyPayContent({ user }: { user: User }) {
             {/* <button className="text-white py-4 rounded mb-6" onClick={() => { window.location.href = '/'; }}>
                 ⟵ &nbsp; Back
             </button> */}
-            <h1 className="text-3xl md:text-4xl font-semibold mb-12">
+            <h1 className="text-3xl md:text-4xl font-semibold text-center mb-12">
                 MyPay
             </h1>
             < InfoCard noHP={user.noHP} saldoMyPay={saldoMyPay} />

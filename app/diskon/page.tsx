@@ -1,22 +1,22 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Promo } from '@/app/db/types/promo'; // Ensure the correct path for Promo
-import { Voucher } from '@/app/db/types/voucher'; // Ensure the correct path for Voucher
+import { Promo } from '@/app/db/types/promo';
+import { Voucher } from '@/app/db/types/voucher';
 import '@/app/styles/diskon.css';
 import NavBar from '../components/NavBar';
 
 const DiskonPage = () => {
   const [promos, setPromos] = useState<Promo[]>([]);
   const [vouchers, setVouchers] = useState<Voucher[]>([]);
-  const [modalContent, setModalContent] = useState<string>(''); // Konten modal
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // Status modal
+  const [modalContent, setModalContent] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [userBalance, setUserBalance] = useState<number>(50000);
-  const [modalTitle, setModalTitle] = useState<string>(''); // Judul modal (SUKSES atau GAGAL)
+  const [modalTitle, setModalTitle] = useState<string>('');
 
-  const [currentPromoPage, setCurrentPromoPage] = useState<number>(1); // Promo pagination
-  const [currentVoucherPage, setCurrentVoucherPage] = useState<number>(1); // Voucher pagination
-  const itemsPerPage = 5; // Number of items per page
+  const [currentPromoPage, setCurrentPromoPage] = useState<number>(1);
+  const [currentVoucherPage, setCurrentVoucherPage] = useState<number>(1);
+  const itemsPerPage = 5;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,11 +34,11 @@ const DiskonPage = () => {
     fetchData();
   }, []);
 
-  // Total pages for promo and voucher
+
   const totalPromoPages = Math.ceil(promos.length / itemsPerPage);
   const totalVoucherPages = Math.ceil(vouchers.length / itemsPerPage);
 
-  // Get current page data for promo and voucher
+
   const currentPromos = promos.slice(
     (currentPromoPage - 1) * itemsPerPage,
     currentPromoPage * itemsPerPage
@@ -48,7 +48,7 @@ const DiskonPage = () => {
     currentVoucherPage * itemsPerPage
   );
 
-  // Pagination handlers for promo
+
   const nextPromoPage = () => {
     if (currentPromoPage < totalPromoPages) {
       setCurrentPromoPage(currentPromoPage + 1);
@@ -61,7 +61,7 @@ const DiskonPage = () => {
     }
   };
 
-  // Pagination handlers for voucher
+
   const nextVoucherPage = () => {
     if (currentVoucherPage < totalVoucherPages) {
       setCurrentVoucherPage(currentVoucherPage + 1);
@@ -76,37 +76,35 @@ const DiskonPage = () => {
 
   const handleBuyVoucher = (voucher: Voucher) => {
     if (userBalance >= voucher.harga) {
-      // Sukses membeli voucher
+
       const newBalance = userBalance - voucher.harga;
-      setUserBalance(newBalance); // Kurangi saldo
-      setModalTitle('SUKSES'); // Judul modal
+      setUserBalance(newBalance);
+      setModalTitle('SUKSES');
       setModalContent(
         `Selamat! Anda berhasil membeli voucher kode ${voucher.kode}. Voucher ini berlaku selama ${voucher.jmlHariBerlaku} hari dengan kuota penggunaan sebanyak ${voucher.kuotaPenggunaan} kali. Sisa saldo Anda: Rp${newBalance}.`
       );
     } else {
-      // Gagal membeli voucher
-      setModalTitle('GAGAL'); // Judul modal
+
+      setModalTitle('GAGAL');
       setModalContent(
-        `Gagal membeli voucher ${voucher.kode}. Saldo Anda tidak mencukupi. Anda membutuhkan Rp${
-          voucher.harga - userBalance
+        `Gagal membeli voucher ${voucher.kode}. Saldo Anda tidak mencukupi. Anda membutuhkan Rp${voucher.harga - userBalance
         } lebih untuk membeli voucher ini.`
       );
     }
-    setIsModalOpen(true); // Tampilkan modal
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setIsModalOpen(false); // Tutup modal
+    setIsModalOpen(false);
   };
 
   return (
-    <>
+    <div>
       <NavBar />
-      <div className="diskon-container">
-        <h1>Diskon - Promo dan Voucher</h1>
+      <div className="diskon-container text-white mx-4 mb-16">
+        <h1 className="font-semibold my-4">Diskon - Promo dan Voucher</h1>
 
-        {/* Voucher Section */}
-        <h2>Voucher</h2>
+        <h2 className="font-semibold my-6">Voucher</h2>
         {currentVouchers.length > 0 ? (
           <div className="voucher-list">
             {currentVouchers.map((voucher, index) => (
@@ -152,7 +150,7 @@ const DiskonPage = () => {
         </div>
 
         {/* Promo Section */}
-        <h2>Promo</h2>
+        <h2 className='font-semibold my-6 mt-14'>Promo</h2>
         {currentPromos.length > 0 ? (
           <div className="promo-list">
             {currentPromos.map((promo, index) => {
@@ -194,16 +192,16 @@ const DiskonPage = () => {
         {isModalOpen && (
           <div className="modal-overlay">
             <div className="modal-content">
-              <h3>{modalTitle}</h3>
+              <h3 className="font-semibold">{modalTitle}</h3>
               <p>{modalContent}</p>
               <button className="close-modal-btn" onClick={closeModal}>
-                Button Tutup
+                OK
               </button>
             </div>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
