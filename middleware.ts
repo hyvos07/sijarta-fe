@@ -3,16 +3,19 @@ import type { NextRequest } from 'next/server'
 
 const PEKERJA_PATHS = [
   '/kelola-pekerjaan',
+  '/status-pekerjaan',
 ]
 
-// Maybe nanti kalo ada page khusus pengguna bisa di taro juga disini
+const PELANGGAN_PATHS = [
+  '/diskon',
+  '/testimoni',
+]
 
 const PROTECTED_PATHS = [
   '/mypay',
   '/profile',
-  '/diskon',
-  '/testimoni',
-  ...PEKERJA_PATHS
+  ...PEKERJA_PATHS,
+  ...PELANGGAN_PATHS,
 ]
 
 export function middleware(request: NextRequest) {
@@ -34,6 +37,11 @@ export function middleware(request: NextRequest) {
 
   // Restrict access to PEKERJA_PATHS for non-pekerja users
   if (PEKERJA_PATHS.some(prefix => path.startsWith(prefix)) && userType !== 'pekerja') {
+    return NextResponse.redirect(new URL('/', request.url))
+  }
+
+  // Restrict access to PELANGGAN_PATHS for non-pelanggan users
+  if (PELANGGAN_PATHS.some(prefix => path.startsWith(prefix)) && userType !== 'pelanggan') {
     return NextResponse.redirect(new URL('/', request.url))
   }
 

@@ -1,44 +1,27 @@
 /* Base Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    padding: 20px;
-    color: white;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Container styles */
 .diskon-container {
   padding: 20px;
-  font-family: Arial, sans-serif;
 }
+
 h1 {
   text-align: center;
   font-size: 2.5rem;
-  color: #333;
 }
 
 h2 {
   font-size: 1.8rem;
-  color: #444;
   margin-bottom: 10px;
 }
+
 /* Common styles for both promo and voucher items */
-.voucher-item, .promo-item {
-  border: 1px solid #ddd;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 5px;
-  background-color: #262222;
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-  align-items: center;
-}
+.voucher-item,
 .promo-item {
   border: 1px solid #ddd;
   margin: 10px 0;
@@ -47,11 +30,25 @@ h2 {
   background-color: #262222;
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.promo-item {
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #262222;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   justify-items: center;
 }
+
 /* Title styling */
-.voucher-item h3, .promo-item h3 {
+.voucher-item h3,
+.promo-item h3 {
   font-size: 18px;
   margin-bottom: 10px;
 }
@@ -107,53 +104,55 @@ h2 {
 }
 
 
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Overlay gelap */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background-color: var(--background);
-    color: var(--foreground);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    width: 90%;
-  }
-  
-  .modal-content h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  
-  .modal-content p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .close-modal-btn {
-    background-color: #ced4da;
-    color: var(--background);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  .close-modal-btn:hover {
-    background-color: #ffffff;
-    color: rgb(160, 150, 150);
-  }
-  
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Overlay gelap */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--background);
+  border-radius: 10px;
+  border: 1px solid rgba(155, 155, 155, 0.8);
+  color: var(--foreground);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+}
+
+.modal-content h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.close-modal-btn {
+  background-color: #ced4da;
+  color: var(--background);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal-btn:hover {
+  background-color: #ffffff;
+  color: rgb(160, 150, 150);
+}
