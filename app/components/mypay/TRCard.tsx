@@ -11,7 +11,7 @@ export default function TRCard({ tgl, nominal, kategori }: TrMyPay & { kategori:
                 <p className="font-semibold mb-1 md:max-w-none max-w-40">{kategori}</p>
                 <p className="text-sm text-gray-400">{new Date(tgl).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })}</p>
             </div>
-            <p className={"flex font-bold justify-center items-center" + ` ${incoming ? 'text-green-500' : 'text-red-500'}`}>{incoming ? '+' : '-'}Rp {nominal.toLocaleString('id-ID')}</p>
+            <p className={"flex font-semibold justify-center items-center" + ` ${incoming ? 'text-green-500' : 'text-red-500'}`}>{incoming ? '+' : '-'}Rp {nominal.toLocaleString('id-ID')}</p>
         </div>
     )
 }

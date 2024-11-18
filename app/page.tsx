@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar';
+import CircularLoading from './components/CircularLoading';
 
 export default function Home() {
   const [role, setRole] = useState<string | null>(null);
@@ -27,7 +28,11 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <CircularLoading />
+      </div>
+    );
   }
 
   return (
