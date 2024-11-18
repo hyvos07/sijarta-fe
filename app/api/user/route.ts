@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import fs from 'fs';
 import path from 'path';
-import { getUserFromToken } from '@/app/db/services/auth';
+import { getUserFromToken } from '@/app/functions/auth/getUser';
+
 
 // Fungsi untuk memuat file JSON
 const loadJSON = (filePath: string) => {

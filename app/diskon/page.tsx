@@ -14,6 +14,10 @@ const DiskonPage = () => {
   const [userBalance, setUserBalance] = useState<number>(50000);
   const [modalTitle, setModalTitle] = useState<string>(''); // Judul modal (SUKSES atau GAGAL)
 
+  const [currentPromoPage, setCurrentPromoPage] = useState<number>(1); // Promo pagination
+  const [currentVoucherPage, setCurrentVoucherPage] = useState<number>(1); // Voucher pagination
+  const itemsPerPage = 5; // Number of items per page
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,6 +33,46 @@ const DiskonPage = () => {
 
     fetchData();
   }, []);
+
+  // Total pages for promo and voucher
+  const totalPromoPages = Math.ceil(promos.length / itemsPerPage);
+  const totalVoucherPages = Math.ceil(vouchers.length / itemsPerPage);
+
+  // Get current page data for promo and voucher
+  const currentPromos = promos.slice(
+    (currentPromoPage - 1) * itemsPerPage,
+    currentPromoPage * itemsPerPage
+  );
+  const currentVouchers = vouchers.slice(
+    (currentVoucherPage - 1) * itemsPerPage,
+    currentVoucherPage * itemsPerPage
+  );
+
+  // Pagination handlers for promo
+  const nextPromoPage = () => {
+    if (currentPromoPage < totalPromoPages) {
+      setCurrentPromoPage(currentPromoPage + 1);
+    }
+  };
+
+  const prevPromoPage = () => {
+    if (currentPromoPage > 1) {
+      setCurrentPromoPage(currentPromoPage - 1);
+    }
+  };
+
+  // Pagination handlers for voucher
+  const nextVoucherPage = () => {
+    if (currentVoucherPage < totalVoucherPages) {
+      setCurrentVoucherPage(currentVoucherPage + 1);
+    }
+  };
+
+  const prevVoucherPage = () => {
+    if (currentVoucherPage > 1) {
+      setCurrentVoucherPage(currentVoucherPage - 1);
+    }
+  };
 
   const handleBuyVoucher = (voucher: Voucher) => {
     if (userBalance >= voucher.harga) {
@@ -61,10 +105,11 @@ const DiskonPage = () => {
       <div className="diskon-container">
         <h1>Diskon - Promo dan Voucher</h1>
 
+        {/* Voucher Section */}
         <h2>Voucher</h2>
-        {vouchers.length > 0 ? (
+        {currentVouchers.length > 0 ? (
           <div className="voucher-list">
-            {vouchers.map((voucher, index) => (
+            {currentVouchers.map((voucher, index) => (
               <div key={voucher.kode || index} className="voucher-item">
                 <p>
                   <strong>Kode:</strong> {voucher.kode}
@@ -91,10 +136,26 @@ const DiskonPage = () => {
           <p>No voucher data available.</p>
         )}
 
+        <div className="pagination-controls">
+          <button onClick={prevVoucherPage} disabled={currentVoucherPage === 1}>
+            Previous
+          </button>
+          <span>
+            Halaman {currentVoucherPage} dari {totalVoucherPages}
+          </span>
+          <button
+            onClick={nextVoucherPage}
+            disabled={currentVoucherPage === totalVoucherPages}
+          >
+            Next
+          </button>
+        </div>
+
+        {/* Promo Section */}
         <h2>Promo</h2>
-        {promos.length > 0 ? (
+        {currentPromos.length > 0 ? (
           <div className="promo-list">
-            {promos.map((promo, index) => {
+            {currentPromos.map((promo, index) => {
               const promoEndDate = new Date(promo.tglAkhirBerlaku);
               const validPromoEndDate = !isNaN(promoEndDate.getTime())
                 ? promoEndDate.toUTCString()
@@ -102,9 +163,7 @@ const DiskonPage = () => {
 
               return (
                 <div key={promo.kode || index} className="promo-item">
-                  <p>
-                    <strong>Kode:</strong> {promo.kode}
-                  </p>
+                  <p>Promo: {promo.kode}</p>
                   <p>
                     <strong>Tanggal Expired:</strong> {validPromoEndDate}
                   </p>
@@ -113,8 +172,23 @@ const DiskonPage = () => {
             })}
           </div>
         ) : (
-          <p>No promo data available.</p>
+          <p>Tidak ada promo tersedia.</p>
         )}
+
+        <div className="pagination-controls">
+          <button onClick={prevPromoPage} disabled={currentPromoPage === 1}>
+            Previous
+          </button>
+          <span>
+            Halaman {currentPromoPage} dari {totalPromoPages}
+          </span>
+          <button
+            onClick={nextPromoPage}
+            disabled={currentPromoPage === totalPromoPages}
+          >
+            Next
+          </button>
+        </div>
 
         {/* Modal Notifikasi */}
         {isModalOpen && (
