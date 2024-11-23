@@ -4,10 +4,8 @@ import { getUser } from "@/src/functions/auth/getUser";
 import StatusPekerjaanContent from "./StatusPekerjaanContent";
 
 type SearchParams = {
-    searchParams: {
-        query?: string;
-        filter?: string;
-    }
+    query?: string;
+    filter?: string;
 }
 
 export const metadata: Metadata = {
@@ -18,12 +16,12 @@ export const metadata: Metadata = {
     },
 };
 
-export default async function Page({ searchParams }: SearchParams) {
+export default async function Page({ searchParams }: { searchParams: Promise<SearchParams> }) {
     const user = await getUser();
     const params = searchParams;
-    
-    const query = params?.query ?? "";
-    const filter = params?.filter ?? "none";
+
+    const query = (await params)?.query ?? "";
+    const filter = (await params)?.filter ?? "none";
 
     return (
         <main className="min-h-screen">
