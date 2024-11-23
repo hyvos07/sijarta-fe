@@ -31,7 +31,7 @@ export default function PekerjaanContent({ user, kategori, subkategori }: Pekerj
     const [pesanan, setPesanan] = useState<JSX.Element[]>([]);
     const [loading, setLoading] = useState(false);
 
-    var ready = kategoriState !== "none" && subkategoriState !== "none";
+    let ready = kategoriState !== "none" && subkategoriState !== "none";
 
     useEffect(() => {
         ready = kategoriState !== "none" && subkategoriState !== "none";
