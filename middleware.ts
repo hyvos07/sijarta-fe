@@ -12,6 +12,7 @@ const PELANGGAN_PATHS = [
 ]
 
 const PROTECTED_PATHS = [
+  '/',  // Home Page
   '/mypay',
   '/profile',
   ...PEKERJA_PATHS,
@@ -23,6 +24,9 @@ export function middleware(request: NextRequest) {
   const userType = request.cookies.get('type')?.value
   const path = request.nextUrl.pathname
   const isLoginPage = path === '/login'
+
+  console.log('authCookie:', authCookie)
+  console.log('userType:', userType)
 
   // Auth check for all protected routes
   if (!authCookie && !isLoginPage) {

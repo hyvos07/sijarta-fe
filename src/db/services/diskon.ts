@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { Convert } from '@/app/db/types/promo';
-import { Promo } from '@/app/db/types/promo';
-import { Voucher } from '@/app/db/types/voucher';
-import { Convert as ConvertVoucher } from '@/app/db/types/voucher';
+import { Convert } from '@/src/db/types/promo';
+import { Promo } from '@/src/db/types/promo';
+import { Voucher } from '@/src/db/types/voucher';
+import { Convert as ConvertVoucher } from '@/src/db/types/voucher';
 // Define the file paths for Promo and Voucher
-const promoFilePath = path.resolve('app/db/mocks/promo.json');
-const voucherFilePath = path.resolve('app/db/mocks/voucher.json');
+const promoFilePath = path.resolve('src/db/mocks/promo.json');
+const voucherFilePath = path.resolve('src/db/mocks/voucher.json');
 
 // Fungsi untuk mendapatkan promo berdasarkan Kode
 export async function getPromoByKode(kode: string): Promise<Promo[] | null> {

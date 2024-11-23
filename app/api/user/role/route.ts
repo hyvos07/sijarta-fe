@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers'; // Mengambil cookies dari next/headers
-import { getUserFromToken } from '@/app/functions/auth/getUser';
+import { getUserFromToken } from '@/src/functions/auth/getUser';
 
-import { getPelangganById, getPekerjaById } from '@/app/functions/roles';
+import { getPelangganById, getPekerjaById } from '@/src/functions/roles';
 
 export async function GET() {
   const cookieStore = cookies();

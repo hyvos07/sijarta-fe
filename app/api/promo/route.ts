@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { Convert as convertPromo } from '@/app/db/types/promo';
-import { Convert as convertVoucher } from '@/app/db/types/voucher';
+import { Convert as convertPromo } from '@/src/db/types/promo';
+import { Convert as convertVoucher } from '@/src/db/types/voucher';
 // Get promo data from file
 export async function GET() {
-  const promoFilePath = path.resolve('app/db/mocks/promo.json');
-  const voucherFilePath = path.resolve('app/db/mocks/voucher.json');
+  const promoFilePath = path.resolve('src/db/mocks/promo.json');
+  const voucherFilePath = path.resolve('src/db/mocks/voucher.json');
 
   try {
     const promosData = (fs.readFileSync(promoFilePath, 'utf-8'));

@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
-import { encrypt } from '../../functions/cipher'
-import { setAuthCookie, setTypeCookie } from '../../functions/auth/auth'
-import { userService } from '@/app/db/services/user'
-import { pelangganService } from '@/app/db/services/pelanggan';
+import { encrypt } from '../../../src/functions/cipher'
+import { setAuthCookie, setTypeCookie } from '../../../src/functions/auth/auth'
+import { userService } from '@/src/db/services/user'
+import { pelangganService } from '@/src/db/services/pelanggan';
 
 export async function POST(request: Request) {
   const body = await request.json();

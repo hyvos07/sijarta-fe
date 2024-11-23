@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import '../../styles/login.css'
+import '@/app/_styles/login.css'
 
 export default function LoginPage() {
   const [credentials, setCredentials] = useState({ phone: '', password: '' })

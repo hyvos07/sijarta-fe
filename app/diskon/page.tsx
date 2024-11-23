@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Promo } from '@/app/db/types/promo';
-import { Voucher } from '@/app/db/types/voucher';
-import '@/app/styles/diskon.css';
-import NavBar from '../components/NavBar';
+import { Promo } from '@/src/db/types/promo';
+import { Voucher } from '@/src/db/types/voucher';
+import '@/app/_styles/diskon.css';
+import NavBar from '../_components/NavBar';
 
 const DiskonPage = () => {
   const [promos, setPromos] = useState<Promo[]>([]);

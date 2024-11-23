@@ -1,6 +1,6 @@
 // app/api/promos/route.ts
-import { trMyPayService } from '@/app/db/services/trMypay';
-import { Convert } from '@/app/db/types/trMypay';
+import { trMyPayService } from '@/src/db/services/trMypay';
+import { Convert } from '@/src/db/types/trMypay';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {

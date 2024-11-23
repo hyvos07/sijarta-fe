@@ -1,6 +1,6 @@
 "use client"
-import TransaksiForm from "@/app/components/mypay/transaksi/TransaksiForm";
-import { User } from "@/app/db/types/user";
+import TransaksiForm from "@/app/_components/mypay/transaksi/TransaksiForm";
+import { User } from "@/src/db/types/user";
 import { useState } from "react";
 
 type TransaksiContentProps = {

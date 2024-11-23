@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import fs from 'fs';
 import path from 'path';
-import { getUserFromToken } from '@/app/functions/auth/getUser';
+import { getUserFromToken } from '@/src/functions/auth/getUser';
 
 const loadJSON = (filePath: string) => {
   try {
@@ -37,9 +37,9 @@ export async function GET() {
     }
 
     // Load data JSON
-    const users = loadJSON('app/db/mocks/user.json');
-    const pelanggan = loadJSON('app/db/mocks/pelanggan.json');
-    const pekerja = loadJSON('app/db/mocks/pekerja.json');
+    const users = loadJSON('src/db/mocks/user.json');
+    const pelanggan = loadJSON('src/db/mocks/pelanggan.json');
+    const pekerja = loadJSON('src/db/mocks/pekerja.json');
 
     if (!users || !pelanggan || !pekerja) {
       return NextResponse.json(

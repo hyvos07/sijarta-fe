@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import NavBar from './components/NavBar';
-import CircularLoading from './components/CircularLoading';
+import NavBar from './_components/NavBar';
+import CircularLoading from './_components/CircularLoading';
 
 export default function Home() {
   const [role, setRole] = useState<string | null>(null);

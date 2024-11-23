@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import { Pemesanan } from "@/app/db/types/pemesanan";
-import { getPemesanan, updatePemesanan } from "@/app/db/services/pemesanan";
-import NavBar from "../components/NavBar";
+import { Pemesanan } from "@/src/db/types/pemesanan";
+import { getPemesanan, updatePemesanan } from "@/src/db/services/pemesanan";
+import NavBar from "../_components/NavBar";
 
 const PemesananJasaPage: React.FC = () => {
   const [pemesanan, setPemesanan] = useState<Pemesanan[]>([]);
