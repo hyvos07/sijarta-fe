@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { Convert } from '@/app/db/types/pelanggan';
-import { Pelanggan } from '@/app/db/types/pelanggan';
-import { Pekerja } from '@/app/db/types/pekerja';
+import { Convert } from '@/src/db/types/pelanggan';
+import { Pelanggan } from '@/src/db/types/pelanggan';
+import { Pekerja } from '@/src/db/types/pekerja';
 
-const pelangganFilePath = path.resolve('app/db/mocks/pelanggan.json');
-const pekerjaFilePath = path.resolve('app/db/mocks/pekerja.json');
+const pelangganFilePath = path.resolve('src/db/mocks/pelanggan.json');
+const pekerjaFilePath = path.resolve('src/db/mocks/pekerja.json');
 
 // Fungsi untuk mendapatkan pelanggan berdasarkan ID
 export async function getPelangganById(userId: string): Promise<Pelanggan | null> {

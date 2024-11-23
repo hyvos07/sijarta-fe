@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import NavBar from "../../components/NavBar";
-import { pekerjaKategoriJasaService } from "../../db/services/pekerjaKategoriJasa";
-import { subkategoriJasaService } from "../../db/services/subkategoriJasa";
-import { getUser } from "../../functions/auth/getUser";
+import NavBar from "@/app/_components/NavBar";
+import { pekerjaKategoriJasaService } from "@/src/db/services/pekerjaKategoriJasa";
+import { subkategoriJasaService } from "@/src/db/services/subkategoriJasa";
+import { getUser } from "@/src/functions/auth/getUser";
 import PekerjaanContent from "./PekerjaanContent";
 
 export const metadata: Metadata = {

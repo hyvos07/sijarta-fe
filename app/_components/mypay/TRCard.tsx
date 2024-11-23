@@ -1,5 +1,4 @@
-import { TrMyPay } from "@/app/db/types/trMypay"
-import { kategoriTrMyPayService } from "@/app/db/services/kategoriTrMypay"
+import { TrMyPay } from "@/src/db/types/trMypay"
 
 export default function TRCard({ tgl, nominal, kategori }: TrMyPay & { kategori: string }) {
     const date = new Date(tgl).toLocaleDateString('id-ID')

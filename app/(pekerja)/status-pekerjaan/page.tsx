@@ -1,8 +1,6 @@
 import { Metadata } from "next";
-import NavBar from "../../components/NavBar";
-import { pekerjaKategoriJasaService } from "../../db/services/pekerjaKategoriJasa";
-import { subkategoriJasaService } from "../../db/services/subkategoriJasa";
-import { getUser } from "../../functions/auth/getUser";
+import NavBar from "@/app/_components/NavBar";
+import { getUser } from "@/src/functions/auth/getUser";
 import StatusPekerjaanContent from "./StatusPekerjaanContent";
 
 type SearchParams = {

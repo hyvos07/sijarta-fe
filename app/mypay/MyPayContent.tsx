@@ -1,11 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { User } from '@/app/db/types/user';
-import { Convert, TrMyPay } from '@/app/db/types/trMypay';
-import CircularLoading from "../components/CircularLoading";
-import TRCard from "../components/mypay/TRCard";
-import { kategoriTrMyPayService } from '@/app/db/services/kategoriTrMypay';
-import InfoCard from '../components/mypay/InfoCard';
+import { User } from '@/src/db/types/user';
+import { Convert } from '@/src/db/types/trMypay';
+import CircularLoading from "../_components/CircularLoading";
+import TRCard from "../_components/mypay/TRCard";
+import { kategoriTrMyPayService } from '@/src/db/services/kategoriTrMypay';
+import InfoCard from '../_components/mypay/InfoCard';
 
 async function getAllTransaksi(id: string) {
     const response = await fetch(`/api/tr-mypay?id=${id}`, {

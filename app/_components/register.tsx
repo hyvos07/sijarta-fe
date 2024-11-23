@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'; // Use next/navigation for client-side routing in the App Directory
-import '../../styles/login.css';
+import '@/app/_styles/login.css';
 
 interface UserForm {
   phone: string;

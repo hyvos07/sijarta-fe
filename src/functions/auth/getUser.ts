@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { decrypt } from '../cipher';
-import { userService } from '../../db/services/user';
+import { userService } from '@/src/db/services/user';
 
 export const getUser = async () => {
     const authToken = (await cookies()).get("auth-token")?.value;

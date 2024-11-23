@@ -1,10 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { User } from '@/app/db/types/user';
-import CircularLoading from "../../components/CircularLoading";
-import { SubkategoriJasa } from '../../db/types/subkategoriJasa';
-import { KategoriJasa } from '../../db/types/kategoriJasa';
-import PesananCard from '../../components/pekerjaan/PesananCard';
+import { User } from '@/src/db/types/user';
+import CircularLoading from "@/app/_components/CircularLoading";
+import { SubkategoriJasa } from '@/src/db/types/subkategoriJasa';
+import { KategoriJasa } from '@/src/db/types/kategoriJasa';
+import PesananCard from '@/app/_components/pekerjaan/PesananCard';
 
 interface PekerjaanContentProps {
     user: User;

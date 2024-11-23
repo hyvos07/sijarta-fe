@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import { toPemesanan } from '@/app/db/types/pemesanan';
+import { toPemesanan } from '@/src/db/types/pemesanan';
 
 export async function GET() {
-  const pemesananFilePath = path.resolve('app/db/mocks/pemesanan.json');
+  const pemesananFilePath = path.resolve('src/db/mocks/pemesanan.json');
 
   try {
     const pemesananData = fs.readFileSync(pemesananFilePath, 'utf-8');

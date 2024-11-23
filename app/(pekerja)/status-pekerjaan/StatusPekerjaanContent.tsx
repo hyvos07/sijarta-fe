@@ -1,6 +1,6 @@
 'use client';
-import CircularLoading from '@/app/components/CircularLoading';
-import StatusCard from '@/app/components/pekerjaan/StatusCard';
+import CircularLoading from '@/app/_components/CircularLoading';
+import StatusCard from '@/app/_components/pekerjaan/StatusCard';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
