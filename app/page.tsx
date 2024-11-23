@@ -108,7 +108,7 @@ export default function Home() {
           </div>
 
           {/* Render kategori dan subkategori */}
-          <div className="w-full max-w-2xl mt-6" style={{backgroundColor:'#333', color:'white'}}>
+          <div className="w-full max-w-2xl mt-6" style={{color:'white'}}>
             {categories
               .filter(
                 (category) =>
