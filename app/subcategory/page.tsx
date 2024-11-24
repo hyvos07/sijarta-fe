@@ -104,138 +104,307 @@ const SubcategoryPage: React.FC = () => {
   return (
     <>
       <NavBar />
-      <div style={{ padding: "20px" }}>
-        <h2>{subcategoryData.name}</h2>
-        <p><strong>Kategori:</strong> {subcategoryData.category}</p>
-        <p><strong>Deskripsi:</strong> {subcategoryData.description}</p>
+      <div
+        style={{
+          maxWidth: "768px", // Sesuai ukuran iPad
+          margin: "0 auto", // Memusatkan konten
+          marginTop: "2.5%",
+          padding: "20px",
+          backgroundColor: "#1a1a1a", // Warna dasar agar lebih serasi
+          borderRadius: "12px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+          overflow: "hidden",
+          height: ""
+        }}
+      >
+        <div style={{ padding: "20px" }}>
+          <h2>{subcategoryData.name}</h2>
+          <p>
+            <strong>Kategori:</strong> {subcategoryData.category}
+          </p>
+          <p>
+            <strong>Deskripsi:</strong> {subcategoryData.description}
+          </p>
 
-        <div style={{ marginTop: "20px" }}>
-          <h3>Pilihan Sesi Layanan</h3>
-          {subcategoryData.serviceSessions.map((session) => (
-            <div
-              key={session.id}
+          <div style={{ marginTop: "20px" }}>
+            <h3
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                border: "1px solid #ddd",
-                padding: "10px",
-                margin: "5px 0",
+                marginBottom: "20px",
+                textAlign: "center",
+                color: "#fff",
               }}
             >
-              <div>{session.name}</div>
-              <div>Rp {session.price.toLocaleString()}</div>
-              {!isWorker && (
-                <button onClick={() => handleBookingClick(session)}>
+              Pilihan Sesi Layanan
+            </h3>
+            {subcategoryData.serviceSessions.map((session) => (
+              <div
+                key={session.id}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  border: "1px solid #ddd",
+                  padding: "10px",
+                  margin: "5px 0",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                {/* Container untuk Nama dan Harga */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "5px",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "16px",
+                      color: "#fff",
+                    }}
+                  >
+                    {session.name}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "14px",
+                      color: "#777",
+                    }}
+                  >
+                    Rp {session.price.toLocaleString()}
+                  </div>
+                </div>
+                {/* Tombol Pesan */}
+                {!isWorker && (
+                <button
+                  onClick={() => handleBookingClick(session)}
+                  style={{
+                    padding: "8px 15px",
+                    fontSize: "14px",
+                    backgroundColor: "#333",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    transition: "background-color 0.3s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "#2C2C2C";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "#333";
+                  }}
+                >
                   Pesan Jasa
                 </button>
               )}
-            </div>
-          ))}
-        </div>
-
-        <div style={{ marginTop: "20px" }}>
-          <h3>Pekerja</h3>
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {subcategoryData.workers.map((worker) => (
-              <div
-                key={worker.id}
-                style={{
-                  padding: "10px",
-                  border: "1px solid #ddd",
-                  cursor: "pointer",
-                  textAlign: "center",
-                  width: "150px",
-                }}
-                onClick={() => handleWorkerClick(worker.profileUrl)}
-              >
-                {worker.name}
               </div>
             ))}
           </div>
-          {isWorker && !isJoined && (
-            <div style={{ marginTop: "20px", textAlign: "center" }}>
-              <button
-                onClick={handleJoinCategory}
-                style={{
-                  padding: "10px 20px",
-                  fontSize: "16px",
-                  backgroundColor: "#28a745",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                }}
-              >
-                Bergabung
-              </button>
-            </div>
-          )}
-        </div>
 
-        <div style={{ marginTop: "20px" }}>
-          <h3>Testimoni</h3>
-          {subcategoryData.testimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
+          <div style={{ marginTop: "20px" }}>
+            <h3
               style={{
-                border: "1px solid #ddd",
-                padding: "10px",
-                margin: "5px 0",
+                textAlign: "center",
+                marginBottom: "20px",
+                color: "#fff",
               }}
             >
-              <p>
-                <strong>{testimonial.userName}</strong> ({testimonial.date})
-              </p>
-              <p>{testimonial.text}</p>
-              <p>
-                <strong>Pekerja:</strong> {testimonial.workerName} |{" "}
-                <strong>Rating:</strong> {testimonial.rating}/5
-              </p>
+              Pekerja
+            </h3>
+            <div
+              style={{
+                display: "flex",
+                gap: "15px",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              {subcategoryData.workers.map((worker) => (
+                <div
+                  key={worker.id}
+                  style={{
+                    padding: "15px",
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+                    cursor: "pointer",
+                    textAlign: "center",
+                    width: "160px",
+                    transition: "transform 0.2s, box-shadow 0.2s",
+                  }}
+                  onClick={() => handleWorkerClick(worker.profileUrl)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.05)";
+                    e.currentTarget.style.boxShadow =
+                      "0 4px 8px rgba(0, 0, 0, 0.2)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.boxShadow =
+                      "0 2px 5px rgba(0, 0, 0, 0.1)";
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      color: "#fff",
+                    }}
+                  >
+                    {worker.name}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+            
+            {showBookingModal && selectedSession && (
+            <>
+              {/* Overlay with blur effect */}
+              <div
+                style={{
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  width: "100vw",
+                  height: "100vh",
+                  backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent black
+                  backdropFilter: "blur(5px)", // Blur effect
+                  zIndex: 999, // Ensure it's behind the modal
+                }}
+                onClick={closeModal} // Close modal if the overlay is clicked
+              />
 
-        {showBookingModal && selectedSession && (
-          <div
-            style={{
-              position: "fixed",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              backgroundColor: "#fff",
-              padding: "20px",
-              border: "1px solid #ddd",
-              zIndex: 1000,
-            }}
-          >
-            <h3>Pemesanan Jasa</h3>
-            <p>
-              <strong>Sesi Layanan:</strong> {selectedSession.name}
-            </p>
-            <p>
-              <strong>Harga:</strong> Rp {selectedSession.price.toLocaleString()}
-            </p>
-            <form>
-              <div style={{ marginBottom: "10px" }}>
-                <label>
-                  Nama:
-                  <input type="text" required />
-                </label>
+              {/* Modal content */}
+              <div
+                style={{
+                  position: "fixed",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  backgroundColor: "#fff",
+                  padding: "20px",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                  zIndex: 1000, // Ensure it's above the overlay
+                  width: "300px",
+                  color: "black",
+                }}
+              >
+                <h3 style={{ textAlign: "center", marginBottom: "20px" }}>Pemesanan Jasa</h3>
+                {selectedSession && (
+                  <>
+                    <p style={{ marginBottom: "10px" }}>
+                      <strong>Sesi Layanan:</strong> {selectedSession.name}
+                    </p>
+                    <p style={{ marginBottom: "20px" }}>
+                      <strong>Harga:</strong> Rp {selectedSession.price.toLocaleString()}
+                    </p>
+                  </>
+                )}
+                <form>
+                  <div style={{ marginBottom: "15px" }}>
+                    <label style={{ display: "block", marginBottom: "5px" }}>Nama:</label>
+                    <input
+                      type="text"
+                      required
+                      style={{
+                        width: "100%",
+                        padding: "8px",
+                        border: "1px solid #ccc",
+                        borderRadius: "4px",
+                        boxSizing: "border-box",
+                      }}
+                    />
+                  </div>
+                  <div style={{ marginBottom: "15px" }}>
+                    <label style={{ display: "block", marginBottom: "5px" }}>Kontak:</label>
+                    <input
+                      type="text"
+                      required
+                      style={{
+                        width: "100%",
+                        padding: "8px",
+                        border: "1px solid #ccc",
+                        borderRadius: "4px",
+                        boxSizing: "border-box",
+                      }}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      backgroundColor: "#333",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "4px",
+                      cursor: "pointer",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Konfirmasi
+                  </button>
+                </form>
+                <button
+                  onClick={closeModal}
+                  style={{
+                    marginTop: "15px",
+                    width: "100%",
+                    padding: "10px",
+                    backgroundColor: "black",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Tutup
+                </button>
               </div>
-              <div style={{ marginBottom: "10px" }}>
-                <label>
-                  Kontak:
-                  <input type="text" required />
-                </label>
+            </>
+          )}
+
+
+            {isWorker && !isJoined && (
+              <div style={{ marginTop: "20px", textAlign: "center" }}>
+                <button
+                  onClick={handleJoinCategory}
+                  style={{
+                    padding: "12px 25px",
+                    fontSize: "16px",
+                    backgroundColor: "#28a745",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                    transition: "background-color 0.3s, box-shadow 0.3s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "#218838";
+                    e.currentTarget.style.boxShadow =
+                      "0 4px 6px rgba(0, 0, 0, 0.2)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "#28a745";
+                    e.currentTarget.style.boxShadow =
+                      "0 2px 4px rgba(0, 0, 0, 0.1)";
+                  }}
+                >
+                  Bergabung
+                </button>
               </div>
-              <button type="submit">Konfirmasi</button>
-            </form>
-            <button onClick={closeModal} style={{ marginTop: "10px" }}>
-              Tutup
-            </button>
+            )}
           </div>
-        )}
+        </div>
       </div>
+
     </>
   );
 };
