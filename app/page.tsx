@@ -78,29 +78,28 @@ export default function Home() {
       <div className="items-center justify-center min-h-[100vh] p-16 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-4 items-center">
           <div className="flex items-center gap-4">
-            <img src="/images/logo.png" alt="SIJARTA Logo" className="h-14 w-14" />
-            <p className="font-semibold text-6xl tracking-wide">SIJARTA</p>
+            <img src="/images/logo.png" alt="SIJARTA Logo" className="md:h-14 md:w-14 h-12 w-12" />
+            <p className="font-semibold text-4xl md:text-6xl tracking-wide">SIJARTA</p>
           </div>
-          <p className="text-lg text-center">Sistem Informasi Jasa Rumah Tangga</p>
-          <p className="text-lg mb-8">
+          <p className="md:text-lg text-center">Sistem Informasi Jasa Rumah Tangga</p>
+          <p className="md:text-lg mb-8">
             Your Role: <strong>{role}</strong>
           </p>
 
           {/* Search bar and category selector */}
-          <div className="w-full max-w-2xl flex gap-4 items-center">
+          <div className="w-full max-w-2xl flex md:flex-row flex-col gap-4 items-center">
             <input
               type="text"
               placeholder="Cari kategori atau subkategori..."
-              className="w-full p-3 border border-gray-300 rounded-lg"
+              className="w-full p-3 border border-gray-300 rounded-lg text-black"
             />
             <select
               onChange={(e) => setSelectedCategory(Number(e.target.value) || null)}
-              className="p-3 border border-gray-300 rounded-lg"
-              style={{color:'black'}}
+              className="p-3 bg-zinc-800 pl-2 border-r-[6px] border-zinc-800 outline outline-2 outline-zinc-700 rounded-xl w-full"
             >
               <option value="">Semua Kategori</option>
               {categories.map((category) => (
-                <option key={category.id} value={category.id} style={{color:'black'}}>
+                <option key={category.id} value={category.id} style={{color:'white'}}>
                   {category.name}
                 </option>
               ))}

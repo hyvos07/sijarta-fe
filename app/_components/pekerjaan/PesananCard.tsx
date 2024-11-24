@@ -44,12 +44,12 @@ export default function PesananCard({ pesanan }: { pesanan: any }) {
                     </div>
                 </div>
             }
-            <div className={`fixed top-0 left-1/2 transform -translate-x-1/2 m-4 p-3 bg-green-600 text-white rounded-md shadow-lg transition-transform duration-500 ease-in-out ${showNotification ? 'translate-y-24' : '-translate-y-full'}`} style={{ zIndex: 99 }}>
+            <div className={`fixed top-0 left-1/2 transform -translate-x-1/2 p-3 bg-green-600 text-white rounded-md shadow-lg transition-transform duration-500 ease-in-out ${showNotification ? 'translate-y-24' : '-translate-y-full'}`} style={{ zIndex: 99 }}>
                 <span className="flex items-center">
                     <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    Berhasil Mengambil Pesanan
+                    Pesanan Diambil
                 </span>
             </div>
         </div>

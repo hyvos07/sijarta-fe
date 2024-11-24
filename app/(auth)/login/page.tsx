@@ -37,7 +37,11 @@ export default function LoginPage() {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-sm mx-auto p-6 rounded-lg w-full">
-      <h1 className="mb-9 text-2xl md:text-3xl font-semibold text-center">Login</h1>
+      <header className="flex items-center justify-center mb-9">
+        <img src="/images/logo.png" alt="SIJARTA Logo" className="h-14 w-14 mr-2" />
+        <h1 className="text-3xl font-bold">SIJARTA</h1>
+      </header>
+      {/* <h1 className="mb-9 text-2xl md:text-3xl font-semibold text-center">Login</h1> */}
       <div className="space-y-3">
         <input
           type="text"
