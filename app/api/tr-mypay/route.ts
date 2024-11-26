@@ -1,5 +1,5 @@
 // app/api/promos/route.ts
-import { trMyPayService } from '@/src/db/services/trMypay';
+import { trMyPayService } from '@/src/db/models/trMypay';
 import { Convert } from '@/src/db/types/trMypay';
 import { NextRequest, NextResponse } from 'next/server';
 

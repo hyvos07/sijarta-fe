@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Pemesanan } from "@/src/db/types/pemesanan";
-import { getPemesanan, updatePemesanan } from "@/src/db/services/pemesanan";
+import { getPemesanan, updatePemesanan } from "@/src/db/models/pemesanan";
 import NavBar from "../_components/NavBar";
 
 const PemesananJasaPage: React.FC = () => {

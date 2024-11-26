@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import NavBar from "@/app/_components/NavBar";
-import { pekerjaKategoriJasaService } from "@/src/db/services/pekerjaKategoriJasa";
-import { subkategoriJasaService } from "@/src/db/services/subkategoriJasa";
+import { pekerjaKategoriJasaService } from "@/src/db/models/pekerjaKategoriJasa";
+import { subkategoriJasaService } from "@/src/db/models/subkategoriJasa";
 import { getUser } from "@/src/functions/auth/getUser";
 import PekerjaanContent from "./PekerjaanContent";
 

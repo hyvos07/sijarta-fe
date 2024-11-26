@@ -1,4 +1,4 @@
-import { trPemesananJasaService } from '@/src/db/services/trPemesananJasa';
+import { trPemesananJasaService } from '@/src/db/models/trPemesananJasa';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {

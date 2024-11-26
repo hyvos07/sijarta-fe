@@ -4,7 +4,7 @@ import { User } from '@/src/db/types/user';
 import { Convert } from '@/src/db/types/trMypay';
 import CircularLoading from "../_components/CircularLoading";
 import TRCard from "../_components/mypay/TRCard";
-import { kategoriTrMyPayService } from '@/src/db/services/kategoriTrMypay';
+import { kategoriTrMyPayService } from '@/src/db/models/kategoriTrMypay';
 import InfoCard from '../_components/mypay/InfoCard';
 
 async function getAllTransaksi(id: string) {
