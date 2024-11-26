@@ -9,8 +9,17 @@
 
 export interface StatusPesanan {
     id:     string;
-    status: string;
+    status: Status;
 }
+
+export type Status =
+    'Menunggu Pembayaran' |
+    'Mencari Pekerja Terdekat' |
+    'Menunggu Pekerja Berangkat' |
+    'Pekerja tiba di lokasi' |
+    'Pelayanan jasa sedang dilakukan' |
+    'Pesanan selesai' |
+    'Pesanan dibatalkan';
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
@@ -76,7 +85,7 @@ function transform(val: any, typ: any, getProps: any, key: any = '', parent: any
             const typ = typs[i];
             try {
                 return transform(val, typ, getProps);
-            } catch (_) {}
+            } catch (_) { }
         }
         return invalidValue(typs, val, key, parent);
     }
@@ -135,9 +144,9 @@ function transform(val: any, typ: any, getProps: any, key: any = '', parent: any
     if (Array.isArray(typ)) return transformEnum(typ, val);
     if (typeof typ === "object") {
         return typ.hasOwnProperty("unionMembers") ? transformUnion(typ.unionMembers, val)
-            : typ.hasOwnProperty("arrayItems")    ? transformArray(typ.arrayItems, val)
-            : typ.hasOwnProperty("props")         ? transformObject(getProps(typ), typ.additional, val)
-            : invalidValue(typ, val, key, parent);
+            : typ.hasOwnProperty("arrayItems") ? transformArray(typ.arrayItems, val)
+                : typ.hasOwnProperty("props") ? transformObject(getProps(typ), typ.additional, val)
+                    : invalidValue(typ, val, key, parent);
     }
     // Numbers can be parsed by Date but shouldn't be.
     if (typ === Date && typeof val !== "number") return transformDate(val);

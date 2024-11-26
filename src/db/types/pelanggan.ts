@@ -9,7 +9,7 @@
 
 export interface Pelanggan {
     id:    string;
-    level: string;
+    level:  'BASIC' | 'SILVER' | 'GOLD';
 }
 
 // Converts JSON strings to/from your types
