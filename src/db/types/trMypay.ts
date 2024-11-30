@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface TrMyPay {
     id:         string;
     userID:     string;
@@ -17,12 +19,12 @@ export interface TrMyPay {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toTrMyPay(json: string): TrMyPay[] {
+export class Convert extends Converter<TrMyPay> {
+    public static toTypes<TrMyPay>(json: string): TrMyPay[] {
         return cast(JSON.parse(json), a(r("TrMyPay")));
     }
 
-    public static trMyPayToJson(value: TrMyPay[]): string {
+    public static typesToJson<TrMyPay>(value: TrMyPay[]): string {
         return JSON.stringify(uncast(value, a(r("TrMyPay"))), null, 2);
     }
 }
@@ -181,10 +183,10 @@ function r(name: string) {
 
 const typeMap: any = {
     "TrMyPay": o([
-        { json: "Id", js: "id", typ: "" },
-        { json: "UserId", js: "userID", typ: "" },
-        { json: "Tgl", js: "tgl", typ: Date },
-        { json: "Nominal", js: "nominal", typ: 0 },
-        { json: "KategoriId", js: "kategoriID", typ: "" },
+        { json: "id", js: "id", typ: "" },
+        { json: "user_id", js: "userID", typ: "" },
+        { json: "tgl", js: "tgl", typ: Date },
+        { json: "nominal", js: "nominal", typ: 0 },
+        { json: "kategori_id", js: "kategoriID", typ: "" },
     ], false),
 };

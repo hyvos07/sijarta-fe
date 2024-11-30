@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface User {
     id:           string;
     nama:         string;
@@ -22,12 +24,17 @@ export type JenisKelamin = "L" | "P";
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toUser(json: string): User[] {
+export class Convert extends Converter<User> {
+    public static toTypes<User>(json: string): User[] {
+        const parsedJson = JSON.parse(json);
+        parsedJson.forEach((user: any) => {
+            user.saldo_mypay = parseFloat(user.saldo_mypay);
+        });
+        json = JSON.stringify(parsedJson);
         return cast(JSON.parse(json), a(r("User")));
     }
 
-    public static userToJson(value: User[]): string {
+    public static typesToJson<User>(value: User[]): string {
         return JSON.stringify(uncast(value, a(r("User"))), null, 2);
     }
 }
@@ -186,14 +193,14 @@ function r(name: string) {
 
 const typeMap: any = {
     "User": o([
-        { json: "Id", js: "id", typ: "" },
-        { json: "Nama", js: "nama", typ: "" },
-        { json: "JenisKelamin", js: "jenisKelamin", typ: r("JenisKelamin") },
-        { json: "NoHP", js: "noHP", typ: "" },
-        { json: "Pwd", js: "pwd", typ: "" },
-        { json: "TglLahir", js: "tglLahir", typ: Date },
-        { json: "Alamat", js: "alamat", typ: "" },
-        { json: "SaldoMyPay", js: "saldoMyPay", typ: 0 },
+        { json: "id", js: "id", typ: "" },
+        { json: "nama", js: "nama", typ: "" },
+        { json: "jenis_kelamin", js: "jenisKelamin", typ: r("JenisKelamin") },
+        { json: "no_hp", js: "noHP", typ: "" },
+        { json: "pwd", js: "pwd", typ: "" },
+        { json: "tgl_lahir", js: "tglLahir", typ: Date },
+        { json: "alamat", js: "alamat", typ: "" },
+        { json: "saldo_mypay", js: "saldoMyPay", typ: 0 },
     ], false),
     "JenisKelamin": [
         "L",

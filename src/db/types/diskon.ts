@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface Diskon {
     kode:           string;
     potongan:       number;
@@ -15,12 +17,12 @@ export interface Diskon {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toDiskon(json: string): Diskon[] {
+export class Convert extends Converter<Diskon> {
+    public static toTypes<Diskon>(json: string): Diskon[] {
         return cast(JSON.parse(json), a(r("Diskon")));
     }
 
-    public static diskonToJson(value: Diskon[]): string {
+    public static typesToJson<Diskon>(value: Diskon[]): string {
         return JSON.stringify(uncast(value, a(r("Diskon"))), null, 2);
     }
 }
@@ -179,8 +181,8 @@ function r(name: string) {
 
 const typeMap: any = {
     "Diskon": o([
-        { json: "Kode", js: "kode", typ: "" },
-        { json: "Potongan", js: "potongan", typ: 0 },
-        { json: "MinTrPemesanan", js: "minTrPemesanan", typ: 0 },
+        { json: "kode", js: "kode", typ: "" },
+        { json: "potongan", js: "potongan", typ: 0 },
+        { json: "min_tr_pemesanan", js: "minTrPemesanan", typ: 0 },
     ], false),
 };

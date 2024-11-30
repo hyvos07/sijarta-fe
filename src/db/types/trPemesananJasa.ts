@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface TrPemesananJasa {
     id:             string;
     tglPemesanan:   Date;
@@ -23,12 +25,12 @@ export interface TrPemesananJasa {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toTrPemesananJasa(json: string): TrPemesananJasa[] {
+export class Convert extends Converter<TrPemesananJasa> {
+    public static toTypes<TrPemesananJasa>(json: string): TrPemesananJasa[] {
         return cast(JSON.parse(json), a(r("TrPemesananJasa")));
     }
 
-    public static trPemesananJasaToJson(value: TrPemesananJasa[]): string {
+    public static typesToJson<TrPemesananJasa>(value: TrPemesananJasa[]): string {
         return JSON.stringify(uncast(value, a(r("TrPemesananJasa"))), null, 2);
     }
 }
@@ -187,16 +189,16 @@ function r(name: string) {
 
 const typeMap: any = {
     "TrPemesananJasa": o([
-        { json: "Id", js: "id", typ: "" },
-        { json: "TglPemesanan", js: "tglPemesanan", typ: Date },
-        { json: "TglPekerjaan", js: "tglPekerjaan", typ: Date },
-        { json: "WaktuPekerjaan", js: "waktuPekerjaan", typ: Date },
-        { json: "TotalBiaya", js: "totalBiaya", typ: 0 },
-        { json: "IdPelanggan", js: "idPelanggan", typ: "" },
-        { json: "IdPekerja", js: "idPekerja", typ: "" },
-        { json: "IdKategoriJasa", js: "idKategoriJasa", typ: "" },
-        { json: "Sesi", js: "sesi", typ: 0 },
-        { json: "IdDiskon", js: "idDiskon", typ: "" },
-        { json: "IdMetodeBayar", js: "idMetodeBayar", typ: "" },
+        { json: "id", js: "id", typ: "" },
+        { json: "tgl_pemesanan", js: "tglPemesanan", typ: Date },
+        { json: "tgl_pekerjaan", js: "tglPekerjaan", typ: Date },
+        { json: "waktu_pekerjaan", js: "waktuPekerjaan", typ: Date },
+        { json: "total_biaya", js: "totalBiaya", typ: 0 },
+        { json: "id_pelanggan", js: "idPelanggan", typ: "" },
+        { json: "id_pekerja", js: "idPekerja", typ: "" },
+        { json: "id_kategori_jasa", js: "idKategoriJasa", typ: "" },
+        { json: "sesi", js: "sesi", typ: 0 },
+        { json: "id_diskon", js: "idDiskon", typ: "" },
+        { json: "id_metode_bayar", js: "idMetodeBayar", typ: "" },
     ], false),
 };

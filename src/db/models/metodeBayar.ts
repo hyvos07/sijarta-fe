@@ -1,14 +1,14 @@
 import { MetodeBayar, Convert } from '../types/metodeBayar';
 import metodeBayarJson from '../mocks/metodeBayar.json';
+import { BaseModel } from '../model';
 
-export const metodeBayarService = {
-    getAllMetodeBayar: async (): Promise<MetodeBayar[]> => {
-        const jsonString = JSON.stringify(metodeBayarJson);
-        return Convert.toMetodeBayar(jsonString);
-    },
-
-    getNamaMetodeBayar: async (idMetodeBayar: string): Promise<string> => {
-        const metodeBayar = await metodeBayarService.getAllMetodeBayar();
-        return metodeBayar.find((m) => m.id === idMetodeBayar)?.nama || '';   
+export class MetodeBayarModel extends BaseModel<MetodeBayar> {
+    constructor() {
+        super('metode_bayar', Convert);
     }
-};
+
+    async getNamaMetodeBayar(idMetodeBayar: string): Promise<string> {
+        const metodeBayar = await this.getById(idMetodeBayar);
+        return this.converter.toTypes<MetodeBayar>(JSON.stringify(metodeBayar))[0].nama ?? 'Tidak Diketahui';
+    }
+}

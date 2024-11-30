@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface SubkategoriJasa {
     id:              string;
     namaSubKategori: string;
@@ -16,12 +18,12 @@ export interface SubkategoriJasa {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toSubkategoriJasa(json: string): SubkategoriJasa[] {
+export class Convert extends Converter<SubkategoriJasa> {
+    public static toTypes<SubkategoriJasa>(json: string): SubkategoriJasa[] {
         return cast(JSON.parse(json), a(r("SubkategoriJasa")));
     }
 
-    public static subkategoriJasaToJson(value: SubkategoriJasa[]): string {
+    public static typesToJson<SubkategoriJasa>(value: SubkategoriJasa[]): string {
         return JSON.stringify(uncast(value, a(r("SubkategoriJasa"))), null, 2);
     }
 }
@@ -177,12 +179,11 @@ function m(additional: any) {
 function r(name: string) {
     return { ref: name };
 }
-
 const typeMap: any = {
     "SubkategoriJasa": o([
-        { json: "Id", js: "id", typ: "" },
-        { json: "NamaSubKategori", js: "namaSubKategori", typ: "" },
-        { json: "Deskripsi", js: "deskripsi", typ: "" },
-        { json: "KategoriJasaId", js: "kategoriJasaID", typ: "" },
+        { json: "id", js: "id", typ: "" },
+        { json: "nama_subkategori", js: "namaSubKategori", typ: "" },
+        { json: "deskripsi", js: "deskripsi", typ: "" },
+        { json: "kategori_jasa_id", js: "kategoriJasaID", typ: "" },
     ], false),
 };

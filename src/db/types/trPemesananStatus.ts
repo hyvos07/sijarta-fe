@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface TrPemesananStatus {
     idTrPemesanan: string;
     idStatus:      string;
@@ -15,12 +17,12 @@ export interface TrPemesananStatus {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toTrPemesananStatus(json: string): TrPemesananStatus[] {
+export class Convert extends Converter<TrPemesananStatus> {
+    public static toTypes<TrPemesananStatus>(json: string): TrPemesananStatus[] {
         return cast(JSON.parse(json), a(r("TrPemesananStatus")));
     }
 
-    public static trPemesananStatusToJson(value: TrPemesananStatus[]): string {
+    public static typesToJson<TrPemesananStatus>(value: TrPemesananStatus[]): string {
         return JSON.stringify(uncast(value, a(r("TrPemesananStatus"))), null, 2);
     }
 }
@@ -179,8 +181,8 @@ function r(name: string) {
 
 const typeMap: any = {
     "TrPemesananStatus": o([
-        { json: "IdTrPemesanan", js: "idTrPemesanan", typ: "" },
-        { json: "IdStatus", js: "idStatus", typ: "" },
-        { json: "TglWaktu", js: "tglWaktu", typ: Date },
+        { json: "id_tr_pemesanan", js: "idTrPemesanan", typ: "" },
+        { json: "id_status", js: "idStatus", typ: "" },
+        { json: "tgl_waktu", js: "tglWaktu", typ: Date },
     ], false),
 };

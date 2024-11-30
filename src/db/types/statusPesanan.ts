@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface StatusPesanan {
     id:     string;
     status: Status;
@@ -23,12 +25,12 @@ export type Status =
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toStatusPesanan(json: string): StatusPesanan[] {
+export class Convert extends Converter<StatusPesanan> {
+    public static toTypes<StatusPesanan>(json: string): StatusPesanan[] {
         return cast(JSON.parse(json), a(r("StatusPesanan")));
     }
 
-    public static statusPesananToJson(value: StatusPesanan[]): string {
+    public static typesToJson<StatusPesanan>(value: StatusPesanan[]): string {
         return JSON.stringify(uncast(value, a(r("StatusPesanan"))), null, 2);
     }
 }
@@ -187,7 +189,7 @@ function r(name: string) {
 
 const typeMap: any = {
     "StatusPesanan": o([
-        { json: "Id", js: "id", typ: "" },
-        { json: "Status", js: "status", typ: "" },
+        { json: "id", js: "id", typ: "" },
+        { json: "status", js: "status", typ: "" },
     ], false),
 };
