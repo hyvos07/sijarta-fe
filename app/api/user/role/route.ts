@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers'; // Mengambil cookies dari next/headers
-import { getUserFromToken } from '@/src/functions/auth/getUser';
+import { getUserFromToken } from '@/src/functions/getUser';
 
 import { getPelangganById, getPekerjaById } from '@/src/functions/roles';
 

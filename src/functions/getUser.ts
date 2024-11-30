@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
-import { decrypt } from '../cipher';
-import { userService } from '@/src/db/models/user';
+import { decrypt } from './cipher';
+import { UserModel } from '@/src/db/models/user';
 
 export const getUser = async () => {
     const authToken = (await cookies()).get("auth-token")?.value;
@@ -9,7 +9,7 @@ export const getUser = async () => {
     }
 
     const userId = decrypt(authToken).slice(-36);
-    const user = await userService.getUserByID(userId);
+    const user = await new UserModel().getById(userId);
 
     if (!user) {
         throw new Error("User not found");
@@ -25,7 +25,7 @@ export async function getUserFromToken(token: string) {
         const phone = decryptedToken.slice(0, 12); // Assuming phone number is 13 characters long
 
         // Retrieve the user from the database (or mock data) using the phone number
-        const user = await userService.getUserByPhone(phone);
+        const user = await new UserModel().getUserByPhone(phone);
         if (!user) {
             console.error('User not found for token:', decryptedToken);
             console.error(phone);

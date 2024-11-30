@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface MetodeBayar {
     id:   string;
     nama: string;
@@ -14,12 +16,12 @@ export interface MetodeBayar {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toMetodeBayar(json: string): MetodeBayar[] {
+export class Convert extends Converter<MetodeBayar> {
+    public static toTypes<MetodeBayar>(json: string): MetodeBayar[] {
         return cast(JSON.parse(json), a(r("MetodeBayar")));
     }
 
-    public static metodeBayarToJson(value: MetodeBayar[]): string {
+    public static typesToJson<MetodeBayar>(value: MetodeBayar[]): string {
         return JSON.stringify(uncast(value, a(r("MetodeBayar"))), null, 2);
     }
 }
@@ -178,7 +180,7 @@ function r(name: string) {
 
 const typeMap: any = {
     "MetodeBayar": o([
-        { json: "Id", js: "id", typ: "" },
-        { json: "Nama", js: "nama", typ: "" },
+        { json: "id", js: "id", typ: "" },
+        { json: "nama", js: "nama", typ: "" },
     ], false),
 };

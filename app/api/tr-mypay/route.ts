@@ -1,6 +1,5 @@
 // app/api/promos/route.ts
-import { trMyPayService } from '@/src/db/models/trMypay';
-import { Convert } from '@/src/db/types/trMypay';
+import { TrMyPayModel } from '@/src/db/models/trMypay';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
@@ -11,9 +10,9 @@ export async function GET(request: NextRequest) {
     if (!userId) {
       return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
     }
-    const allTransaksi = await trMyPayService.getAllTransaksi(userId);
+    const allTransaksi = await new TrMyPayModel().getTransaksiByUserID(userId);
 
-    return NextResponse.json({ transaksi: Convert.trMyPayToJson(allTransaksi) }, { status: 200 });
+    return NextResponse.json({ transaksi: allTransaksi }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: 'Error reading data' }, { status: 500 });
   }

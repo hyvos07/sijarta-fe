@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import fs from 'fs';
 import path from 'path';
-import { getUserFromToken } from '@/src/functions/auth/getUser';
+import { getUserFromToken } from '@/src/functions/getUser';
 
 const loadJSON = (filePath: string) => {
   try {

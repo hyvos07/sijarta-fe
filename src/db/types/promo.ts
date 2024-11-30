@@ -178,7 +178,7 @@ function r(name: string) {
 
 const typeMap: any = {
     "Promo": o([
-        { json: "Kode", js: "kode", typ: "" },
-        { json: "TglAkhirBerlaku", js: "tglAkhirBerlaku", typ: Date },
+        { json: "kode", js: "kode", typ: "" },
+        { json: "tgl_akhir_berlaku", js: "tglAkhirBerlaku", typ: Date },
     ], false),
 };

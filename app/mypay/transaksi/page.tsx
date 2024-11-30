@@ -1,7 +1,7 @@
 import NavBar from "@/app/_components/NavBar";
-import { getUser } from "@/src/functions/auth/getUser";
+import { getUser } from "@/src/functions/getUser";
 import TransaksiForm from "./TransaksiContent";
-import { getTypeCookie } from "@/src/functions/auth/auth";
+import { getTypeCookie } from "@/src/functions/cookies";
 
 export default async function Page() {
     const user = await getUser();

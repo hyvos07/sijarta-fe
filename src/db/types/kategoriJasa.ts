@@ -178,7 +178,7 @@ function r(name: string) {
 
 const typeMap: any = {
     "KategoriJasa": o([
-        { json: "Id", js: "id", typ: "" },
-        { json: "NamaKategori", js: "namaKategori", typ: "" },
+        { json: "id", js: "id", typ: "" },
+        { json: "nama_kategori", js: "namaKategori", typ: "" },
     ], false),
 };

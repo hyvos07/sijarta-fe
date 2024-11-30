@@ -179,8 +179,8 @@ function r(name: string) {
 
 const typeMap: any = {
     "SesiLayanan": o([
-        { json: "SubkategoriId", js: "subkategoriID", typ: "" },
-        { json: "Sesi", js: "sesi", typ: 0 },
-        { json: "Harga", js: "harga", typ: 0 },
+        { json: "subkategori_id", js: "subkategoriID", typ: "" },
+        { json: "sesi", js: "sesi", typ: 0 },
+        { json: "harga", js: "harga", typ: 0 },
     ], false),
 };

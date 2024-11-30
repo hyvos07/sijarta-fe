@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { User } from '@/src/db/types/user';
-import { Convert } from '@/src/db/types/trMypay';
+import { Convert, TrMyPay } from '@/src/db/types/trMypay';
 import CircularLoading from "../_components/CircularLoading";
 import TRCard from "../_components/mypay/TRCard";
 import { kategoriTrMyPayService } from '@/src/db/models/kategoriTrMypay';
@@ -17,7 +17,7 @@ async function getAllTransaksi(id: string) {
 
     const data = await response.json();
 
-    return Convert.toTrMyPay(data.transaksi);
+    return data.transaksi as TrMyPay[];
 }
 
 export default function MyPayContent({ user }: { user: User }) {

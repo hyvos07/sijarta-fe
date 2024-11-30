@@ -180,9 +180,9 @@ function r(name: string) {
 
 const typeMap: any = {
     "Voucher": o([
-        { json: "Kode", js: "kode", typ: "" },
-        { json: "JmlHariBerlaku", js: "jmlHariBerlaku", typ: 0 },
-        { json: "KuotaPenggunaan", js: "kuotaPenggunaan", typ: 0 },
-        { json: "Harga", js: "harga", typ: 0 },
+        { json: "kode", js: "kode", typ: "" },
+        { json: "jml_hari_berlaku", js: "jmlHariBerlaku", typ: 0 },
+        { json: "kuota_penggunaan", js: "kuotaPenggunaan", typ: 0 },
+        { json: "harga", js: "harga", typ: 0 },
     ], false),
 };
