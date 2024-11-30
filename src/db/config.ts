@@ -463,6 +463,16 @@ async function seed() {
         `);
         console.log('Inserted data into STATUS_PESANAN');
 
+        await client.query(`
+            INSERT INTO "user" VALUES
+                ('36759dfd-b661-44b9-83ab-7cbeb42fec65','Ujang Koesman','L','087899365824','password123','2005-03-10','Jl. Kemang Raya No. 88, Bangka, Mampang Prapatan, Jakarta Selatan',1000000.0),
+	            ('b57a4f4b-c0c7-45a9-8a02-104f0d8880a0','Vanessa Chintya','P','081381728925','1234567890','2003-11-09','Jl. Duren Sawit No. 14, Pondok Kelapa, Duren Sawit, Jakarta Timur',200000.0);
+            INSERT INTO PELANGGAN VALUES ('36759dfd-b661-44b9-83ab-7cbeb42fec65','BASIC');
+            INSERT INTO PEKERJA VALUES ('b57a4f4b-c0c7-45a9-8a02-104f0d8880a0','BCA','5220304399','751359668025758','https://dummyimage.com/npwp/9',1.8,50);
+        `);
+        console.log('Inserted initial user data');
+
+        // Trigger & Stored Function Coming Soon :)
 
         client.release();
 
