@@ -180,9 +180,9 @@ function r(name: string) {
 
 const typeMap: any = {
     "Testimoni": o([
-        { json: "IdTrPemesanan", js: "idTrPemesanan", typ: "" },
-        { json: "Tgl", js: "tgl", typ: Date },
-        { json: "Teks", js: "teks", typ: "" },
-        { json: "Rating", js: "rating", typ: 0 },
+        { json: "id_tr_pemesanan", js: "idTrPemesanan", typ: "" },
+        { json: "tgl", js: "tgl", typ: Date },
+        { json: "teks", js: "teks", typ: "" },
+        { json: "rating", js: "rating", typ: 0 },
     ], false),
 };

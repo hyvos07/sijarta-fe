@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers'; // Mengambil cookies dari next/headers
 import { getUserFromToken } from '@/src/functions/getUser';
-
-import { getPelangganById, getPekerjaById } from '@/src/functions/roles';
+import { PelangganModel } from '@/src/db/models/pelanggan';
+import { PekerjaModel } from '@/src/db/models/pekerja';
 
 export async function GET() {
   const cookieStore = cookies();
@@ -19,12 +19,12 @@ export async function GET() {
     return NextResponse.json({ role: null, error: 'Invalid token' }, { status: 401 });
   }
 
-  const pelanggan = await getPelangganById(user.id);
+  const pelanggan = await new PelangganModel().getById(user.id);
   if (pelanggan) {
     return NextResponse.json({ role: 'Pelanggan', error: null }, { status: 200 });
   }
 
-  const pekerja = await getPekerjaById(user.id);
+  const pekerja = await new PekerjaModel().getById(user.id);
   if (pekerja) {
     return NextResponse.json({ role: 'Pekerja', error: null }, { status: 200 });
   }

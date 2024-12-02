@@ -183,12 +183,12 @@ function r(name: string) {
 
 const typeMap: any = {
     "TrPembelianVoucher": o([
-        { json: "Id", js: "id", typ: "" },
-        { json: "TglAwal", js: "tglAwal", typ: "" },
-        { json: "TglAkhir", js: "tglAkhir", typ: "" },
-        { json: "TelahDigunakan", js: "telahDigunakan", typ: 0 },
-        { json: "IdPelanggan", js: "idPelanggan", typ: "" },
-        { json: "IdVoucher", js: "idVoucher", typ: "" },
-        { json: "IdMetodeBayar", js: "idMetodeBayar", typ: "" },
+        { json: "id", js: "id", typ: "" },
+        { json: "tgl_awal", js: "tglAwal", typ: "" },
+        { json: "tgl_akhir", js: "tglAkhir", typ: "" },
+        { json: "telah_digunakan", js: "telahDigunakan", typ: 0 },
+        { json: "id_pelanggan", js: "idPelanggan", typ: "" },
+        { json: "id_voucher", js: "idVoucher", typ: "" },
+        { json: "id_metode_bayar", js: "idMetodeBayar", typ: "" },
     ], false),
 };

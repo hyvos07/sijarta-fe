@@ -15,7 +15,7 @@ export abstract class BaseModel<T extends Types> {
     const client = await pool.connect();
     const { rows } = await client.query(`SELECT * FROM ${this.table}`);
     client.release();
-    return this.converter.toTypes(JSON.stringify(rows));
+    return this.converter.toTypes<T>(JSON.stringify(rows));
   }
 
   // NOTE: Not all tables have primary key named 'id', please adjust this method if needed
@@ -27,6 +27,6 @@ export abstract class BaseModel<T extends Types> {
     if (rows.length === 0) {
       return null;
     }
-    return (this.converter.toTypes(JSON.stringify(rows)) as T[])[0];
+    return (this.converter.toTypes<T>(JSON.stringify(rows)) as T[])[0];
   }
 }
