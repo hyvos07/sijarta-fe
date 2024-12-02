@@ -38,6 +38,8 @@ export default function ProfilePage() {
 
         const data = await response.json();
 
+        console.log(data.data.data + " lemao");
+
         if (data.role && data.data) {
           setUserData({
             name: data.data.name,

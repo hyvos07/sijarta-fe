@@ -1,11 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { User } from '@/app/db/types/user';
-import { Convert, TrMyPay } from '@/app/db/types/trMypay';
-import CircularLoading from "../components/CircularLoading";
-import TRCard from "../components/mypay/TRCard";
-import { kategoriTrMyPayService } from '@/app/db/services/kategoriTrMypay';
-import InfoCard from '../components/mypay/InfoCard';
+import { User } from '@/src/db/types/user';
+import { Convert, TrMyPay } from '@/src/db/types/trMypay';
+import CircularLoading from "../_components/CircularLoading";
+import TRCard from "../_components/mypay/TRCard";
+import { kategoriTrMyPayService } from '@/src/db/models/kategoriTrMypay';
+import InfoCard from '../_components/mypay/InfoCard';
 
 async function getAllTransaksi(id: string) {
     const response = await fetch(`/api/tr-mypay?id=${id}`, {
@@ -17,7 +17,7 @@ async function getAllTransaksi(id: string) {
 
     const data = await response.json();
 
-    return Convert.toTrMyPay(data.transaksi);
+    return data.transaksi as TrMyPay[];
 }
 
 export default function MyPayContent({ user }: { user: User }) {
@@ -54,7 +54,7 @@ export default function MyPayContent({ user }: { user: User }) {
             {/* <button className="text-white py-4 rounded mb-6" onClick={() => { window.location.href = '/'; }}>
                 ⟵ &nbsp; Back
             </button> */}
-            <h1 className="text-3xl md:text-4xl font-semibold mb-12">
+            <h1 className="text-3xl md:text-4xl font-semibold text-center mb-12">
                 MyPay
             </h1>
             < InfoCard noHP={user.noHP} saldoMyPay={saldoMyPay} />
