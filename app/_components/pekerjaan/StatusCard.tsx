@@ -31,7 +31,7 @@ export default function StatusCard({ pesanan }: { pesanan: any }) {
                 <div className="flex md:flex-row flex-col w-full justify-between">
                     <div className="justify-start">
                         <p className="text-2xl font-semibold">{pesanan.subkategori}</p>
-                        <p className="md:mt-1 mt-2 text-zinc-300 font-semibold">{pesanan.pelanggan} <span className="text-zinc-500 text-sm px-1">via {pesanan.metodeBayar}</span></p>
+                        <p className="md:mt-1 mt-2 text-zinc-300 font-semibold">{pesanan.pelanggan?.nama ?? 'Anonim'} <span className="text-zinc-500 text-sm px-1">via {pesanan.metodeBayar}</span></p>
                     </div>
                     <p className="text-green-500 text-xl font-semibold md:my-0 my-3 md:px-2">Rp {pesanan.totalBiaya.toLocaleString('id-ID')}</p>
                 </div>

@@ -12,29 +12,56 @@ export class TrPemesananJasaModel extends BaseModel<TrPemesananJasa> {
     }
 
     async getAllBySubKategori(subKategoriId: string): Promise<TrPemesananJasa[]> {
-        const all = await this.getAll();
-        return all.filter((pesanan) => pesanan.idKategoriJasa === subKategoriId);
+        const client = await pool.connect();
+        const { rows } = await client.query(`
+            SELECT * FROM ${this.table}
+            WHERE id_kategori_jasa = '${subKategoriId}'
+        `);
+        client.release();
+        return this.converter.toTypes(JSON.stringify(rows)) as TrPemesananJasa[];
     }
 
     async getPesananWithDetails(subKategoriId: string): Promise<any[]> {
-        const pesanan = await this.getAllBySubKategori(subKategoriId);
+        const client = await pool.connect();
+        const { rows } = await client.query(`
+            SELECT 
+                tpj.*,
+                skj.nama_subkategori as nama_subkategori,
+                mb.nama as nama_metode,
+                sp.status as nama_status
+            FROM tr_pemesanan_jasa tpj
+            LEFT JOIN SUBKATEGORI_JASA AS skj ON tpj.id_kategori_jasa = skj.id
+            LEFT JOIN METODE_BAYAR AS mb ON tpj.id_metode_bayar = mb.id
+            LEFT JOIN TR_PEMESANAN_STATUS AS tps ON tpj.id = tps.id_tr_pemesanan
+            LEFT JOIN STATUS_PESANAN AS sp ON tps.id_status = sp.id
+            WHERE tpj.id_kategori_jasa = '${subKategoriId}';
+        `);
+        client.release();
 
-        const detailedPesanan = await Promise.all(pesanan.map(async (pesanan) => {
+        const detailedPesanan = await Promise.all(rows.map(async (row) => {
             const userModels = new UserModel();
 
-            const pelanggan = await userModels.getById(pesanan.idPelanggan);
-            const pekerja = await userModels.getById(pesanan.idPekerja);
-            const subkategoriJasa = await new SubkategoriJasaModel().getNamaSubkategoriById(pesanan.idKategoriJasa);
-            const metodeBayar = await new MetodeBayarModel().getNamaMetodeBayar(pesanan.idMetodeBayar);
-            const status = await new TrPemesananStatusModel().getNamaStatusById(pesanan.id);
+            const pelanggan = await userModels.getById(row.idPelanggan);
+            const pekerja = await userModels.getById(row.idPekerja);
 
             return {
-                ...pesanan,
-                pelanggan: pelanggan?.nama,
-                pekerja: pekerja?.nama,
-                subkategori: subkategoriJasa,
-                metodeBayar: metodeBayar,
-                status: status,
+                id: row.id,
+                tglPemesanan: row.tgl_pemesanan,
+                tglPekerjaan: row.tgl_pekerjaan,
+                waktuPekerjaan: row.waktu_pekerjaan,
+                totalBiaya: row.total_biaya,
+                idPelanggan: row.id_pelanggan,
+                idPekerja: row.id_pekerja,
+                idKategoriJasa: row.id_kategori_jasa,
+                sesi: row.sesi,
+                idDiskon: row.id_diskon,
+                idMetodeBayar: row.id_metode_bayar,
+                subkategori: row.subkategori,
+                metodeBayar: row.metode_bayar,
+                status: row.status,
+                // Object Pelanggan dan Pekerja
+                pelanggan: pelanggan,
+                pekerja: pekerja,
             };
         }));
 
@@ -51,7 +78,7 @@ export class TrPemesananJasaModel extends BaseModel<TrPemesananJasa> {
 
             return {
                 ...pesanan,
-                pelanggan: pelanggan?.nama,
+                pelanggan: pelanggan,
                 subkategori: subkategoriJasa,
                 metodeBayar: metodeBayar,
                 status: status,

@@ -10,7 +10,10 @@ export class TrPemesananStatusModel extends BaseModel<TrPemesananStatus> {
 
     async getById(idTr: string): Promise<TrPemesananStatus | null> {
         const client = await pool.connect();
-        const { rows } = await pool.query(`SELECT * FROM ${this.table} WHERE id_tr_pemesanan = ${idTr}`);
+        const { rows } = await pool.query(`
+            SELECT * FROM ${this.table} 
+            WHERE id_tr_pemesanan = '${idTr}'
+        `);
         client.release();
 
         if (rows.length === 0) {
@@ -20,8 +23,21 @@ export class TrPemesananStatusModel extends BaseModel<TrPemesananStatus> {
     }
 
     async getNamaStatusById(idPesanan: string): Promise<string> {
-        const status = await this.getById(idPesanan);
-        const statusName = await new StatusPesananModel().getNamaStatusById(status?.idStatus ?? '');
-        return statusName;
+        // This returns the latest status of the order
+        const client = await pool.connect();
+        const { rows } = await client.query(`
+            SELECT s.status
+            FROM TR_PEMESANAN_STATUS ps JOIN STATUS_PESANAN s ON ps.id_status = s.id
+            WHERE ps.id_tr_pemesanan = '${idPesanan}'
+            ORDER BY ps.tgl_waktu DESC
+            LIMIT 1;
+        `);
+        client.release();
+
+        if (rows.length === 0) {
+            return 'Tidak diketahui';
+        }
+
+        return rows[0].status;
     }
 }

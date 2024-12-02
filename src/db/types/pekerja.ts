@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface Pekerja {
     id:                string;
     namaBank:          string;
@@ -19,12 +21,12 @@ export interface Pekerja {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toPekerja(json: string): Pekerja[] {
+export class Convert extends Converter<Pekerja> {
+    public static toTypes<Pekerja>(json: string): Pekerja[] {
         return cast(JSON.parse(json), a(r("Pekerja")));
     }
 
-    public static pekerjaToJson(value: Pekerja[]): string {
+    public static typesToJson<Pekerja>(value: Pekerja[]): string {
         return JSON.stringify(uncast(value, a(r("Pekerja"))), null, 2);
     }
 }
@@ -183,12 +185,12 @@ function r(name: string) {
 
 const typeMap: any = {
     "Pekerja": o([
-        { json: "Id", js: "id", typ: "" },
-        { json: "NamaBank", js: "namaBank", typ: "" },
-        { json: "NomorRekening", js: "nomorRekening", typ: "" },
-        { json: "NPWP", js: "npwp", typ: "" },
-        { json: "LinkFoto", js: "linkFoto", typ: "" },
-        { json: "Rating", js: "rating", typ: 3.14 },
-        { json: "JmlPesananSelesai", js: "jmlPesananSelesai", typ: 0 },
+        { json: "id", js: "id", typ: "" },
+        { json: "nama_bank", js: "namaBank", typ: "" },
+        { json: "nomor_rekening", js: "nomorRekening", typ: "" },
+        { json: "npwp", js: "npwp", typ: "" },
+        { json: "link_foto", js: "linkFoto", typ: "" },
+        { json: "rating", js: "rating", typ: 3.14 },
+        { json: "jml_pesanan_selesai", js: "jmlPesananSelesai", typ: 0 },
     ], false),
 };

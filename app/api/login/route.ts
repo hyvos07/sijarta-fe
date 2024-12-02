@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { encrypt } from '../../../src/functions/cipher'
 import { setAuthCookie, setTypeCookie } from '../../../src/functions/cookies'
 import { UserModel } from '@/src/db/models/user'
-import { pelangganService } from '@/src/db/models/pelanggan';
+import { PelangganModel } from '@/src/db/models/pelanggan';
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
   const authToken = encrypt(body.phone + user.id);
   await setAuthCookie(authToken);
 
-  const userType = await pelangganService.getPelangganByID(user.id) !== null ? 'pelanggan' : 'pekerja';
+  const userType = await new PelangganModel().getById(user.id) !== null ? 'pelanggan' : 'pekerja';
   await setTypeCookie(userType);
 
   return NextResponse.json({ success: true, error: null }, { status: 200 });
