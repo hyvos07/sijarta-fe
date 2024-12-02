@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface Promo {
     kode:            string;
     tglAkhirBerlaku: Date;
@@ -14,12 +16,12 @@ export interface Promo {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toPromo(json: string): Promo[] {
+export class Convert extends Converter<Promo> {
+    public static toPromo<Promo>(json: string): Promo[] {
         return cast(JSON.parse(json), a(r("Promo")));
     }
 
-    public static promoToJson(value: Promo[]): string {
+    public static promoToJson<Promo>(value: Promo[]): string {
         return JSON.stringify(uncast(value, a(r("Promo"))), null, 2);
     }
 }

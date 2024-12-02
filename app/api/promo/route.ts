@@ -1,20 +1,28 @@
-import fs from 'fs';
-import path from 'path';
+import { NextResponse } from 'next/server';
 import { Convert as convertPromo } from '@/src/db/types/promo';
 import { Convert as convertVoucher } from '@/src/db/types/voucher';
-// Get promo data from file
+import pool from '@/src/db/db';
+
+
 export async function GET() {
-  const promoFilePath = path.resolve('src/db/mocks/promo.json');
-  const voucherFilePath = path.resolve('src/db/mocks/voucher.json');
-
   try {
-    const promosData = (fs.readFileSync(promoFilePath, 'utf-8'));
-    const vouchersData = (fs.readFileSync(voucherFilePath, 'utf-8'));
+    const client = await pool.connect();
 
-    const vouchers = convertVoucher.toVoucher(vouchersData);
-    const promos = convertPromo.toPromo(promosData);
-    return new Response(JSON.stringify({ promos, vouchers }), { status: 200 });
+    // Fetch data for promo and voucher in parallel
+    const [promoResult, voucherResult] = await Promise.all([
+      client.query('SELECT * FROM promo;'),
+      client.query('SELECT * FROM voucher;'),
+    ]);
+
+    client.release();
+
+    // Convert rows to objects using their respective converters
+    const promos = convertPromo.toPromo(JSON.stringify(promoResult.rows));
+    const vouchers = convertVoucher.toVoucher(JSON.stringify(voucherResult.rows));
+
+    return NextResponse.json({ promos, vouchers }, { status: 200 });
   } catch (error) {
-    return new Response('Error reading data', { status: 500 });
+    console.error('Error fetching diskon data:', error);
+    return NextResponse.json({ error: 'Failed to fetch diskon data' }, { status: 500 });
   }
 }

@@ -7,6 +7,7 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
 export interface Voucher {
     kode:            string;
     jmlHariBerlaku:  number;
@@ -16,12 +17,17 @@ export interface Voucher {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toVoucher(json: string): Voucher[] {
+export class Convert extends Converter<Voucher> {
+    public static toVoucher<Voucher>(json: string): Voucher[] {
+        const parsedJson = JSON.parse(json);
+        parsedJson.forEach((voucher: any) => {
+            voucher.harga = parseFloat(voucher.harga);
+        });
+        json = JSON.stringify(parsedJson);
         return cast(JSON.parse(json), a(r("Voucher")));
     }
 
-    public static voucherToJson(value: Voucher[]): string {
+    public static voucherToJson<Voucher>(value: Voucher[]): string {
         return JSON.stringify(uncast(value, a(r("Voucher"))), null, 2);
     }
 }
