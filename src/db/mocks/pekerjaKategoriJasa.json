@@ -1,42 +1,42 @@
 [
     {
-        "PekerjaId": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
-        "KategoriJasaId": "96addf33-ee51-468c-b826-cc31b9180ef2"
+        "pekerja_id": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
+        "kategori_jasa_id": "96addf33-ee51-468c-b826-cc31b9180ef2"
     },
     {
-        "PekerjaId": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
-        "KategoriJasaId": "d54404a1-5810-4883-9486-1bd600bd645d"
+        "pekerja_id": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
+        "kategori_jasa_id": "d54404a1-5810-4883-9486-1bd600bd645d"
     },
     {
-        "PekerjaId": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
-        "KategoriJasaId": "c1d070dc-9c0d-4af8-81f9-8723087b5ae0"
+        "pekerja_id": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
+        "kategori_jasa_id": "c1d070dc-9c0d-4af8-81f9-8723087b5ae0"
     },
     {
-        "PekerjaId": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
-        "KategoriJasaId": "c1d070dc-9c0d-4af8-81f9-8723087b5ae0"
+        "pekerja_id": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
+        "kategori_jasa_id": "c1d070dc-9c0d-4af8-81f9-8723087b5ae0"
     },
     {
-        "PekerjaId": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
-        "KategoriJasaId": "d54404a1-5810-4883-9486-1bd600bd645d"
+        "pekerja_id": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
+        "kategori_jasa_id": "d54404a1-5810-4883-9486-1bd600bd645d"
     },
     {
-        "PekerjaId": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
-        "KategoriJasaId": "a7b47102-5bd6-4eac-82a0-94fd38d8ef5a"
+        "pekerja_id": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
+        "kategori_jasa_id": "a7b47102-5bd6-4eac-82a0-94fd38d8ef5a"
     },
     {
-        "PekerjaId": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
-        "KategoriJasaId": "b843763a-075f-46a7-9057-2f68510cb0b6"
+        "pekerja_id": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
+        "kategori_jasa_id": "b843763a-075f-46a7-9057-2f68510cb0b6"
     },
     {
-        "PekerjaId": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
-        "KategoriJasaId": "96addf33-ee51-468c-b826-cc31b9180ef2"
+        "pekerja_id": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
+        "kategori_jasa_id": "96addf33-ee51-468c-b826-cc31b9180ef2"
     },
     {
-        "PekerjaId": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
-        "KategoriJasaId": "a7b47102-5bd6-4eac-82a0-94fd38d8ef5a"
+        "pekerja_id": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
+        "kategori_jasa_id": "a7b47102-5bd6-4eac-82a0-94fd38d8ef5a"
     },
     {
-        "PekerjaId": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
-        "KategoriJasaId": "b843763a-075f-46a7-9057-2f68510cb0b6"
+        "pekerja_id": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
+        "kategori_jasa_id": "b843763a-075f-46a7-9057-2f68510cb0b6"
     }
 ]

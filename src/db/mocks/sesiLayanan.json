@@ -1,152 +1,152 @@
 [
     {
-        "SubkategoriId": "9b449030-5748-46bb-b3bb-71979b6ffea5",
-        "Sesi": 1,
-        "Harga": 60000
+        "subkategori_id": "9b449030-5748-46bb-b3bb-71979b6ffea5",
+        "sesi": 1,
+        "harga": 60000
     },
     {
-        "SubkategoriId": "2d6831c2-5b46-46e3-958b-8e568c6762f2",
-        "Sesi": 1,
-        "Harga": 180000
+        "subkategori_id": "2d6831c2-5b46-46e3-958b-8e568c6762f2",
+        "sesi": 1,
+        "harga": 180000
     },
     {
-        "SubkategoriId": "86cf46cc-2e7c-49e9-9ad8-a7aff0f5274a",
-        "Sesi": 1,
-        "Harga": 130000
+        "subkategori_id": "86cf46cc-2e7c-49e9-9ad8-a7aff0f5274a",
+        "sesi": 1,
+        "harga": 130000
     },
     {
-        "SubkategoriId": "2e6abf6d-7e03-4382-8264-f0e4689fbd39",
-        "Sesi": 1,
-        "Harga": 110000
+        "subkategori_id": "2e6abf6d-7e03-4382-8264-f0e4689fbd39",
+        "sesi": 1,
+        "harga": 110000
     },
     {
-        "SubkategoriId": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
-        "Sesi": 1,
-        "Harga": 130000
+        "subkategori_id": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
+        "sesi": 1,
+        "harga": 130000
     },
     {
-        "SubkategoriId": "5a0590d9-d1d0-404f-8203-6420ef57e542",
-        "Sesi": 1,
-        "Harga": 200000
+        "subkategori_id": "5a0590d9-d1d0-404f-8203-6420ef57e542",
+        "sesi": 1,
+        "harga": 200000
     },
     {
-        "SubkategoriId": "b20135ee-92ee-4a62-ac5b-53c6b3423c3d",
-        "Sesi": 1,
-        "Harga": 70000
+        "subkategori_id": "b20135ee-92ee-4a62-ac5b-53c6b3423c3d",
+        "sesi": 1,
+        "harga": 70000
     },
     {
-        "SubkategoriId": "3f9ac327-3627-4718-b7b6-a0a2db8866e8",
-        "Sesi": 1,
-        "Harga": 100000
+        "subkategori_id": "3f9ac327-3627-4718-b7b6-a0a2db8866e8",
+        "sesi": 1,
+        "harga": 100000
     },
     {
-        "SubkategoriId": "03170d2f-8a86-4553-9983-9a2be1be9480",
-        "Sesi": 1,
-        "Harga": 90000
+        "subkategori_id": "03170d2f-8a86-4553-9983-9a2be1be9480",
+        "sesi": 1,
+        "harga": 90000
     },
     {
-        "SubkategoriId": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
-        "Sesi": 1,
-        "Harga": 140000
+        "subkategori_id": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
+        "sesi": 1,
+        "harga": 140000
     },
     {
-        "SubkategoriId": "9b449030-5748-46bb-b3bb-71979b6ffea5",
-        "Sesi": 2,
-        "Harga": 65000
+        "subkategori_id": "9b449030-5748-46bb-b3bb-71979b6ffea5",
+        "sesi": 2,
+        "harga": 65000
     },
     {
-        "SubkategoriId": "2d6831c2-5b46-46e3-958b-8e568c6762f2",
-        "Sesi": 2,
-        "Harga": 190000
+        "subkategori_id": "2d6831c2-5b46-46e3-958b-8e568c6762f2",
+        "sesi": 2,
+        "harga": 190000
     },
     {
-        "SubkategoriId": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
-        "Sesi": 2,
-        "Harga": 140000
+        "subkategori_id": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
+        "sesi": 2,
+        "harga": 140000
     },
     {
-        "SubkategoriId": "5a0590d9-d1d0-404f-8203-6420ef57e542",
-        "Sesi": 2,
-        "Harga": 210000
+        "subkategori_id": "5a0590d9-d1d0-404f-8203-6420ef57e542",
+        "sesi": 2,
+        "harga": 210000
     },
     {
-        "SubkategoriId": "03170d2f-8a86-4553-9983-9a2be1be9480",
-        "Sesi": 2,
-        "Harga": 100000
+        "subkategori_id": "03170d2f-8a86-4553-9983-9a2be1be9480",
+        "sesi": 2,
+        "harga": 100000
     },
     {
-        "SubkategoriId": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
-        "Sesi": 2,
-        "Harga": 150000
+        "subkategori_id": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
+        "sesi": 2,
+        "harga": 150000
     },
     {
-        "SubkategoriId": "9b449030-5748-46bb-b3bb-71979b6ffea5",
-        "Sesi": 3,
-        "Harga": 70000
+        "subkategori_id": "9b449030-5748-46bb-b3bb-71979b6ffea5",
+        "sesi": 3,
+        "harga": 70000
     },
     {
-        "SubkategoriId": "2d6831c2-5b46-46e3-958b-8e568c6762f2",
-        "Sesi": 3,
-        "Harga": 200000
+        "subkategori_id": "2d6831c2-5b46-46e3-958b-8e568c6762f2",
+        "sesi": 3,
+        "harga": 200000
     },
     {
-        "SubkategoriId": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
-        "Sesi": 3,
-        "Harga": 150000
+        "subkategori_id": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
+        "sesi": 3,
+        "harga": 150000
     },
     {
-        "SubkategoriId": "03170d2f-8a86-4553-9983-9a2be1be9480",
-        "Sesi": 3,
-        "Harga": 110000
+        "subkategori_id": "03170d2f-8a86-4553-9983-9a2be1be9480",
+        "sesi": 3,
+        "harga": 110000
     },
     {
-        "SubkategoriId": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
-        "Sesi": 3,
-        "Harga": 160000
+        "subkategori_id": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
+        "sesi": 3,
+        "harga": 160000
     },
     {
-        "SubkategoriId": "2d6831c2-5b46-46e3-958b-8e568c6762f2",
-        "Sesi": 4,
-        "Harga": 210000
+        "subkategori_id": "2d6831c2-5b46-46e3-958b-8e568c6762f2",
+        "sesi": 4,
+        "harga": 210000
     },
     {
-        "SubkategoriId": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
-        "Sesi": 4,
-        "Harga": 160000
+        "subkategori_id": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
+        "sesi": 4,
+        "harga": 160000
     },
     {
-        "SubkategoriId": "03170d2f-8a86-4553-9983-9a2be1be9480",
-        "Sesi": 4,
-        "Harga": 120000
+        "subkategori_id": "03170d2f-8a86-4553-9983-9a2be1be9480",
+        "sesi": 4,
+        "harga": 120000
     },
     {
-        "SubkategoriId": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
-        "Sesi": 4,
-        "Harga": 170000
+        "subkategori_id": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
+        "sesi": 4,
+        "harga": 170000
     },
     {
-        "SubkategoriId": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
-        "Sesi": 5,
-        "Harga": 170000
+        "subkategori_id": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
+        "sesi": 5,
+        "harga": 170000
     },
     {
-        "SubkategoriId": "03170d2f-8a86-4553-9983-9a2be1be9480",
-        "Sesi": 5,
-        "Harga": 130000
+        "subkategori_id": "03170d2f-8a86-4553-9983-9a2be1be9480",
+        "sesi": 5,
+        "harga": 130000
     },
     {
-        "SubkategoriId": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
-        "Sesi": 5,
-        "Harga": 180000
+        "subkategori_id": "c7fe7417-f7cf-4838-bfdf-0a7b25ac5994",
+        "sesi": 5,
+        "harga": 180000
     },
     {
-        "SubkategoriId": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
-        "Sesi": 6,
-        "Harga": 180000
+        "subkategori_id": "3d516838-2f20-4cdc-9a0e-0a70278102b3",
+        "sesi": 6,
+        "harga": 180000
     },
     {
-        "SubkategoriId": "03170d2f-8a86-4553-9983-9a2be1be9480",
-        "Sesi": 6,
-        "Harga": 180000
+        "subkategori_id": "03170d2f-8a86-4553-9983-9a2be1be9480",
+        "sesi": 6,
+        "harga": 180000
     }
 ]

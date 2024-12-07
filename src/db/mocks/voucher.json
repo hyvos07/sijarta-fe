@@ -1,62 +1,62 @@
 [
     {
-        "Kode": "WAILMER101",
-        "JmlHariBerlaku": 1,
-        "KuotaPenggunaan": 10,
-        "Harga": 1000
+        "kode": "WAILMER101",
+        "jml_hari_berlaku": 1,
+        "kuota_penggunaan": 10,
+        "harga": 1000
     },
     {
-        "Kode": "WAILMER102",
-        "JmlHariBerlaku": 2,
-        "KuotaPenggunaan": 9,
-        "Harga": 2000
+        "kode": "WAILMER102",
+        "jml_hari_berlaku": 2,
+        "kuota_penggunaan": 9,
+        "harga": 2000
     },
     {
-        "Kode": "WAILMER103",
-        "JmlHariBerlaku": 3,
-        "KuotaPenggunaan": 8,
-        "Harga": 3000
+        "kode": "WAILMER103",
+        "jml_hari_berlaku": 3,
+        "kuota_penggunaan": 8,
+        "harga": 3000
     },
     {
-        "Kode": "WAILMER104",
-        "JmlHariBerlaku": 4,
-        "KuotaPenggunaan": 7,
-        "Harga": 4000
+        "kode": "WAILMER104",
+        "jml_hari_berlaku": 4,
+        "kuota_penggunaan": 7,
+        "harga": 4000
     },
     {
-        "Kode": "WAILMER105",
-        "JmlHariBerlaku": 5,
-        "KuotaPenggunaan": 6,
-        "Harga": 5000
+        "kode": "WAILMER105",
+        "jml_hari_berlaku": 5,
+        "kuota_penggunaan": 6,
+        "harga": 5000
     },
     {
-        "Kode": "WAILMER106",
-        "JmlHariBerlaku": 6,
-        "KuotaPenggunaan": 5,
-        "Harga": 6000
+        "kode": "WAILMER106",
+        "jml_hari_berlaku": 6,
+        "kuota_penggunaan": 5,
+        "harga": 6000
     },
     {
-        "Kode": "WAILMER107",
-        "JmlHariBerlaku": 7,
-        "KuotaPenggunaan": 4,
-        "Harga": 7000
+        "kode": "WAILMER107",
+        "jml_hari_berlaku": 7,
+        "kuota_penggunaan": 4,
+        "harga": 7000
     },
     {
-        "Kode": "WAILMER108",
-        "JmlHariBerlaku": 8,
-        "KuotaPenggunaan": 3,
-        "Harga": 8000
+        "kode": "WAILMER108",
+        "jml_hari_berlaku": 8,
+        "kuota_penggunaan": 3,
+        "harga": 8000
     },
     {
-        "Kode": "WAILMER109",
-        "JmlHariBerlaku": 9,
-        "KuotaPenggunaan": 2,
-        "Harga": 9000
+        "kode": "WAILMER109",
+        "jml_hari_berlaku": 9,
+        "kuota_penggunaan": 2,
+        "harga": 9000
     },
     {
-        "Kode": "WAILMER110",
-        "JmlHariBerlaku": 10,
-        "KuotaPenggunaan": 1,
-        "Harga": 10000
+        "kode": "WAILMER110",
+        "jml_hari_berlaku": 10,
+        "kuota_penggunaan": 1,
+        "harga": 10000
     }
 ]

@@ -1,30 +1,30 @@
 [
     {
-        "Id": "df71e37a-628e-4115-a294-9d5f683db116",
-        "Status": "Menunggu Pembayaran"
+        "id": "df71e37a-628e-4115-a294-9d5f683db116",
+        "status": "Menunggu Pembayaran"
     },
     {
-        "Id": "942fc323-7400-41d1-b33f-3352ea500100",
-        "Status": "Mencari Pekerja Terdekat"
+        "id": "942fc323-7400-41d1-b33f-3352ea500100",
+        "status": "Mencari Pekerja Terdekat"
     },
     {
-        "Id": "0e95bab4-5f9b-4ad7-a6fc-091e72dcfeb6",
-        "Status": "Menunggu Pekerja Berangkat"
+        "id": "0e95bab4-5f9b-4ad7-a6fc-091e72dcfeb6",
+        "status": "Menunggu Pekerja Berangkat"
     },
     {
-        "Id": "f92d7019-d815-47fd-95e4-c4a9b7f5c708",
-        "Status": "Pekerja tiba di lokasi"
+        "id": "f92d7019-d815-47fd-95e4-c4a9b7f5c708",
+        "status": "Pekerja tiba di lokasi"
     },
     {
-        "Id": "d0f43dac-78ed-4af1-9c68-a0ae79afd067",
-        "Status": "Pelayanan jasa sedang dilakukan"
+        "id": "d0f43dac-78ed-4af1-9c68-a0ae79afd067",
+        "status": "Pelayanan jasa sedang dilakukan"
     },
     {
-        "Id": "7ddd2e53-e1c8-474a-b23e-045aeef12fa4",
-        "Status": "Pesanan selesai"
+        "id": "7ddd2e53-e1c8-474a-b23e-045aeef12fa4",
+        "status": "Pesanan selesai"
     },
     {
-        "Id": "93e9f4dc-2f3f-490b-b890-31067a8bab4e",
-        "Status": "Pesanan dibatalkan"
+        "id": "93e9f4dc-2f3f-490b-b890-31067a8bab4e",
+        "status": "Pesanan dibatalkan"
     }
 ]
