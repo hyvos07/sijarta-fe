@@ -1,22 +1,22 @@
 [
     {
-        "Id": "125b0aad-aadb-4dce-b6c6-dd18af82d08b",
-        "Nama": "TopUp MyPay"
+        "id": "125b0aad-aadb-4dce-b6c6-dd18af82d08b",
+        "nama": "TopUp MyPay"
     },
     {
-        "Id": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3",
-        "Nama": "Bayar transaksi jasa"
+        "id": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3",
+        "nama": "Bayar transaksi jasa"
     },
     {
-        "Id": "b9020f52-f5e7-4ff8-8b67-ec669f4166db",
-        "Nama": "Transfer MyPay"
+        "id": "b9020f52-f5e7-4ff8-8b67-ec669f4166db",
+        "nama": "Transfer MyPay"
     },
     {
-        "Id": "9a918391-62c8-4834-8d57-437516dd6db2",
-        "Nama": "Terima honor"
+        "id": "9a918391-62c8-4834-8d57-437516dd6db2",
+        "nama": "Terima honor"
     },
     {
-        "Id": "9edc1b92-5cf4-407a-addc-52342fd65985",
-        "Nama": "Withdraw MyPay ke rekening Bank"
+        "id": "9edc1b92-5cf4-407a-addc-52342fd65985",
+        "nama": "Withdraw MyPay ke rekening Bank"
     }
 ]

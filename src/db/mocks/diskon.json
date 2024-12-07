@@ -1,102 +1,102 @@
 [
     {
-        "Kode": "WAILMER101",
-        "Potongan": 8000,
-        "MinTrPemesanan": 10000
+        "kode": "WAILMER101",
+        "potongan": 8000,
+        "min_tr_pemesanan": 10000
     },
     {
-        "Kode": "WAILMER102",
-        "Potongan": 15000,
-        "MinTrPemesanan": 20000
+        "kode": "WAILMER102",
+        "potongan": 15000,
+        "min_tr_pemesanan": 20000
     },
     {
-        "Kode": "WAILMER103",
-        "Potongan": 20000,
-        "MinTrPemesanan": 25000
+        "kode": "WAILMER103",
+        "potongan": 20000,
+        "min_tr_pemesanan": 25000
     },
     {
-        "Kode": "WAILMER104",
-        "Potongan": 60000,
-        "MinTrPemesanan": 77777
+        "kode": "WAILMER104",
+        "potongan": 60000,
+        "min_tr_pemesanan": 77777
     },
     {
-        "Kode": "WAILMER105",
-        "Potongan": 3000,
-        "MinTrPemesanan": 5000
+        "kode": "WAILMER105",
+        "potongan": 3000,
+        "min_tr_pemesanan": 5000
     },
     {
-        "Kode": "WAILMER106",
-        "Potongan": 40000,
-        "MinTrPemesanan": 50000
+        "kode": "WAILMER106",
+        "potongan": 40000,
+        "min_tr_pemesanan": 50000
     },
     {
-        "Kode": "WAILMER107",
-        "Potongan": 25000,
-        "MinTrPemesanan": 40000
+        "kode": "WAILMER107",
+        "potongan": 25000,
+        "min_tr_pemesanan": 40000
     },
     {
-        "Kode": "WAILMER108",
-        "Potongan": 30000,
-        "MinTrPemesanan": 40000
+        "kode": "WAILMER108",
+        "potongan": 30000,
+        "min_tr_pemesanan": 40000
     },
     {
-        "Kode": "WAILMER109",
-        "Potongan": 5000,
-        "MinTrPemesanan": 10000
+        "kode": "WAILMER109",
+        "potongan": 5000,
+        "min_tr_pemesanan": 10000
     },
     {
-        "Kode": "WAILMER110",
-        "Potongan": 45000,
-        "MinTrPemesanan": 60000
+        "kode": "WAILMER110",
+        "potongan": 45000,
+        "min_tr_pemesanan": 60000
     },
     {
-        "Kode": "WAILMER201",
-        "Potongan": 35000,
-        "MinTrPemesanan": 45000
+        "kode": "WAILMER201",
+        "potongan": 35000,
+        "min_tr_pemesanan": 45000
     },
     {
-        "Kode": "WAILMER202",
-        "Potongan": 30000,
-        "MinTrPemesanan": 50000
+        "kode": "WAILMER202",
+        "potongan": 30000,
+        "min_tr_pemesanan": 50000
     },
     {
-        "Kode": "WAILMER203",
-        "Potongan": 12000,
-        "MinTrPemesanan": 20000
+        "kode": "WAILMER203",
+        "potongan": 12000,
+        "min_tr_pemesanan": 20000
     },
     {
-        "Kode": "WAILMER204",
-        "Potongan": 20000,
-        "MinTrPemesanan": 30000
+        "kode": "WAILMER204",
+        "potongan": 20000,
+        "min_tr_pemesanan": 30000
     },
     {
-        "Kode": "WAILMER205",
-        "Potongan": 80000,
-        "MinTrPemesanan": 100000
+        "kode": "WAILMER205",
+        "potongan": 80000,
+        "min_tr_pemesanan": 100000
     },
     {
-        "Kode": "WAILMER206",
-        "Potongan": 50000,
-        "MinTrPemesanan": 75000
+        "kode": "WAILMER206",
+        "potongan": 50000,
+        "min_tr_pemesanan": 75000
     },
     {
-        "Kode": "WAILMER207",
-        "Potongan": 20000,
-        "MinTrPemesanan": 45000
+        "kode": "WAILMER207",
+        "potongan": 20000,
+        "min_tr_pemesanan": 45000
     },
     {
-        "Kode": "WAILMER208",
-        "Potongan": 5000,
-        "MinTrPemesanan": 10000
+        "kode": "WAILMER208",
+        "potongan": 5000,
+        "min_tr_pemesanan": 10000
     },
     {
-        "Kode": "WAILMER209",
-        "Potongan": 10000,
-        "MinTrPemesanan": 15000
+        "kode": "WAILMER209",
+        "potongan": 10000,
+        "min_tr_pemesanan": 15000
     },
     {
-        "Kode": "WAILMER210",
-        "Potongan": 20000,
-        "MinTrPemesanan": 25000
+        "kode": "WAILMER210",
+        "potongan": 20000,
+        "min_tr_pemesanan": 25000
     }
 ]
