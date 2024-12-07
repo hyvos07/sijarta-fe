@@ -1,104 +1,104 @@
 [
     {
-        "IdTrPemesanan": "fac18c07-1db1-444c-8ae9-d8abab217d4c",
-        "Tgl": "2024-03-22",
-        "Teks": "Layanan ini sungguh luar biasa! Sangat direkomendasikan.",
-        "Rating": 4
+        "id_tr_pemesanan": "fac18c07-1db1-444c-8ae9-d8abab217d4c",
+        "tgl": "2024-03-22",
+        "teks": "Layanan ini sungguh luar biasa! Sangat direkomendasikan.",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "39612ca3-0ba4-43b8-a9ba-97a7f94b3538",
-        "Tgl": "2025-07-15",
-        "Teks": "Pengalaman belanja yang tak terlupakan, saya akan kembali lagi!",
-        "Rating": 4
+        "id_tr_pemesanan": "39612ca3-0ba4-43b8-a9ba-97a7f94b3538",
+        "tgl": "2025-07-15",
+        "teks": "Pengalaman belanja yang tak terlupakan, saya akan kembali lagi!",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "bf8b93d6-9931-4b69-84ee-96e7133e59c5",
-        "Tgl": "2026-11-08",
-        "Teks": "Pelayanan pelanggan yang ramah dan efisien.",
-        "Rating": 5
+        "id_tr_pemesanan": "bf8b93d6-9931-4b69-84ee-96e7133e59c5",
+        "tgl": "2026-11-08",
+        "teks": "Pelayanan pelanggan yang ramah dan efisien.",
+        "rating": 5
     },
     {
-        "IdTrPemesanan": "7090bb4f-542e-4768-9fa5-c302545d0486",
-        "Tgl": "2024-06-19",
-        "Teks": "Produk berkualitas tinggi dengan harga yang terjangkau.",
-        "Rating": 4
+        "id_tr_pemesanan": "7090bb4f-542e-4768-9fa5-c302545d0486",
+        "tgl": "2024-06-19",
+        "teks": "Produk berkualitas tinggi dengan harga yang terjangkau.",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "7960eedd-e554-41d4-99c5-e59f7ed267b8",
-        "Tgl": "2027-02-03",
-        "Teks": "Saya sangat puas dengan hasil yang saya dapatkan.",
-        "Rating": 5
+        "id_tr_pemesanan": "7960eedd-e554-41d4-99c5-e59f7ed267b8",
+        "tgl": "2027-02-03",
+        "teks": "Saya sangat puas dengan hasil yang saya dapatkan.",
+        "rating": 5
     },
     {
-        "IdTrPemesanan": "5bb97ab0-4659-4267-8062-1677ddbd8e8a",
-        "Tgl": "2025-05-21",
-        "Teks": "Layanan cepat dan responsif, benar-benar memuaskan.",
-        "Rating": 5
+        "id_tr_pemesanan": "5bb97ab0-4659-4267-8062-1677ddbd8e8a",
+        "tgl": "2025-05-21",
+        "teks": "Layanan cepat dan responsif, benar-benar memuaskan.",
+        "rating": 5
     },
     {
-        "IdTrPemesanan": "2cf43490-e559-4cab-a6b6-0b4412f48093",
-        "Tgl": "2026-08-13",
-        "Teks": "Tim ini benar-benar mengerti kebutuhan pelanggan.",
-        "Rating": 4
+        "id_tr_pemesanan": "2cf43490-e559-4cab-a6b6-0b4412f48093",
+        "tgl": "2026-08-13",
+        "teks": "Tim ini benar-benar mengerti kebutuhan pelanggan.",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "e892c3cf-6c66-4ab1-83ff-20153ac3bb62",
-        "Tgl": "2024-10-07",
-        "Teks": "Pengiriman tepat waktu dan barang sesuai harapan.",
-        "Rating": 4
+        "id_tr_pemesanan": "e892c3cf-6c66-4ab1-83ff-20153ac3bb62",
+        "tgl": "2024-10-07",
+        "teks": "Pengiriman tepat waktu dan barang sesuai harapan.",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "fb507538-a75d-405a-93c9-691a285f7391",
-        "Tgl": "2025-12-29",
-        "Teks": "Tidak ada masalah sama sekali, sangat lancar.",
-        "Rating": 4
+        "id_tr_pemesanan": "fb507538-a75d-405a-93c9-691a285f7391",
+        "tgl": "2025-12-29",
+        "teks": "Tidak ada masalah sama sekali, sangat lancar.",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "4ad98107-0798-491c-a778-c0b8fdfc2871",
-        "Tgl": "2026-04-14",
-        "Teks": "Aplikasi ini sangat membantu dalam kehidupan sehari-hari.",
-        "Rating": 4
+        "id_tr_pemesanan": "4ad98107-0798-491c-a778-c0b8fdfc2871",
+        "tgl": "2026-04-14",
+        "teks": "Aplikasi ini sangat membantu dalam kehidupan sehari-hari.",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "ab586d8b-682d-4e6e-ba22-6bf56a86b08e",
-        "Tgl": "2024-09-02",
-        "Teks": "Desain yang indah dan sangat fungsional.",
-        "Rating": 4
+        "id_tr_pemesanan": "ab586d8b-682d-4e6e-ba22-6bf56a86b08e",
+        "tgl": "2024-09-02",
+        "teks": "Desain yang indah dan sangat fungsional.",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "ced9fada-b658-4970-9404-d335d2d58434",
-        "Tgl": "2027-01-17",
-        "Teks": "Saya sudah merekomendasikan layanan ini ke teman-teman saya.",
-        "Rating": 4
+        "id_tr_pemesanan": "ced9fada-b658-4970-9404-d335d2d58434",
+        "tgl": "2027-01-17",
+        "teks": "Saya sudah merekomendasikan layanan ini ke teman-teman saya.",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "3f484851-f2fd-4adc-b7c8-e795bfc855ca",
-        "Tgl": "2025-03-05",
-        "Teks": "Pengalaman pengguna yang luar biasa!",
-        "Rating": 4
+        "id_tr_pemesanan": "3f484851-f2fd-4adc-b7c8-e795bfc855ca",
+        "tgl": "2025-03-05",
+        "teks": "Pengalaman pengguna yang luar biasa!",
+        "rating": 4
     },
     {
-        "IdTrPemesanan": "ac8a16fe-85cd-4c69-9099-26de98ae3222",
-        "Tgl": "2026-07-26",
-        "Teks": "Harga yang bersahabat untuk produk berkualitas.",
-        "Rating": 5
+        "id_tr_pemesanan": "ac8a16fe-85cd-4c69-9099-26de98ae3222",
+        "tgl": "2026-07-26",
+        "teks": "Harga yang bersahabat untuk produk berkualitas.",
+        "rating": 5
     },
     {
-        "IdTrPemesanan": "6a81a88a-0d7a-49f6-9bf1-7cb0ad2eb64a",
-        "Tgl": "2024-12-11",
-        "Teks": "Sangat mudah digunakan dan sangat berguna.",
-        "Rating": 5
+        "id_tr_pemesanan": "6a81a88a-0d7a-49f6-9bf1-7cb0ad2eb64a",
+        "tgl": "2024-12-11",
+        "teks": "Sangat mudah digunakan dan sangat berguna.",
+        "rating": 5
     },
     {
-        "IdTrPemesanan": "6adccc5f-1f98-46ed-8ddd-7c3fd399da4d",
-        "Tgl": "2027-05-20",
-        "Teks": "Hasilnya melebihi ekspektasi saya.",
-        "Rating": 5
+        "id_tr_pemesanan": "6adccc5f-1f98-46ed-8ddd-7c3fd399da4d",
+        "tgl": "2027-05-20",
+        "teks": "Hasilnya melebihi ekspektasi saya.",
+        "rating": 5
     },
     {
-        "IdTrPemesanan": "db3fd92b-a67d-4716-8358-d84e5cb64e15",
-        "Tgl": "2025-09-30",
-        "Teks": "Sangat mengesankan, saya pasti akan menggunakannya lagi.",
-        "Rating": 4
+        "id_tr_pemesanan": "db3fd92b-a67d-4716-8358-d84e5cb64e15",
+        "tgl": "2025-09-30",
+        "teks": "Sangat mengesankan, saya pasti akan menggunakannya lagi.",
+        "rating": 4
     }
 ]

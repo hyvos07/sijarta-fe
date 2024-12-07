@@ -1,22 +1,22 @@
 [
     {
-        "Id": "c1d070dc-9c0d-4af8-81f9-8723087b5ae0",
-        "NamaKategori": "Kebersihan Rumah"
+        "id": "c1d070dc-9c0d-4af8-81f9-8723087b5ae0",
+        "nama_kategori": "Kebersihan Rumah"
     },
     {
-        "Id": "d54404a1-5810-4883-9486-1bd600bd645d",
-        "NamaKategori": "Binatu"
+        "id": "d54404a1-5810-4883-9486-1bd600bd645d",
+        "nama_kategori": "Binatu"
     },
     {
-        "Id": "96addf33-ee51-468c-b826-cc31b9180ef2",
-        "NamaKategori": "Pengasuh Anak"
+        "id": "96addf33-ee51-468c-b826-cc31b9180ef2",
+        "nama_kategori": "Pengasuh Anak"
     },
     {
-        "Id": "b843763a-075f-46a7-9057-2f68510cb0b6",
-        "NamaKategori": "Pindahan Rumah"
+        "id": "b843763a-075f-46a7-9057-2f68510cb0b6",
+        "nama_kategori": "Pindahan Rumah"
     },
     {
-        "Id": "a7b47102-5bd6-4eac-82a0-94fd38d8ef5a",
-        "NamaKategori": "Service Elektronik"
+        "id": "a7b47102-5bd6-4eac-82a0-94fd38d8ef5a",
+        "nama_kategori": "Service Elektronik"
     }
 ]
