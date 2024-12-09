@@ -26,23 +26,30 @@ export class TrPemesananJasaModel extends BaseModel<TrPemesananJasa> {
         const { rows } = await client.query(`
             SELECT 
                 tpj.*,
-                skj.nama_subkategori as nama_subkategori,
-                mb.nama as nama_metode,
-                sp.status as nama_status
+                skj.nama_subkategori AS nama_subkategori,
+                mb.nama AS nama_metode,
+                sp.status AS nama_status
             FROM tr_pemesanan_jasa tpj
             LEFT JOIN SUBKATEGORI_JASA AS skj ON tpj.id_kategori_jasa = skj.id
             LEFT JOIN METODE_BAYAR AS mb ON tpj.id_metode_bayar = mb.id
-            LEFT JOIN TR_PEMESANAN_STATUS AS tps ON tpj.id = tps.id_tr_pemesanan
+            LEFT JOIN (
+                SELECT tps1.*
+                FROM TR_PEMESANAN_STATUS tps1
+                INNER JOIN (
+                    SELECT id_tr_pemesanan, MAX(tgl_waktu) AS max_tgl_waktu
+                    FROM TR_PEMESANAN_STATUS
+                    GROUP BY id_tr_pemesanan
+                ) tps2 ON tps1.id_tr_pemesanan = tps2.id_tr_pemesanan AND tps1.tgl_waktu = tps2.max_tgl_waktu
+            ) tps ON tpj.id = tps.id_tr_pemesanan
             LEFT JOIN STATUS_PESANAN AS sp ON tps.id_status = sp.id
-            WHERE tpj.id_kategori_jasa = '${subKategoriId}';
+            WHERE tpj.id_kategori_jasa = '${subKategoriId}'
+            AND sp.status = 'Mencari Pekerja Terdekat';
         `);
         client.release();
 
         const detailedPesanan = await Promise.all(rows.map(async (row) => {
             const userModels = new UserModel();
-
-            const pelanggan = await userModels.getById(row.idPelanggan);
-            const pekerja = await userModels.getById(row.idPekerja);
+            const pelanggan = await userModels.getById(row.id_pelanggan);
 
             return {
                 id: row.id,
@@ -57,11 +64,10 @@ export class TrPemesananJasaModel extends BaseModel<TrPemesananJasa> {
                 idDiskon: row.id_diskon,
                 idMetodeBayar: row.id_metode_bayar,
                 subkategori: row.subkategori,
-                metodeBayar: row.metode_bayar,
+                metodeBayar: row.nama_metode,
                 status: row.status,
                 // Object Pelanggan dan Pekerja
                 pelanggan: pelanggan,
-                pekerja: pekerja,
             };
         }));
 
@@ -139,5 +145,16 @@ export class TrPemesananJasaModel extends BaseModel<TrPemesananJasa> {
         }));
 
         return detailedPesanan;
+    }
+
+    async assignPekerja(idPesanan: string, idPekerja: string, date: string): Promise<void> {
+        const client = await pool.connect();
+        await client.query(`
+            UPDATE ${this.table}
+            SET id_pekerja = '${idPekerja}'
+            WHERE id = '${idPesanan}'
+        `);
+        await new TrPemesananStatusModel().createNewStatus(idPesanan, 'Menunggu Pekerja Berangkat', date);
+        client.release();
     }
 }

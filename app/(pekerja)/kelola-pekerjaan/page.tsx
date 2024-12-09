@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import NavBar from "@/app/_components/NavBar";
-import { pekerjaKategoriJasaService } from "@/src/db/models/pekerjaKategoriJasa";
+import { PekerjaKategoriJasaModel } from "@/src/db/models/pekerjaKategoriJasa";
 import { SubkategoriJasaModel } from "@/src/db/models/subkategoriJasa";
 import { getUser } from "@/src/functions/getUser";
 import PekerjaanContent from "./PekerjaanContent";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
     const user = await getUser();
-    const pekerjaKategoriJasa = await pekerjaKategoriJasaService.getMapKategoriJasaByID(user.id);
+    const pekerjaKategoriJasa = await new PekerjaKategoriJasaModel().getMapKategoriJasaByID(user.id);
 
     const subkategoriMap = new Map();
     for (const [id, _] of pekerjaKategoriJasa) {

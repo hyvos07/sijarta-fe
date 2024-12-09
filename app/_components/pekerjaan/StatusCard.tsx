@@ -7,6 +7,8 @@ export default function StatusCard({ pesanan }: { pesanan: any }) {
     const handleStatus = async () => {
         if (status === 'Pesanan Selesai' || status === 'Pesanan Dibatalkan') return;
 
+        var statusPesanan = status;
+
         if (status === 'Pekerja Tiba Di Lokasi') {
             setStatus('Pelayanan Jasa Sedang Dilakukan');
         } else if (status === 'Pelayanan Jasa Sedang Dilakukan') {
@@ -41,6 +43,7 @@ export default function StatusCard({ pesanan }: { pesanan: any }) {
                 </div>
                 {status !== 'Pesanan Selesai' && status !== 'Pesanan Dibatalkan' && 
                     <button id={pesanan.id.toString()} className="self-end bg-zinc-100 text-black rounded-md mt-8 py-2 px-6 hover:bg-white font-medium" onClick={handleStatus}>
+                        {status === 'Menunggu Pekerja Berangkat' && 'Tiba Di Lokasi'}
                         {status === 'Pekerja Tiba Di Lokasi' && 'Kerjakan'}
                         {status === 'Pelayanan Jasa Sedang Dilakukan' && 'Selesai'}
                         {status !== 'Menunggu Pekerja Berangkat' && status !== 'Pekerja Tiba Di Lokasi' && status !== 'Pelayanan Jasa Sedang Dilakukan' && 'Sudah Tiba'}

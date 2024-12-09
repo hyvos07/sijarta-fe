@@ -37,6 +37,10 @@ export default function StatusPekerjaanContent({ user, initialQuery, initialFilt
             const data = await getAllPesanan(user.id, query, filter);
             const enrichedPesanan = await Promise.all(
                 data.map(async (pes: any) => {
+                    if (pes.status === 'Pesanan dibatalkan' || pes.status === 'Menunggu Pembayaran') {
+                        return null;
+                    }
+
                     return (
                         <StatusCard key={pes.id} pesanan={pes} />
                     );
