@@ -1,74 +1,72 @@
-// path : sijarta-fe/app/api/register/route.ts
+// path: sijarta-fe/app/api/register/route.ts
 
 import { NextResponse } from 'next/server';
-
-// Simulated database (replace with actual database logic)
-const mockDatabase = new Map<string, { role: string; phone: string; password: string; name?: string; npwp?: string; bank?: string; accountNumber?: string }>();
+import pool from '@/src/db/db';
 
 interface RegisterData {
   role: 'Pelanggan' | 'Pekerja';
-  phone: string;
+  name: string;
   password: string;
-  confirmPassword: string;
-  name?: string;
-  npwp?: string;
+  phone: string;
+  birthDate: string;
+  address: string;
+  gender: 'L' | 'P';
   bank?: string;
   accountNumber?: string;
+  npwp?: string;
+  photoUrl?: string;
+}
+
+interface DatabaseError {
+  code?: string;
+  constraint?: string;
+  message: string;
 }
 
 export async function POST(request: Request) {
+  const client = await pool.connect();
+  
   try {
     const body: RegisterData = await request.json();
+    await client.query('BEGIN');
 
-    // Extract fields from the request body
-    const { role, phone, password, confirmPassword, name, npwp, bank, accountNumber } = body;
+    const userResult = await client.query(`
+      INSERT INTO "user" (nama, jenis_kelamin, no_hp, pwd, tgl_lahir, alamat, saldo_mypay)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
+      RETURNING id
+    `, [body.name, body.gender, body.phone, body.password, body.birthDate, body.address, 0]);
 
-    // Validate required fields
-    if (!role || !phone || !password || !confirmPassword) {
-      return NextResponse.json({ message: 'Missing required fields.' }, { status: 400 });
+    const userId = userResult.rows[0].id;
+
+    if (body.role === 'Pelanggan') {
+      await client.query(`
+        INSERT INTO pelanggan (id, level)
+        VALUES ($1, 'BASIC')
+      `, [userId]);
+    } else {
+      await client.query(`
+        INSERT INTO pekerja (id, nama_bank, nomor_rekening, npwp, link_foto, rating, jml_pesanan_selesai)
+        VALUES ($1, $2, $3, $4, $5, 0, 0)
+      `, [userId, body.bank, body.accountNumber, body.npwp, body.photoUrl]);
     }
 
-    // Validate phone number length
-    if (phone.length < 12 || phone.length > 13) {
-      return NextResponse.json({ message: 'Phone number must be between 12 and 13 digits.' }, { status: 400 });
-    }
+    await client.query('COMMIT');
+    return NextResponse.json({ message: 'Registration successful', userId });
 
-    // Check if phone number is already registered
-    if (mockDatabase.has(phone)) {
-      return NextResponse.json(
-        { message: 'Nomor HP telah terdaftar. Silakan login dengan akun Anda.', redirect: '/login' },
-        { status: 409 } // Conflict status
-      );
-    }
-
-    // Ensure passwords match
-    if (password !== confirmPassword) {
-      return NextResponse.json({ message: 'Passwords do not match.' }, { status: 400 });
-    }
-
-    // Validate fields for "Pekerja" role
-    if (role === 'Pekerja' && (!name || !npwp || !bank || !accountNumber)) {
-      return NextResponse.json({ message: 'Missing required fields for Pekerja.' }, { status: 400 });
-    }
-
-    // Simulate saving data to the database
-    mockDatabase.set(phone, {
-      role,
-      phone,
-      password,
-      ...(role === 'Pekerja' && { name, npwp, bank, accountNumber }),
-    });
-
-    console.log('Registering user:', {
-      role,
-      phone,
-      password,
-      ...(role === 'Pekerja' && { name, npwp, bank, accountNumber }),
-    });
-
-    return NextResponse.json({ message: 'User registered successfully.' });
   } catch (error) {
-    console.error('Error registering user:', error);
-    return NextResponse.json({ message: 'An error occurred during registration.' }, { status: 500 });
+    await client.query('ROLLBACK');
+    const dbError = error as DatabaseError;
+    
+    if (dbError.code === '23505' && dbError.constraint === 'user_no_hp_key') {
+      return NextResponse.json({ 
+        message: 'Phone number already registered',
+        redirect: '/login' 
+      }, { status: 409 });
+    }
+
+    console.error('Registration error:', dbError.message);
+    return NextResponse.json({ message: 'Registration failed' }, { status: 500 });
+  } finally {
+    client.release();
   }
 }
