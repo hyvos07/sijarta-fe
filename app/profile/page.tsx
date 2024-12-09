@@ -80,10 +80,42 @@ export default function ProfilePage() {
     setIsEditing(!isEditing);
   };
 
-  const handleSubmit = () => {
-    alert('Data berhasil diperbarui!');
-    setIsEditing(false);
-    // Anda dapat menambahkan logika untuk mengirim data ke backend di sini
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('/api/user/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          role: userData?.role,
+          name: formData.name,
+          phone: formData.phone,
+          gender: formData.gender,
+          birthDate: formData.birthdate,
+          address: formData.address,
+          ...(userData?.role === 'pekerja' && {
+            bankName: formData.bankName,
+            bankAccount: formData.bankAccount,
+            npwp: formData.npwp,
+          }),
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setError(errorData.message || 'Failed to update profile');
+        return;
+      }
+
+      // Update succeeded
+      setIsEditing(false);
+      // Refresh the user data
+      window.location.reload();
+    } catch (err) {
+      console.error('Error updating profile:', err);
+      setError('An error occurred while updating your profile');
+    }
   };
 
   const handleBackToMain = () => {
