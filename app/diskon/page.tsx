@@ -152,13 +152,13 @@ const DiskonPage = () => {
     setIsModalOpen(true);
   };
 
-  const handleMethodSelect = () => {
+  const handleMethodSelect = async () => {
     // Validation for method selection
     if (!selectedMetodeBayar) {
       window.alert('Silakan pilih metode pembayaran');
       return;
     }
-
+  
     // Proceed with voucher purchase logic
     if (selectedVoucher && userBalance >= selectedVoucher.harga) {
       const newBalance = userBalance - selectedVoucher.harga;
@@ -171,6 +171,40 @@ const DiskonPage = () => {
         dengan kuota penggunaan sebanyak ${selectedVoucher.kuotaPenggunaan} kali. 
         Sisa saldo Anda: Rp${newBalance}.`
       );
+      
+      // Prepare data to send to the API
+      const body = {
+        jumlahHari: selectedVoucher.jmlHariBerlaku, // Jumlah hari berlaku
+        idPelanggan: userID, // Asumsikan kamu punya user.id
+        idVoucher: selectedVoucher.kode, // ID voucher yang dibeli
+        idMetodeBayar: selectedMetodeBayar, // ID metode pembayaran yang dipilih
+      };
+  
+      try {
+        // Call the API to create the transaction
+        const response = await fetch('/api/tr_pembelian_voucher', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+        });
+  
+        const result = await response.json();
+  
+        if (response.ok) {
+          console.log('Transaksi voucher berhasil ditambahkan:', result.message);
+        } else {
+          console.error('Gagal menambahkan transaksi:', result.error);
+          setModalTitle('GAGAL');
+          setModalContent('Gagal menambahkan transaksi pembelian voucher. Silakan coba lagi.');
+        }
+      } catch (error) {
+        console.error('Error saat memanggil API:', error);
+        setModalTitle('GAGAL');
+        setModalContent('Terjadi kesalahan saat memproses transaksi.');
+      }
+  
       // Reset selected voucher
       setSelectedVoucher(null);
     } else {
@@ -182,6 +216,7 @@ const DiskonPage = () => {
       );
     }
   };
+  
 
   const closeModal = () => {
     setIsModalOpen(false);

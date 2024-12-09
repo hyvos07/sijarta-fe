@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { Convert as convertPromo } from '@/src/db/types/promo';
 import { Convert as convertVoucher } from '@/src/db/types/voucher';
 import pool from '@/src/db/db';
