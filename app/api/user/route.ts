@@ -1,20 +1,9 @@
 // path : sijarta-fe/app/api/user/route.tsx
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import fs from 'fs';
-import path from 'path';
-import { getUserFromToken } from '@/src/functions/getUser';
-
-const loadJSON = (filePath: string) => {
-  try {
-    const fullPath = path.join(process.cwd(), filePath);
-    const data = fs.readFileSync(fullPath, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    console.error(`Error loading ${filePath}:`, error);
-    return null;
-  }
-};
+import { getUser } from '@/src/functions/getUser';
+import { PelangganModel } from '@/src/db/models/pelanggan';
+import { PekerjaModel } from '@/src/db/models/pekerja';
 
 export async function GET() {
   try {
@@ -28,78 +17,55 @@ export async function GET() {
       );
     }
 
-    const user = await getUserFromToken(token);
+    const user = await getUser();
 
-    if (!user) {
+    if (user === null) {
       return NextResponse.json(
-        { role: null, data: null, error: 'Invalid token' },
-        { status: 401 }
-      );
-    }
-
-    // Load data JSON
-    const users = loadJSON('src/db/mocks/user.json');
-    const pelanggan = loadJSON('src/db/mocks/pelanggan.json');
-    const pekerja = loadJSON('src/db/mocks/pekerja.json');
-
-    if (!users || !pelanggan || !pekerja) {
-      return NextResponse.json(
-        { role: null, data: null, error: 'Data file missing' },
-        { status: 500 }
-      );
-    }
-
-    // Find user data based on ID
-    const currentUser = users.find((u: any) => u.Id === user.id);
-    const isPelanggan = pelanggan.find((p: any) => p.Id === user.id);
-    const isPekerja = pekerja.find((p: any) => p.Id === user.id);
-
-    if (!currentUser) {
-      return NextResponse.json(
-        { role: null, data: null, error: 'User not found' },
+        { role: null, data: null, error: 'Invalid Token' },
         { status: 404 }
       );
     }
+
+    const isPelanggan = await new PelangganModel().getById(user.id);
+    const isPekerja = await new PekerjaModel().getById(user.id);
 
     // Prepare full user data
     if (isPelanggan) {
       return NextResponse.json({
         role: 'pelanggan',
         data: {
-          name: currentUser.Nama,
-          gender: currentUser.JenisKelamin,
-          phone: currentUser.NoHP,
-          birthdate: currentUser.TglLahir,
-          address: currentUser.Alamat,
-          mypayBalance: currentUser.SaldoMyPay.toString(),
-          level: isPelanggan.Level
+          name: user.nama,
+          gender: user.jenisKelamin,
+          phone: user.noHP,
+          birthdate: user.tglLahir,
+          address: user.alamat,
+          mypayBalance: user.saldoMyPay.toString(),
+          level: isPelanggan.level,
         },
         error: null
       }, { status: 200 });
-    }
-
-    if (isPekerja) {
+    } else if (isPekerja) {
       return NextResponse.json({
         role: 'pekerja',
         data: {
-          name: currentUser.Nama,
-          gender: currentUser.JenisKelamin,
-          phone: currentUser.NoHP,
-          birthdate: currentUser.TglLahir,
-          address: currentUser.Alamat,
-          mypayBalance: currentUser.SaldoMyPay.toString(),
-          bankName: isPekerja.NamaBank,
-          bankAccount: isPekerja.NomorRekening,
-          npwp: isPekerja.NPWP,
-          rating: isPekerja.Rating,
-          ordersCompleted: isPekerja.JmlPesananSelesai
+          name: user.nama,
+          gender: user.jenisKelamin,
+          phone: user.noHP,
+          birthdate: user.tglLahir,
+          address: user.alamat,
+          mypayBalance: user.saldoMyPay.toString(),
+          bankName: isPekerja.namaBank,
+          bankAccount: isPekerja.nomorRekening,
+          npwp: isPekerja.npwp,
+          rating: isPekerja.rating,
+          ordersCompleted: isPekerja.jmlPesananSelesai,
         },
         error: null
       }, { status: 200 });
     }
 
     return NextResponse.json(
-      { role: 'Unknown', data: null, error: null },
+      { role: 'Unknown User', data: null, error: null },
       { status: 200 }
     );
   } catch (error: any) {

@@ -21,6 +21,11 @@ export interface TrMyPay {
 // and asserts the results of JSON.parse at runtime
 export class Convert extends Converter<TrMyPay> {
     public static toTypes<TrMyPay>(json: string): TrMyPay[] {
+        const parsedJson = JSON.parse(json);
+        parsedJson.forEach((tr: any) => {
+            tr.nominal = parseFloat(tr.nominal);
+        });
+        json = JSON.stringify(parsedJson);
         return cast(JSON.parse(json), a(r("TrMyPay")));
     }
 

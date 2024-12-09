@@ -18,4 +18,14 @@ export class UserModel extends BaseModel<User> {
         client.release();
         return (this.converter.toTypes(JSON.stringify(rows)) as User[])[0] ?? null;
     }
+
+    async updateSaldo(id: string, nominal: number): Promise<void> {
+        const client = await pool.connect();
+        await client.query(`
+            UPDATE ${this.table}
+            SET saldo_mypay = saldo_mypay + ${nominal}
+            WHERE id = '${id}'
+        `);
+        client.release();
+    }
 }

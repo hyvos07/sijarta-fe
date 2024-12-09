@@ -27,6 +27,11 @@ export interface TrPemesananJasa {
 // and asserts the results of JSON.parse at runtime
 export class Convert extends Converter<TrPemesananJasa> {
     public static toTypes<TrPemesananJasa>(json: string): TrPemesananJasa[] {
+        const parsedJson = JSON.parse(json);
+        parsedJson.forEach((transaksi: any) => {
+            transaksi.total_biaya = parseFloat(transaksi.total_biaya);
+        });
+        json = JSON.stringify(parsedJson);
         return cast(JSON.parse(json), a(r("TrPemesananJasa")));
     }
 

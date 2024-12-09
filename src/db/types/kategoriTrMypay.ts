@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
+
 export interface KategoriTrMyPay {
     id:   string;
     nama: string;
@@ -14,12 +16,12 @@ export interface KategoriTrMyPay {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toKategoriTrMyPay(json: string): KategoriTrMyPay[] {
+export class Convert extends Converter<KategoriTrMyPay> {
+    public static toTypes<KategoriTrMyPay>(json: string): KategoriTrMyPay[] {
         return cast(JSON.parse(json), a(r("KategoriTrMyPay")));
     }
 
-    public static kategoriTrMyPayToJson(value: KategoriTrMyPay[]): string {
+    public static typesToJson<KategoriTrMyPay>(value: KategoriTrMyPay[]): string {
         return JSON.stringify(uncast(value, a(r("KategoriTrMyPay"))), null, 2);
     }
 }

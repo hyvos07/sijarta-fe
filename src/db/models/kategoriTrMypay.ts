@@ -1,16 +1,23 @@
 // path : sijarta-fe/src/db/models/kategoriTrMypay.ts
 
+
+import pool from '../db';
+import { BaseModel } from '../model';
 import { KategoriTrMyPay, Convert } from '../types/kategoriTrMypay';
-import kategoriTrMyPayJson from '../mocks/kategoriTrMypay.json';
 
-export const kategoriTrMyPayService = {
-  getAllKategori: async (): Promise<KategoriTrMyPay[]> => {
-    const jsonString = JSON.stringify(kategoriTrMyPayJson);
-    return Convert.toKategoriTrMyPay(jsonString);
-  },
-
-  getKategoriById: async (id: string): Promise<string> => {
-    const kategori = await kategoriTrMyPayService.getAllKategori();
-    return kategori.find((k) => k.id === id)?.nama || '';
+export class KategoriTrMyPayModel extends BaseModel<KategoriTrMyPay> {
+  constructor() {
+    super('kategori_tr_mypay', Convert);
   }
-};
+
+  async getIdByName(nama: string): Promise<string | null>{
+    const client = await pool.connect();
+    const idKategori = await client.query(`
+        SELECT id FROM ${this.table}
+        WHERE nama = '${nama}'
+    `);
+    client.release();
+
+    return idKategori.rows[0]?.id ?? null;
+  }
+}

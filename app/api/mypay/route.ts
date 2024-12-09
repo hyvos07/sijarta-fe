@@ -15,6 +15,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ transaksi: allTransaksi }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: 'Error reading data' }, { status: 500 });
+    return NextResponse.json({ error: 'Error reading data: ' + error }, { status: 500 });
   }
 }
