@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/mypay/transaksi/TransaksiContent.tsx
+
 "use client"
 import TransaksiForm from "@/app/_components/mypay/transaksi/TransaksiForm";
 import { User } from "@/src/db/types/user";
@@ -10,9 +12,14 @@ type TransaksiContentProps = {
 
 export default function TransaksiContent({ user, isPekerja }: TransaksiContentProps) {
     const [type, setType] = useState("none");
+    const [saldo, setSaldo] = useState(user.saldoMyPay);
 
     function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
         setType(event.target.value);
+    }
+
+    function updateSaldo(nominal: number) {
+        setSaldo(saldo + nominal);
     }
 
     return (
@@ -20,7 +27,7 @@ export default function TransaksiContent({ user, isPekerja }: TransaksiContentPr
             <div className="flex md:flex-row flex-col md:w-[770px] w-full justify-between items-center">
                 <div className="md:flex-col flex w-full justify-between">
                     <p className="text-lg md:text-xl font-semibold mb-1">{user.nama}</p>
-                    <p className="text-lg font-semibold text-green-500">Rp {user.saldoMyPay.toLocaleString('id-ID')}</p>
+                    <p className="text-lg font-semibold text-green-500">Rp {saldo.toLocaleString('id-ID')}</p>
                 </div>
                 <div className="md:hidden md:flex-col flex w-full justify-between mt-2">
                     <p className="text-sm font-semibold mb-2 text-zinc-400">Tanggal Transaksi:</p>
@@ -34,7 +41,7 @@ export default function TransaksiContent({ user, isPekerja }: TransaksiContentPr
                     <option value="withdraw" className="text-sm md:text-base">Tarik ke Bank</option>
                 </select>
             </div>
-            <TransaksiForm type={type} isPekerja={isPekerja} />
+            <TransaksiForm type={type} isPekerja={isPekerja} updateSaldo={updateSaldo}/>
         </div>
     )
 }

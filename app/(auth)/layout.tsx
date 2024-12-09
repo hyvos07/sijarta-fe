@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/(auth)/register/layout.tsx
+
 import type { Metadata } from 'next';
 import { Poppins } from "next/font/google";
 import '@/app/_styles/globals.css';

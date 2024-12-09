@@ -1,6 +1,9 @@
+// path : sijarta-fe/app/profile/page.tsx
+
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'; // Pastikan menggunakan 'next/navigation' untuk Next.js 13+
 
 interface UserProfile {
   name: string;
@@ -24,6 +27,7 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<Partial<UserProfile>>({});
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter(); // Inisialisasi useRouter
 
   useEffect(() => {
     async function fetchUserData() {
@@ -37,8 +41,6 @@ export default function ProfilePage() {
         }
 
         const data = await response.json();
-
-        console.log(data.data.data + " lemao");
 
         if (data.role && data.data) {
           setUserData({
@@ -83,6 +85,10 @@ export default function ProfilePage() {
     setIsEditing(false);
   };
 
+  const handleBackToMain = () => {
+    router.push('/'); // Ganti '/' dengan path halaman utama Anda jika berbeda
+  };
+
   if (error) {
     return <div className="text-red-500 text-center">{error}</div>;
   }
@@ -91,54 +97,89 @@ export default function ProfilePage() {
     return <div className="text-center">Memuat data...</div>;
   }
 
-  return (
-    <div className="max-w-6xl mx-auto p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-6">
-      {/* Data Profil */}
-      <div className="bg-black text-white p-6 rounded-lg">
-        <h1 className="text-2xl font-semibold mb-4">
-          Profil {userData.role === 'pelanggan' ? 'Pelanggan' : 'Pekerja'}
-        </h1>
-        <p><strong>Nama:</strong> {userData.name}</p>
-        {userData.role === 'pelanggan' && (
-          <p><strong>Level:</strong> {userData.level}</p>
-        )}
-        <p><strong>Jenis Kelamin:</strong> {userData.gender}</p>
-        <p><strong>No HP:</strong> {userData.phone}</p>
-        <p><strong>Tanggal Lahir:</strong> {userData.birthdate}</p>
-        <p><strong>Alamat:</strong> {userData.address}</p>
-        <p><strong>Saldo MyPay:</strong> {userData.mypayBalance}</p>
-        {userData.role === 'pekerja' && (
-          <>
-            <p><strong>Nama Bank:</strong> {userData.bankName}</p>
-            <p><strong>No Rekening:</strong> {userData.bankAccount}</p>
-            <p><strong>NPWP:</strong> {userData.npwp}</p>
-            <p><strong>Rating:</strong> {userData.rating}</p>
-            <p><strong>Jumlah Pesanan Selesai:</strong> {userData.ordersCompleted}</p>
-            <div>
-              <p><strong>Kategori Pekerjaan:</strong></p>
-              <ul className="list-disc list-inside">
-                {userData.categories?.map((category, index) => (
-                  <li key={index}>{category}</li>
-                ))}
-              </ul>
-            </div>
-          </>
-        )}
-        <button
-          className="bg-white text-black px-4 py-2 rounded mt-4"
-          onClick={handleUpdate}
-        >
-          {isEditing ? 'Batal' : 'Update'}
-        </button>
-      </div>
+  const renderProfileItem = (label: string, value?: string | number | string[], isList = false) => {
+    if (isList && Array.isArray(value)) {
+      return (
+        <div key={label}>
+          <p className="font-medium">{label}:</p>
+          <ul className="list-disc list-inside ml-4">
+            {value.map((item, i) => <li key={i}>{item}</li>)}
+          </ul>
+        </div>
+      );
+    }
 
-      {/* Form Edit */}
-      {isEditing && (
-        <div className="bg-white text-black p-6 rounded-lg border border-black">
-          <h2 className="text-xl font-semibold mb-4">Edit Data</h2>
-          <div className="space-y-4">
+    return (
+      <div key={label}>
+        <p className="font-medium">{label}:</p>
+        <p className="bg-black text-white p-2 rounded border border-white mt-1">{value || '-'}</p>
+      </div>
+    );
+  };
+
+  return (
+    <div className="p-6 relative">
+      {/* Tombol Kembali ke Halaman Utama */}
+      <button
+        onClick={handleBackToMain}
+        className="absolute top-4 right-4 bg-white text-black px-4 py-2 rounded transition"
+      >
+        Back
+      </button>
+
+      <h1 className="text-2xl font-bold mb-6">
+        Profile {userData.role === 'pelanggan' ? 'Pelanggan' : 'Pekerja'}
+      </h1>
+
+      {/* Gunakan Grid untuk menata dua bagian secara berdampingan */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Data Profil */}
+        <div className="bg-black text-white p-6 rounded-lg space-y-4 border border-white">
+          <h2 className="text-xl font-semibold mb-4">Data Profil</h2>
+          {renderProfileItem('Nama', userData.name)}
+          {userData.role === 'pelanggan' && renderProfileItem('Level', userData.level)}
+          {renderProfileItem('Jenis Kelamin', userData.gender === 'L' ? 'Laki-Laki' : 'Perempuan')}
+          {renderProfileItem('No HP', userData.phone)}
+          {renderProfileItem('Tanggal Lahir', userData.birthdate)}
+          {renderProfileItem('Alamat', userData.address)}
+          {renderProfileItem('Saldo MyPay', userData.mypayBalance)}
+
+          {userData.role === 'pekerja' && (
+            <>
+              {renderProfileItem('Nama Bank', userData.bankName)}
+              {renderProfileItem('No Rekening', userData.bankAccount)}
+              {renderProfileItem('NPWP', userData.npwp)}
+              {renderProfileItem('Rating', userData.rating)}
+              {renderProfileItem('Jumlah Pesanan Selesai', userData.ordersCompleted?.toString())}
+              {renderProfileItem('Kategori Pekerjaan', userData.categories, true)}
+            </>
+          )}
+
+          {/* Tampilkan tombol Update atau Batal tergantung mode */}
+          {!isEditing ? (
+            <button
+              className="bg-white text-black px-4 py-2 rounded mt-4"
+              onClick={handleUpdate}
+            >
+              Update
+            </button>
+          ) : (
+            <button
+              className="bg-white text-black px-4 py-2 rounded mt-4"
+              onClick={handleUpdate}
+            >
+              Batal
+            </button>
+          )}
+        </div>
+
+        {/* Form Edit */}
+        {isEditing && (
+          <div className="bg-white text-black p-6 rounded-lg border border-black space-y-4">
+            <h2 className="text-xl font-semibold mb-4">Edit Data</h2>
+
             <div>
-              <label className="block font-medium">Nama</label>
+              <label className="block font-medium">Nama:</label>
               <input
                 type="text"
                 className="border rounded w-full p-2"
@@ -147,28 +188,30 @@ export default function ProfilePage() {
               />
             </div>
             <div>
-              <label className="block font-medium">Jenis Kelamin</label>
-              <label>
-                <input
-                  type="radio"
-                  value="L"
-                  checked={formData.gender === 'L'}
-                  onChange={() => handleInputChange('gender', 'L')}
-                />
-                Laki-Laki
-              </label>
-              <label className="ml-4">
-                <input
-                  type="radio"
-                  value="P"
-                  checked={formData.gender === 'P'}
-                  onChange={() => handleInputChange('gender', 'P')}
-                />
-                Perempuan
-              </label>
+              <label className="block font-medium">Jenis Kelamin:</label>
+              <div className="flex items-center space-x-4">
+                <label className="flex items-center space-x-1">
+                  <input
+                    type="radio"
+                    value="L"
+                    checked={formData.gender === 'L'}
+                    onChange={() => handleInputChange('gender', 'L')}
+                  />
+                  <span>Laki-Laki</span>
+                </label>
+                <label className="flex items-center space-x-1">
+                  <input
+                    type="radio"
+                    value="P"
+                    checked={formData.gender === 'P'}
+                    onChange={() => handleInputChange('gender', 'P')}
+                  />
+                  <span>Perempuan</span>
+                </label>
+              </div>
             </div>
             <div>
-              <label className="block font-medium">No HP</label>
+              <label className="block font-medium">No HP:</label>
               <input
                 type="text"
                 className="border rounded w-full p-2"
@@ -177,7 +220,7 @@ export default function ProfilePage() {
               />
             </div>
             <div>
-              <label className="block font-medium">Tanggal Lahir</label>
+              <label className="block font-medium">Tanggal Lahir:</label>
               <input
                 type="date"
                 className="border rounded w-full p-2"
@@ -186,17 +229,18 @@ export default function ProfilePage() {
               />
             </div>
             <div>
-              <label className="block font-medium">Alamat</label>
+              <label className="block font-medium">Alamat:</label>
               <textarea
                 className="border rounded w-full p-2"
                 value={formData.address || ''}
                 onChange={(e) => handleInputChange('address', e.target.value)}
               />
             </div>
+
             {userData.role === 'pekerja' && (
               <>
                 <div>
-                  <label className="block font-medium">Nama Bank</label>
+                  <label className="block font-medium">Nama Bank:</label>
                   <select
                     className="border rounded w-full p-2"
                     value={formData.bankName || ''}
@@ -209,7 +253,7 @@ export default function ProfilePage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block font-medium">No Rekening</label>
+                  <label className="block font-medium">No Rekening:</label>
                   <input
                     type="text"
                     className="border rounded w-full p-2"
@@ -218,7 +262,7 @@ export default function ProfilePage() {
                   />
                 </div>
                 <div>
-                  <label className="block font-medium">NPWP</label>
+                  <label className="block font-medium">NPWP:</label>
                   <input
                     type="text"
                     className="border rounded w-full p-2"
@@ -228,16 +272,16 @@ export default function ProfilePage() {
                 </div>
               </>
             )}
+
+            <button
+              className="bg-black text-white px-4 py-2 rounded mt-4"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
           </div>
-          <button
-            className="bg-black text-white px-4 py-2 rounded mt-4"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
-

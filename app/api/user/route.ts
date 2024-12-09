@@ -1,3 +1,4 @@
+// path : sijarta-fe/app/api/user/route.tsx
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getUser } from '@/src/functions/getUser';
@@ -16,7 +17,6 @@ export async function GET() {
       );
     }
 
-    // Ambil informasi pengguna berdasarkan token
     const user = await getUser();
 
     if (user === null) {
@@ -26,11 +26,10 @@ export async function GET() {
       );
     }
 
-    // Memanggil model Pelanggan dan Pekerja menggunakan getById berdasarkan user.id
     const isPelanggan = await new PelangganModel().getById(user.id);
     const isPekerja = await new PekerjaModel().getById(user.id);
 
-    // Jika ditemukan pelanggan
+    // Prepare full user data
     if (isPelanggan) {
       return NextResponse.json({
         role: 'pelanggan',
@@ -42,13 +41,10 @@ export async function GET() {
           address: user.alamat,
           mypayBalance: user.saldoMyPay.toString(),
           level: isPelanggan.level,
-          userID: isPelanggan.id
         },
         error: null
       }, { status: 200 });
-    }
-    // Jika ditemukan pekerja
-    else if (isPekerja) {
+    } else if (isPekerja) {
       return NextResponse.json({
         role: 'pekerja',
         data: {

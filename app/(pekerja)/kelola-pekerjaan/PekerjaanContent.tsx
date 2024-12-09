@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/(pekerja)/kelola-pekerjaan/PekerjaContent.ts
+
 'use client';
 import { useState, useEffect } from 'react';
 import { User } from '@/src/db/types/user';
@@ -21,6 +23,8 @@ async function getAllPesanan(id: string) {
     });
 
     const data = await response.json();
+
+    console.log(data.pesanan);
 
     return data.pesanan;
 }
@@ -48,6 +52,7 @@ export default function PekerjaanContent({ user, kategori, subkategori }: Pekerj
                             );
                         })
                     );
+                    console.log(enrichedPesanan);
                     setPesanan(enrichedPesanan);
                 } catch (error) {
                     console.error('Error fetching pesanan:', error);

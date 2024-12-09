@@ -1,47 +1,47 @@
 [
     {
-        "Id": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
-        "NamaBank": "BRI",
-        "NomorRekening": "540695113",   
-        "NPWP": "405319382379672",
-        "LinkFoto": "https://dummyimage.com/npwp/0",
-        "Rating": 2.4,
-        "JmlPesananSelesai": 172
+        "id": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
+        "nama_bank": "BRI",
+        "nomor_rekening": "540695113",   
+        "npwp": "405319382379672",
+        "link_foto": "https://dummyimage.com/npwp/0",
+        "rating": 2.4,
+        "jml_pesanan_selesai": 172
     },
     {
-        "Id": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
-        "NamaBank": "MANDIRI",
-        "NomorRekening": "1310007977954",
-        "NPWP": "407961060757403",
-        "LinkFoto": "https://dummyimage.com/npwp/1",
-        "Rating": 3.4,
-        "JmlPesananSelesai": 64
+        "id": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
+        "nama_bank": "MANDIRI",
+        "nomor_rekening": "1310007977954",
+        "npwp": "407961060757403",
+        "link_foto": "https://dummyimage.com/npwp/1",
+        "rating": 3.4,
+        "jml_pesanan_selesai": 64
     },
     {
-        "Id": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
-        "NamaBank": "BRI",
-        "NomorRekening": "379701509787534",
-        "NPWP": "877794206274467",
-        "LinkFoto": "https://dummyimage.com/npwp/2",
-        "Rating": 3.9,
-        "JmlPesananSelesai": 289
+        "id": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
+        "nama_bank": "BRI",
+        "nomor_rekening": "379701509787534",
+        "npwp": "877794206274467",
+        "link_foto": "https://dummyimage.com/npwp/2",
+        "rating": 3.9,
+        "jml_pesanan_selesai": 289
     },
     {
-        "Id": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
-        "NamaBank": "BNI",
-        "NomorRekening": "196660532",
-        "NPWP": "900407087325812",
-        "LinkFoto": "https://dummyimage.com/npwp/3",
-        "Rating": 4.5,
-        "JmlPesananSelesai": 26
+        "id": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
+        "nama_bank": "BNI",
+        "nomor_rekening": "196660532",
+        "npwp": "900407087325812",
+        "link_foto": "https://dummyimage.com/npwp/3",
+        "rating": 4.5,
+        "jml_pesanan_selesai": 26
     },
     {
-        "Id": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
-        "NamaBank": "BCA",
-        "NomorRekening": "5220304399",
-        "NPWP": "751359668025758",
-        "LinkFoto": "https://dummyimage.com/npwp/9",
-        "Rating": 1.8,
-        "JmlPesananSelesai": 50
+        "id": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
+        "nama_bank": "BCA",
+        "nomor_rekening": "5220304399",
+        "npwp": "751359668025758",
+        "link_foto": "https://dummyimage.com/npwp/9",
+        "rating": 1.8,
+        "jml_pesanan_selesai": 50
     }
 ]

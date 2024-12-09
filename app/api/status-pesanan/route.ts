@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/api/status-pesanan/route.ts
+
 import { TrPemesananJasaModel } from '@/src/db/models/trPemesananJasa';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -12,6 +14,7 @@ export async function GET(request: NextRequest) {
         const res = await new TrPemesananJasaModel().getPesananPekerja(idPekerja!, query || '', filter || 'none');
         return NextResponse.json({ pesanan: res }, { status: 200 });
     } catch (error) {
+        console.error('Error reading data:', error);
         return NextResponse.json({ error: 'Error reading data' }, { status: 500 });
     }
 }

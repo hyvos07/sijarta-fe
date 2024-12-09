@@ -47,6 +47,7 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json({ message: `Successfully added ${body.nominal} in the MyPay` }, { status: 200 });
     } catch (error) {
+        console.log(error); 
         return NextResponse.json({ error: 'Error: ' + error }, { status: 500 });
     }
 }

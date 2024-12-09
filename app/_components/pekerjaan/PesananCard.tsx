@@ -1,13 +1,38 @@
+// path : sijarta-fe/app/_components/pekerjaan/PesananCard.tsx
+
 import { useState } from 'react';
+import CircularLoading from '../CircularLoading';
 
 export default function PesananCard({ pesanan }: { pesanan: any }) {
+    const [loading, setLoading] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
     const [taken, setTaken] = useState(false);
     const [isShrinking, setIsShrinking] = useState(false);
 
-    const handleChangeStatus = (e: any) => {
+    const handleChangeStatus = async (e: any) => {
+        setLoading(true);
+
         const id = e.target.id;
         console.log('Mengubah status pesanan dengan ID:', id);
+
+        const response = await fetch('/api/pesanan', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                idPesanan: pesanan.id,
+                date: new Date().toLocaleString('sv-SE', { timeZone: 'Asia/Jakarta' }),
+            })
+        });
+
+        setLoading(false);
+
+        if (!response.ok) {
+            console.error('Error changing status');
+            return;
+        }
 
         setIsShrinking(true);
 
@@ -30,7 +55,7 @@ export default function PesananCard({ pesanan }: { pesanan: any }) {
                         <div className="flex md:flex-row flex-col w-full justify-between">
                             <div className="justify-start">
                                 <p className="text-2xl font-semibold">{pesanan.subkategori}</p>
-                                <p className="md:mt-1 mt-2 text-zinc-300 font-semibold">{pesanan.pelanggan?.nama ?? 'Anonim'} <span className="text-zinc-500 text-sm px-1">via {pesanan.metodeBayar}</span></p>
+                                <p className="md:mt-1 mt-2 text-lg text-zinc-300 font-semibold">{pesanan.pelanggan?.nama ?? 'Anonim'} <span className="text-zinc-500 text-sm px-1">via {pesanan.metodeBayar}</span></p>
                             </div>
                             <p className="text-green-500 text-xl font-semibold md:my-0 my-3 md:px-2">Rp {pesanan.totalBiaya.toLocaleString('id-ID')}</p>
                         </div>
@@ -39,7 +64,7 @@ export default function PesananCard({ pesanan }: { pesanan: any }) {
                             <p className="text-zinc-300 text-sm mt-2 font-semibold">Tanggal Pekerjaan: <span className='font-medium px-1'>{new Date(pesanan.tglPekerjaan).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</span></p>
                         </div>
                         <button id={pesanan.id.toString()} className="self-end bg-zinc-100 text-black rounded-md py-2 px-6 hover:bg-white font-medium" onClick={handleChangeStatus}>
-                            Kerjakan Pesanan
+                            {loading ? <CircularLoading black={true} size='6' /> : 'Kerjakan Pesanan'}
                         </button>
                     </div>
                 </div>

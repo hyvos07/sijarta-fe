@@ -16,10 +16,10 @@ export interface TrPemesananJasa {
     waktuPekerjaan: Date;
     totalBiaya:     number;
     idPelanggan:    string;
-    idPekerja:      string;
+    idPekerja?:     string;
     idKategoriJasa: string;
     sesi:           number;
-    idDiskon:       string;
+    idDiskon?:      string;
     idMetodeBayar:  string;
 }
 
@@ -27,6 +27,11 @@ export interface TrPemesananJasa {
 // and asserts the results of JSON.parse at runtime
 export class Convert extends Converter<TrPemesananJasa> {
     public static toTypes<TrPemesananJasa>(json: string): TrPemesananJasa[] {
+        const parsedJson = JSON.parse(json);
+        parsedJson.forEach((transaksi: any) => {
+            transaksi.total_biaya = parseFloat(transaksi.total_biaya);
+        });
+        json = JSON.stringify(parsedJson);
         return cast(JSON.parse(json), a(r("TrPemesananJasa")));
     }
 
@@ -195,10 +200,10 @@ const typeMap: any = {
         { json: "waktu_pekerjaan", js: "waktuPekerjaan", typ: Date },
         { json: "total_biaya", js: "totalBiaya", typ: 0 },
         { json: "id_pelanggan", js: "idPelanggan", typ: "" },
-        { json: "id_pekerja", js: "idPekerja", typ: "" },
+        { json: "id_pekerja", js: "idPekerja", typ: u(null, "") },
         { json: "id_kategori_jasa", js: "idKategoriJasa", typ: "" },
         { json: "sesi", js: "sesi", typ: 0 },
-        { json: "id_diskon", js: "idDiskon", typ: "" },
+        { json: "id_diskon", js: "idDiskon", typ: u(null, "") },
         { json: "id_metode_bayar", js: "idMetodeBayar", typ: "" },
     ], false),
 };
