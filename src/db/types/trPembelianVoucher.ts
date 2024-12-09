@@ -6,7 +6,7 @@
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
-
+import { Converter } from "./_convert";
 export interface TrPembelianVoucher {
     id:             string;
     tglAwal:        string;
@@ -19,12 +19,12 @@ export interface TrPembelianVoucher {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toTrPembelianVoucher(json: string): TrPembelianVoucher[] {
+export class Convert extends Converter<TrPembelianVoucher>{
+    public static toTypes<TrPembelianVoucher>(json: string): TrPembelianVoucher[] {
         return cast(JSON.parse(json), a(r("TrPembelianVoucher")));
     }
 
-    public static trPembelianVoucherToJson(value: TrPembelianVoucher[]): string {
+    public static typesToJson<TrPembelianVoucher>(value: TrPembelianVoucher[]): string {
         return JSON.stringify(uncast(value, a(r("TrPembelianVoucher"))), null, 2);
     }
 }
