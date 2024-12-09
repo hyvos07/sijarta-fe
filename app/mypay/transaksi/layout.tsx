@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/mypay/transaksi/layout.tsx
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

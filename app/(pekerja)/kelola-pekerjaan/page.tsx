@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/(pekerja)/kelola-pekerjaan/page.ts
+
 import { Metadata } from "next";
 import NavBar from "@/app/_components/NavBar";
 import { pekerjaKategoriJasaService } from "@/src/db/models/pekerjaKategoriJasa";

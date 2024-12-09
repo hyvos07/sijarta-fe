@@ -1,4 +1,5 @@
-// app/api/promos/route.ts
+// path : sijarta-fe/app/api/tr-mypay/route.ts
+
 import { TrMyPayModel } from '@/src/db/models/trMypay';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -14,6 +15,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ transaksi: allTransaksi }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: 'Error reading data' }, { status: 500 });
+    return NextResponse.json({ error: 'Error reading data: ' + error }, { status: 500 });
   }
 }

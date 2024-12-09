@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/types/db.ts
+
 import pkg from 'pg';
 import dotenv from 'dotenv';
 

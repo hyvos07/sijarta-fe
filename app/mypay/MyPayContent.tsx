@@ -1,14 +1,16 @@
+// path : sijarta-fe/app/mypay/,MyPayContent.tsx
+
 'use client';
 import { useState, useEffect } from 'react';
 import { User } from '@/src/db/types/user';
-import { Convert, TrMyPay } from '@/src/db/types/trMypay';
+import { TrMyPay } from '@/src/db/types/trMypay';
 import CircularLoading from "../_components/CircularLoading";
 import TRCard from "../_components/mypay/TRCard";
-import { kategoriTrMyPayService } from '@/src/db/models/kategoriTrMypay';
 import InfoCard from '../_components/mypay/InfoCard';
+import { KategoriTrMyPay } from '@/src/db/types/kategoriTrMypay';
 
 async function getAllTransaksi(id: string) {
-    const response = await fetch(`/api/tr-mypay?id=${id}`, {
+    const response = await fetch(`/api/mypay?id=${id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -17,14 +19,26 @@ async function getAllTransaksi(id: string) {
 
     const data = await response.json();
 
+    if (!response.ok) {
+        console.log(data.error);
+        return [];
+    }
+
     return data.transaksi as TrMyPay[];
 }
 
-export default function MyPayContent({ user }: { user: User }) {
+export default function MyPayContent({ user, kategoriAll }: { user: User, kategoriAll: KategoriTrMyPay[] | null }) {
     const [isLoading, setIsLoading] = useState(true);
     const [transactions, setTransactions] = useState<JSX.Element[]>([]);
     
     const saldoMyPay = user?.saldoMyPay || 0;
+    
+    const kategoriMap = new Map<string, string>();
+    if (kategoriAll) {
+        kategoriAll.forEach(kategori => {
+            kategoriMap.set(kategori.id, kategori.nama);
+        });
+    }
 
     useEffect(() => {
         const fetchKategori = async () => {
@@ -32,7 +46,7 @@ export default function MyPayContent({ user }: { user: User }) {
                 const transaksi = await getAllTransaksi(user.id);
                 const enrichedTransactions = await Promise.all(
                     transaksi.map(async (tr) => {
-                        const kategori = await kategoriTrMyPayService.getKategoriById(tr.kategoriID);
+                        const kategori = kategoriMap.get(tr.kategoriID) || 'Lainnya';
                         return (
                             <TRCard tgl={tr.tgl} nominal={tr.nominal} kategori={kategori} key={tr.id} id={tr.id} userID={tr.userID} kategoriID={tr.kategoriID} />
                         );

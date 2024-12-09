@@ -1,177 +1,177 @@
 [
     {
-        "Id": "b29fdd94-8eb6-4c2c-b710-85c911d82642",
-        "UserId": "23e115b7-ebef-48a6-be35-725f3ad92744",
-        "Tgl": "2022-08-10",
-        "Nominal": 500000,
-        "KategoriId": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
+        "id": "b29fdd94-8eb6-4c2c-b710-85c911d82642",
+        "user_id": "23e115b7-ebef-48a6-be35-725f3ad92744",
+        "tgl": "2022-08-10",
+        "nominal": 500000,
+        "kategori_id": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
     },
     {
-        "Id": "d78ec4e3-a7ab-43e5-8208-306e3edd326e",
-        "UserId": "36759dfd-b661-44b9-83ab-7cbeb42fec65",
-        "Tgl": "2024-09-11",
-        "Nominal": 60000,
-        "KategoriId": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
+        "id": "d78ec4e3-a7ab-43e5-8208-306e3edd326e",
+        "user_id": "36759dfd-b661-44b9-83ab-7cbeb42fec65",
+        "tgl": "2024-09-11",
+        "nominal": 60000,
+        "kategori_id": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
     },
     {
-        "Id": "768b5652-6feb-4cc6-85eb-fbb1347095e3",
-        "UserId": "f20104d8-a4b8-47c2-b337-7d3c2b9c2a63",
-        "Tgl": "2024-07-25",
-        "Nominal": 700000,
-        "KategoriId": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
+        "id": "768b5652-6feb-4cc6-85eb-fbb1347095e3",
+        "user_id": "f20104d8-a4b8-47c2-b337-7d3c2b9c2a63",
+        "tgl": "2024-07-25",
+        "nominal": 700000,
+        "kategori_id": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
     },
     {
-        "Id": "9d2b90c0-cdf2-4715-8f65-b717fc0df6a5",
-        "UserId": "6dcee1e7-8e68-4b53-b300-171352434f92",
-        "Tgl": "2024-09-30",
-        "Nominal": 50000,
-        "KategoriId": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
+        "id": "9d2b90c0-cdf2-4715-8f65-b717fc0df6a5",
+        "user_id": "6dcee1e7-8e68-4b53-b300-171352434f92",
+        "tgl": "2024-09-30",
+        "nominal": 50000,
+        "kategori_id": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
     },
     {
-        "Id": "ffef12a2-65ba-41b3-891f-1fc517667c3d",
-        "UserId": "1fa544e3-ba14-4a28-a3cd-ba37eddb8279",
-        "Tgl": "2024-06-23",
-        "Nominal": 300000,
-        "KategoriId": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
+        "id": "ffef12a2-65ba-41b3-891f-1fc517667c3d",
+        "user_id": "1fa544e3-ba14-4a28-a3cd-ba37eddb8279",
+        "tgl": "2024-06-23",
+        "nominal": 300000,
+        "kategori_id": "125b0aad-aadb-4dce-b6c6-dd18af82d08b"
     },
     {
-        "Id": "5fda772d-1228-4fd9-bd3b-eb8ef72813f4",
-        "UserId": "23e115b7-ebef-48a6-be35-725f3ad92744",
-        "Tgl": "2024-10-10",
-        "Nominal": 20000,
-        "KategoriId": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
+        "id": "5fda772d-1228-4fd9-bd3b-eb8ef72813f4",
+        "user_id": "23e115b7-ebef-48a6-be35-725f3ad92744",
+        "tgl": "2024-10-10",
+        "nominal": 20000,
+        "kategori_id": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
     },
     {
-        "Id": "1699434d-2f7c-439e-a4f0-cf980636c531",
-        "UserId": "36759dfd-b661-44b9-83ab-7cbeb42fec65",
-        "Tgl": "2024-10-09",
-        "Nominal": 100000,
-        "KategoriId": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
+        "id": "1699434d-2f7c-439e-a4f0-cf980636c531",
+        "user_id": "36759dfd-b661-44b9-83ab-7cbeb42fec65",
+        "tgl": "2024-10-09",
+        "nominal": 100000,
+        "kategori_id": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
     },
     {
-        "Id": "2d7602bf-4f14-47b3-90dd-5e014a5cc55b",
-        "UserId": "f20104d8-a4b8-47c2-b337-7d3c2b9c2a63",
-        "Tgl": "2024-10-08",
-        "Nominal": 25000,
-        "KategoriId": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
+        "id": "2d7602bf-4f14-47b3-90dd-5e014a5cc55b",
+        "user_id": "f20104d8-a4b8-47c2-b337-7d3c2b9c2a63",
+        "tgl": "2024-10-08",
+        "nominal": 25000,
+        "kategori_id": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
     },
     {
-        "Id": "53a4b6ef-ef22-484d-af1c-b6bf077fb804",
-        "UserId": "6dcee1e7-8e68-4b53-b300-171352434f92",
-        "Tgl": "2024-10-07",
-        "Nominal": 50000,
-        "KategoriId": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
+        "id": "53a4b6ef-ef22-484d-af1c-b6bf077fb804",
+        "user_id": "6dcee1e7-8e68-4b53-b300-171352434f92",
+        "tgl": "2024-10-07",
+        "nominal": 50000,
+        "kategori_id": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
     },
     {
-        "Id": "c0c99ee2-62c2-4804-bc45-75157f6de4ed",
-        "UserId": "1fa544e3-ba14-4a28-a3cd-ba37eddb8279",
-        "Tgl": "2024-10-06",
-        "Nominal": 60000,
-        "KategoriId": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
+        "id": "c0c99ee2-62c2-4804-bc45-75157f6de4ed",
+        "user_id": "1fa544e3-ba14-4a28-a3cd-ba37eddb8279",
+        "tgl": "2024-10-06",
+        "nominal": 60000,
+        "kategori_id": "c5e9ab3f-5eec-40ee-8a25-bd92580954a3"
     },
     {
-        "Id": "845bd8e4-061d-4d38-be4f-baa9c3ea10d8",
-        "UserId": "23e115b7-ebef-48a6-be35-725f3ad92744",
-        "Tgl": "2024-10-01",
-        "Nominal": 70000,
-        "KategoriId": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
+        "id": "845bd8e4-061d-4d38-be4f-baa9c3ea10d8",
+        "user_id": "23e115b7-ebef-48a6-be35-725f3ad92744",
+        "tgl": "2024-10-01",
+        "nominal": 70000,
+        "kategori_id": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
     },
     {
-        "Id": "8cb90230-7481-47dc-9ba8-8383de18afa0",
-        "UserId": "36759dfd-b661-44b9-83ab-7cbeb42fec65",
-        "Tgl": "2024-10-02",
-        "Nominal": 80000,
-        "KategoriId": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
+        "id": "8cb90230-7481-47dc-9ba8-8383de18afa0",
+        "user_id": "36759dfd-b661-44b9-83ab-7cbeb42fec65",
+        "tgl": "2024-10-02",
+        "nominal": 80000,
+        "kategori_id": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
     },
     {
-        "Id": "2c6ede8c-c745-4ab6-a922-5e3376086523",
-        "UserId": "f20104d8-a4b8-47c2-b337-7d3c2b9c2a63",
-        "Tgl": "2024-10-03",
-        "Nominal": 90000,
-        "KategoriId": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
+        "id": "2c6ede8c-c745-4ab6-a922-5e3376086523",
+        "user_id": "f20104d8-a4b8-47c2-b337-7d3c2b9c2a63",
+        "tgl": "2024-10-03",
+        "nominal": 90000,
+        "kategori_id": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
     },
     {
-        "Id": "6af2104a-54b2-4016-937c-3b881c03b83b",
-        "UserId": "6dcee1e7-8e68-4b53-b300-171352434f92",
-        "Tgl": "2024-10-04",
-        "Nominal": 100000,
-        "KategoriId": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
+        "id": "6af2104a-54b2-4016-937c-3b881c03b83b",
+        "user_id": "6dcee1e7-8e68-4b53-b300-171352434f92",
+        "tgl": "2024-10-04",
+        "nominal": 100000,
+        "kategori_id": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
     },
     {
-        "Id": "a3e54cb6-2fa6-4496-ac7b-bbd3af7fb05a",
-        "UserId": "1fa544e3-ba14-4a28-a3cd-ba37eddb8279",
-        "Tgl": "2024-10-05",
-        "Nominal": 60000,
-        "KategoriId": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
+        "id": "a3e54cb6-2fa6-4496-ac7b-bbd3af7fb05a",
+        "user_id": "1fa544e3-ba14-4a28-a3cd-ba37eddb8279",
+        "tgl": "2024-10-05",
+        "nominal": 60000,
+        "kategori_id": "b9020f52-f5e7-4ff8-8b67-ec669f4166db"
     },
     {
-        "Id": "cc17d775-5348-492c-b838-f96c2c9caf7a",
-        "UserId": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
-        "Tgl": "2024-09-20",
-        "Nominal": 300000,
-        "KategoriId": "9a918391-62c8-4834-8d57-437516dd6db2"
+        "id": "cc17d775-5348-492c-b838-f96c2c9caf7a",
+        "user_id": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
+        "tgl": "2024-09-20",
+        "nominal": 300000,
+        "kategori_id": "9a918391-62c8-4834-8d57-437516dd6db2"
     },
     {
-        "Id": "0c001d5d-c99f-4a4f-9123-c9cd5a0b96c1",
-        "UserId": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
-        "Tgl": "2024-09-21",
-        "Nominal": 60000,
-        "KategoriId": "9a918391-62c8-4834-8d57-437516dd6db2"
+        "id": "0c001d5d-c99f-4a4f-9123-c9cd5a0b96c1",
+        "user_id": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
+        "tgl": "2024-09-21",
+        "nominal": 60000,
+        "kategori_id": "9a918391-62c8-4834-8d57-437516dd6db2"
     },
     {
-        "Id": "1317c165-0c44-4da6-926b-7b4215045884",
-        "UserId": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
-        "Tgl": "2024-09-22",
-        "Nominal": 80000,
-        "KategoriId": "9a918391-62c8-4834-8d57-437516dd6db2"
+        "id": "1317c165-0c44-4da6-926b-7b4215045884",
+        "user_id": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
+        "tgl": "2024-09-22",
+        "nominal": 80000,
+        "kategori_id": "9a918391-62c8-4834-8d57-437516dd6db2"
     },
     {
-        "Id": "1422d5d0-69e7-4e1b-8145-6be069973939",
-        "UserId": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
-        "Tgl": "2024-09-23",
-        "Nominal": 70000,
-        "KategoriId": "9a918391-62c8-4834-8d57-437516dd6db2"
+        "id": "1422d5d0-69e7-4e1b-8145-6be069973939",
+        "user_id": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
+        "tgl": "2024-09-23",
+        "nominal": 70000,
+        "kategori_id": "9a918391-62c8-4834-8d57-437516dd6db2"
     },
     {
-        "Id": "49eec188-770b-413b-b45f-f042ddfba623",
-        "UserId": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
-        "Tgl": "2024-09-24",
-        "Nominal": 90000,
-        "KategoriId": "9a918391-62c8-4834-8d57-437516dd6db2"
+        "id": "49eec188-770b-413b-b45f-f042ddfba623",
+        "user_id": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
+        "tgl": "2024-09-24",
+        "nominal": 90000,
+        "kategori_id": "9a918391-62c8-4834-8d57-437516dd6db2"
     },
     {
-        "Id": "773aea11-9e60-4cdf-8e47-7e74823f8cb4",
-        "UserId": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
-        "Tgl": "2024-09-15",
-        "Nominal": 35000,
-        "KategoriId": "9edc1b92-5cf4-407a-addc-52342fd65985"
+        "id": "773aea11-9e60-4cdf-8e47-7e74823f8cb4",
+        "user_id": "57544a2d-1156-43ae-ae7d-618a3ad626fa",
+        "tgl": "2024-09-15",
+        "nominal": 35000,
+        "kategori_id": "9edc1b92-5cf4-407a-addc-52342fd65985"
     },
     {
-        "Id": "d431b09d-f540-4c01-b865-495a25ccb8d3",
-        "UserId": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
-        "Tgl": "2024-09-16",
-        "Nominal": 75000,
-        "KategoriId": "9edc1b92-5cf4-407a-addc-52342fd65985"
+        "id": "d431b09d-f540-4c01-b865-495a25ccb8d3",
+        "user_id": "811eeec2-4f35-49f3-bcd5-a74522f3251f",
+        "tgl": "2024-09-16",
+        "nominal": 75000,
+        "kategori_id": "9edc1b92-5cf4-407a-addc-52342fd65985"
     },
     {
-        "Id": "1053d820-1525-4d70-b938-6d23c822a5a9",
-        "UserId": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
-        "Tgl": "2024-09-17",
-        "Nominal": 5500,
-        "KategoriId": "9edc1b92-5cf4-407a-addc-52342fd65985"
+        "id": "1053d820-1525-4d70-b938-6d23c822a5a9",
+        "user_id": "c5504d97-40ac-4801-9c0f-9d5c90ffefec",
+        "tgl": "2024-09-17",
+        "nominal": 5500,
+        "kategori_id": "9edc1b92-5cf4-407a-addc-52342fd65985"
     },
     {
-        "Id": "31a28e9d-7493-4dc8-90a5-fa2eef22c7cb",
-        "UserId": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
-        "Tgl": "2024-09-18",
-        "Nominal": 85000,
-        "KategoriId": "9edc1b92-5cf4-407a-addc-52342fd65985"
+        "id": "31a28e9d-7493-4dc8-90a5-fa2eef22c7cb",
+        "user_id": "3c0d1ed8-1339-4afa-b7c9-475cdd7c2ca9",
+        "tgl": "2024-09-18",
+        "nominal": 85000,
+        "kategori_id": "9edc1b92-5cf4-407a-addc-52342fd65985"
     },
     {
-        "Id": "74368c0f-e119-42cb-a3a5-2ae48597643e",
-        "UserId": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
-        "Tgl": "2024-09-19",
-        "Nominal": 95000,
-        "KategoriId": "9edc1b92-5cf4-407a-addc-52342fd65985"
+        "id": "74368c0f-e119-42cb-a3a5-2ae48597643e",
+        "user_id": "b57a4f4b-c0c7-45a9-8a02-104f0d8880a0",
+        "tgl": "2024-09-19",
+        "nominal": 95000,
+        "kategori_id": "9edc1b92-5cf4-407a-addc-52342fd65985"
     }
 ]

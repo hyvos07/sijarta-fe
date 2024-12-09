@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/functions/cipher.ts
+
 const base = '1234567890abcdefghijklmnopqrstuvwxyz';
 const key = 7;
 

@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/kategoriJasa.ts
+
 import { KategoriJasa, Convert } from '../types/kategoriJasa';
 import kategoriJasaJson from '../mocks/kategoriJasa.json';
 

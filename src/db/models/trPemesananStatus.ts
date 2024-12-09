@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/trPemesananStatus.ts
+
 import { TrPemesananStatus, Convert } from '../types/trPemesananStatus';
 import { StatusPesananModel } from './statusPesanan';
 import { BaseModel } from '../model';
@@ -39,5 +41,22 @@ export class TrPemesananStatusModel extends BaseModel<TrPemesananStatus> {
         }
 
         return rows[0].status;
+    }
+
+    async createNewStatus(idTransaksi: string, status: string, date: string): Promise<Boolean> {
+        try {
+            const client = await pool.connect();
+            await client.query(`
+                INSERT INTO ${this.table} VALUES (
+                    '${idTransaksi}',
+                    (SELECT id FROM STATUS_PESANAN WHERE status = '${status}'),
+                    '${date}'
+                )
+            `);
+            client.release();
+            return true;
+        } catch (error) {
+            return false;
+        }
     }
 }

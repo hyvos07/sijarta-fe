@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/_components/register.tsx
+
 'use client';
 
 import { useState } from 'react';

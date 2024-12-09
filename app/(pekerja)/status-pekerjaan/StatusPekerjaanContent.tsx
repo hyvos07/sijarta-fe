@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/(pekerja)/status-pekerjaan/route.ts
+
 'use client';
 import CircularLoading from '@/app/_components/CircularLoading';
 import StatusCard from '@/app/_components/pekerjaan/StatusCard';
