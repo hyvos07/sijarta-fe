@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/api/register/route.ts
+
 import { NextResponse } from 'next/server';
 
 // Simulated database (replace with actual database logic)

@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/subkategoriJasa.ts
+
 import { SubkategoriJasa, Convert } from '../types/subkategoriJasa';
 import { BaseModel } from '../model';
 import pool from '../db';

@@ -1,3 +1,4 @@
+// path : sijarta-fe/app/api/login/route.ts
 import { NextResponse } from 'next/server'
 import { encrypt } from '../../../src/functions/cipher'
 import { setAuthCookie, setTypeCookie } from '../../../src/functions/cookies'

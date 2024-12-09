@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/(pekerja)/status-pekerjaan/page.tsx
+
 import { Metadata } from "next";
 import NavBar from "@/app/_components/NavBar";
 import { getUser } from "@/src/functions/getUser";

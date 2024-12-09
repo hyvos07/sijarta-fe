@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/trPemesananJasa.ts
+
 import { UserModel } from './user';
 import { MetodeBayarModel } from './metodeBayar';
 import { TrPemesananJasa, Convert } from '../types/trPemesananJasa';

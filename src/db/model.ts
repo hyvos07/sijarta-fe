@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/types/model.ts
+
 import pool from './db';
 import { Converter } from './types/_convert';
 import { Types } from './types/_types';

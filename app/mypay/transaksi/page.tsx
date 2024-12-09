@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/mypay/transaksi/page.tsx
+
 import NavBar from "@/app/_components/NavBar";
 import { getUser } from "@/src/functions/getUser";
 import TransaksiForm from "./TransaksiContent";

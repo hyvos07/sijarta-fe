@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/_components/mypay/transaksi/forms/BayarForm.tsx
+
 "use client"
 import CircularLoading from "@/app/_components/CircularLoading";
 import { TrPemesananJasa } from "@/src/db/types/trPemesananJasa";

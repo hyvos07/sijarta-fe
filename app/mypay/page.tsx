@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/mypay/page.tsx
+
 import MyPayContent from "./MyPayContent";
 import NavBar from "@/app/_components/NavBar";
 import { KategoriTrMyPayModel } from "@/src/db/models/kategoriTrMypay";

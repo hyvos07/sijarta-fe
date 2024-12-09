@@ -1,3 +1,4 @@
+// path : sijarta-fe/app/api/user/role/route.tsx
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers'; // Mengambil cookies dari next/headers
 import { getUserFromToken } from '@/src/functions/getUser';

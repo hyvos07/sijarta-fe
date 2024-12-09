@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/_components/pekerjaan/StatusCard.tsx
+
 'use client'
 import { useState } from 'react';
 

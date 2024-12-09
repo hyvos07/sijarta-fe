@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/trMypay.ts
+
 import { TrMyPay, Convert } from '../types/trMypay';
 import { BaseModel } from '../model';
 import pool from '../db';

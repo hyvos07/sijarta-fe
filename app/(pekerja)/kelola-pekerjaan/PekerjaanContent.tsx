@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/(pekerja)/kelola-pekerjaan/PekerjaContent.ts
+
 'use client';
 import { useState, useEffect } from 'react';
 import { User } from '@/src/db/types/user';

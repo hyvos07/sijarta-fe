@@ -1,3 +1,4 @@
+// path : sijarta-fe/app/api/user/route.tsx
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getUser } from '@/src/functions/getUser';

@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/_components/NavBar.tsx
+
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
