@@ -195,7 +195,7 @@ async function seed() {
         // TR_PEMBELIAN_VOUCHER table
         await client.query(`
             CREATE TABLE IF NOT EXISTS TR_PEMBELIAN_VOUCHER (
-                id UUID PRIMARY KEY,
+                id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
                 tgl_awal DATE NOT NULL,
                 tgl_akhir DATE NOT NULL,
                 telah_digunakan INT NOT NULL CHECK(telah_digunakan>=0),
@@ -219,7 +219,7 @@ async function seed() {
         // TR_PEMESANAN_JASA table
         await client.query(`
             CREATE TABLE IF NOT EXISTS TR_PEMESANAN_JASA (
-                id UUID PRIMARY KEY,
+                id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
                 tgl_pemesanan DATE NOT NULL,
                 tgl_pekerjaan DATE NOT NULL,
                 waktu_pekerjaan timestamp NOT NULL,

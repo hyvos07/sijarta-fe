@@ -94,4 +94,50 @@ export class TrPemesananJasaModel extends BaseModel<TrPemesananJasa> {
 
         return filteredPesanan;
     }
+
+    async getTagihanMyPay(idPelanggan: string): Promise<any[]> {
+        const client = await pool.connect();
+        const { rows } = await client.query(`
+            SELECT tpj.*, skj.nama_subkategori
+            FROM ${this.table} tpj
+                LEFT JOIN SUBKATEGORI_JASA skj ON tpj.id_kategori_jasa = skj.id
+            WHERE tpj.id_pelanggan = '${idPelanggan}'
+            AND tpj.id_metode_bayar IN (
+                SELECT id FROM METODE_BAYAR WHERE nama = 'MyPay'
+            )
+            AND tpj.id IN (
+                SELECT ps.id_tr_pemesanan
+                FROM TR_PEMESANAN_STATUS ps JOIN STATUS_PESANAN s ON ps.id_status = s.id
+                WHERE s."status" = 'Menunggu Pembayaran'
+                AND ps.tgl_waktu = (
+                    SELECT MAX(tgl_waktu)
+                    FROM TR_PEMESANAN_STATUS
+                    WHERE id_tr_pemesanan = ps.id_tr_pemesanan
+                )
+            );
+        `);
+        client.release();
+
+        const detailedPesanan = await Promise.all(rows.map(async (row) => {
+            return {
+                id: row.id,
+                tglPemesanan: row.tgl_pemesanan,
+                tglPekerjaan: row.tgl_pekerjaan,
+                waktuPekerjaan: row.waktu_pekerjaan,
+                totalBiaya: row.total_biaya,
+                idPelanggan: row.id_pelanggan,
+                idPekerja: row.id_pekerja,
+                idKategoriJasa: row.id_kategori_jasa,
+                sesi: row.sesi,
+                idDiskon: row.id_diskon,
+                idMetodeBayar: row.id_metode_bayar,
+                subkategori: row.subkategori,
+                metodeBayar: row.metode_bayar,
+                status: row.status,
+                namaSubkategori: row.nama_subkategori,  // Nama Subkategori
+            };
+        }));
+
+        return detailedPesanan;
+    }
 }
