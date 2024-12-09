@@ -1,7 +1,13 @@
-.focus-border:focus {
-    border-color: #3b82f6 !important;
-  }
+/* path: sijarta-fe/app/_styles/login.css */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
 
 .spinner-border {
-    border-color: #000 transparent transparent transparent;
-  }
+  border-color: #000 transparent transparent transparent;
+}
+
+.focus-border:focus {
+  border-color: #3b82f6 !important;
+}
