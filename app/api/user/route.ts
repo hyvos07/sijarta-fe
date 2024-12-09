@@ -1,4 +1,4 @@
-// path : sijarta-fe/app/api/user/route.tsx
+// path: sijarta-fe/app/api/user/route.ts
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getUser } from '@/src/functions/getUser';
@@ -42,6 +42,7 @@ export async function GET() {
           address: user.alamat,
           mypayBalance: user.saldoMyPay.toString(),
           level: isPelanggan.level,
+          // linkFoto tidak disertakan untuk pelanggan
         },
         error: null
       }, { status: 200 });
@@ -64,6 +65,7 @@ export async function GET() {
           rating: isPekerja.rating,
           ordersCompleted: isPekerja.jmlPesananSelesai,
           categories, // Sertakan kategori pekerjaan
+          linkFoto: isPekerja.linkFoto, // Hanya pekerja yang memiliki linkFoto
         },
         error: null
       }, { status: 200 });
