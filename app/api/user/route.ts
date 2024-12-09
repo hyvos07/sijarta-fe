@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import { getUser } from '@/src/functions/getUser';
 import { PelangganModel } from '@/src/db/models/pelanggan';
 import { PekerjaModel } from '@/src/db/models/pekerja';
+import { pekerjaKategoriJasaService } from '@/src/db/models/pekerjaKategoriJasa'; // Import service kategori
 
 export async function GET() {
   try {
@@ -45,6 +46,9 @@ export async function GET() {
         error: null
       }, { status: 200 });
     } else if (isPekerja) {
+      // Ambil kategori pekerjaan
+      const categories = await pekerjaKategoriJasaService.getAllNamaKategoriJasaByID(user.id);
+
       return NextResponse.json({
         role: 'pekerja',
         data: {
@@ -59,6 +63,7 @@ export async function GET() {
           npwp: isPekerja.npwp,
           rating: isPekerja.rating,
           ordersCompleted: isPekerja.jmlPesananSelesai,
+          categories, // Sertakan kategori pekerjaan
         },
         error: null
       }, { status: 200 });

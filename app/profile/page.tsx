@@ -19,7 +19,7 @@ interface UserProfile {
   npwp?: string;
   rating?: string;
   ordersCompleted?: number;
-  categories?: string[];
+  categories?: string[]; // Sudah ada, pastikan ini digunakan
 }
 
 export default function ProfilePage() {
@@ -57,7 +57,7 @@ export default function ProfilePage() {
             npwp: data.data.npwp || '',
             rating: data.data.rating ? data.data.rating.toString() : '',
             ordersCompleted: data.data.ordersCompleted || 0,
-            categories: data.data.categories || [],
+            categories: data.data.categories || [], // Pastikan kategori di-set
           });
           setFormData(data.data);
         } else {
@@ -83,10 +83,23 @@ export default function ProfilePage() {
   const handleSubmit = () => {
     alert('Data berhasil diperbarui!');
     setIsEditing(false);
+    // Anda dapat menambahkan logika untuk mengirim data ke backend di sini
   };
 
   const handleBackToMain = () => {
     router.push('/'); // Ganti '/' dengan path halaman utama Anda jika berbeda
+  };
+
+  // Fungsi untuk memformat tanggal
+  const formatDate = (dateString?: string): string => {
+    if (!dateString) return '-';
+    const date = new Date(dateString);
+    return date.toLocaleString('id-ID', {
+      timeZone: 'Asia/Jakarta',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).split('/').reverse().join('-');
   };
 
   if (error) {
@@ -140,7 +153,7 @@ export default function ProfilePage() {
           {userData.role === 'pelanggan' && renderProfileItem('Level', userData.level)}
           {renderProfileItem('Jenis Kelamin', userData.gender === 'L' ? 'Laki-Laki' : 'Perempuan')}
           {renderProfileItem('No HP', userData.phone)}
-          {renderProfileItem('Tanggal Lahir', userData.birthdate)}
+          {renderProfileItem('Tanggal Lahir', formatDate(userData.birthdate))} {/* Format Tanggal */}
           {renderProfileItem('Alamat', userData.address)}
           {renderProfileItem('Saldo MyPay', userData.mypayBalance)}
 
@@ -151,7 +164,7 @@ export default function ProfilePage() {
               {renderProfileItem('NPWP', userData.npwp)}
               {renderProfileItem('Rating', userData.rating)}
               {renderProfileItem('Jumlah Pesanan Selesai', userData.ordersCompleted?.toString())}
-              {renderProfileItem('Kategori Pekerjaan', userData.categories, true)}
+              {renderProfileItem('Kategori Pekerjaan', userData.categories, true)} {/* Tampilkan kategori */}
             </>
           )}
 
@@ -250,6 +263,7 @@ export default function ProfilePage() {
                     <option value="BCA">BCA</option>
                     <option value="Mandiri">Mandiri</option>
                     <option value="BRI">BRI</option>
+                    {/* Tambahkan opsi bank lainnya sesuai kebutuhan */}
                   </select>
                 </div>
                 <div>
