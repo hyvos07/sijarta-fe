@@ -6,6 +6,7 @@ import { BaseModel } from '../model';
 import pool from '../db';
 
 export class PekerjaKategoriJasaModel extends BaseModel<PekerjaKategoriJasa> {
+    static getAllNamaKategoriJasaByID: any;
     constructor() {
         super('pekerja_kategori_jasa', Convert);
     }
