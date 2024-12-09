@@ -56,6 +56,7 @@ export class TrPemesananStatusModel extends BaseModel<TrPemesananStatus> {
             client.release();
             return true;
         } catch (error) {
+            console.error('Error creating new status:', error);
             return false;
         }
     }
