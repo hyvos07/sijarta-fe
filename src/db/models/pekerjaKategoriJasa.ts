@@ -1,31 +1,47 @@
 // path : sijarta-fe/src/db/models/pekerjaKategoriJasa.ts
 
 import { PekerjaKategoriJasa, Convert } from '../types/pekerjaKategoriJasa';
-import { kategoriJasaService } from './kategoriJasa';
-import pekerjaKategoriJson from '../mocks/pekerjaKategoriJasa.json';
 import { KategoriJasa } from '../types/kategoriJasa';
+import { BaseModel } from '../model';
+import pool from '../db';
 
-export const pekerjaKategoriJasaService = {
-    getAllRelationPK: async (pekerjaID: string): Promise<PekerjaKategoriJasa[]> => {
-        const jsonString = JSON.stringify(pekerjaKategoriJson);
-        return Convert.toPekerjaKategoriJasa(jsonString).filter((pk) => pk.pekerjaID === pekerjaID);
-    },
+export class PekerjaKategoriJasaModel extends BaseModel<PekerjaKategoriJasa> {
+    constructor() {
+        super('pekerja_kategori_jasa', Convert);
+    }
 
-    getAllNamaKategoriJasaByID: async (pekerjaID: string): Promise<string[]> => {
-        const pekerjaKategoriJasa = await pekerjaKategoriJasaService.getAllRelationPK(pekerjaID);
-        const kategoriJasaPromises = pekerjaKategoriJasa
-            .map(async (pk) => await kategoriJasaService.getNamaKategoriById(pk.kategoriJasaID));
-        return Promise.all(kategoriJasaPromises);
-    },
-
-    getMapKategoriJasaByID: async (pekerjaID: string): Promise<Map<string, KategoriJasa>> => {
-        const map = new Map<string, KategoriJasa>();
-        const pekerjaKategoriJasa = await pekerjaKategoriJasaService.getAllRelationPK(pekerjaID);
-        for (const pk of pekerjaKategoriJasa) {
-            const kategori = await kategoriJasaService.getKategoriJasaById(pk.kategoriJasaID);
-            map.set(pk.kategoriJasaID, kategori);
-        }
+    async getAllKategoriById(pekerjaID: string): Promise<string[]> {
+        const client = await pool.connect();
+        const { rows } = await client.query(`
+            SELECT kj.nama_kategori
+            FROM ${this.table} pkj
+            LEFT JOIN kategori_jasa kj ON pkj.kategori_jasa_id = kj.id
+            WHERE pkj.pekerja_id = '${pekerjaID}'
+        `);
+        client.release();
         
+        return rows.map(row => row.nama_kategori);
+    }
+
+    async getMapKategoriJasaByID(pekerjaID: string): Promise<Map<string, KategoriJasa>> {
+        const client = await pool.connect();
+        const { rows } = await client.query(`
+            SELECT kj.*
+            FROM ${this.table} pkj
+            LEFT JOIN kategori_jasa kj ON pkj.kategori_jasa_id = kj.id
+            WHERE pkj.pekerja_id = '${pekerjaID}'
+        `);
+        client.release();
+
+        const map = new Map<string, KategoriJasa>();
+
+        for (const row of rows) {
+            map.set(row.id, {
+                id: row.id,
+                namaKategori: row.nama_kategori,
+            });
+        }
+
         return map;
     }
-};
+}

@@ -11,6 +11,6 @@ export class MetodeBayarModel extends BaseModel<MetodeBayar> {
 
     async getNamaMetodeBayar(idMetodeBayar: string): Promise<string> {
         const metodeBayar = await this.getById(idMetodeBayar);
-        return this.converter.toTypes<MetodeBayar>(JSON.stringify(metodeBayar))[0].nama ?? 'Tidak Diketahui';
+        return metodeBayar!.nama ?? 'Tidak Diketahui';
     }
 }
