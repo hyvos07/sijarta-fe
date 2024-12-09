@@ -153,35 +153,56 @@ const DiskonPage = () => {
   };
 
   const handleMethodSelect = async () => {
-    // Validation for method selection
     if (!selectedMetodeBayar) {
       window.alert('Silakan pilih metode pembayaran');
       return;
     }
   
-    // Proceed with voucher purchase logic
-    if (selectedVoucher && userBalance >= selectedVoucher.harga) {
-      const newBalance = userBalance - selectedVoucher.harga;
-      setUserBalance(newBalance);
-      setModalTitle('SUKSES');
-      setModalContent(
-        `Selamat! Anda berhasil membeli voucher kode ${selectedVoucher.kode} 
-        dengan metode bayar ${metodeBayar.find(m => m.id === selectedMetodeBayar)?.nama}. 
-        Voucher ini berlaku selama ${selectedVoucher.jmlHariBerlaku} hari 
-        dengan kuota penggunaan sebanyak ${selectedVoucher.kuotaPenggunaan} kali. 
-        Sisa saldo Anda: Rp${newBalance}.`
-      );
-      
-      // Prepare data to send to the API
+    const selectedMethod = metodeBayar.find(m => m.id === selectedMetodeBayar);
+  
+    if (selectedVoucher) {
+      // Prepare data to send to the transaction API
       const body = {
-        jumlahHari: selectedVoucher.jmlHariBerlaku, // Jumlah hari berlaku
-        idPelanggan: userID, // Asumsikan kamu punya user.id
-        idVoucher: selectedVoucher.kode, // ID voucher yang dibeli
-        idMetodeBayar: selectedMetodeBayar, // ID metode pembayaran yang dipilih
+        jumlahHari: selectedVoucher.jmlHariBerlaku,
+        idPelanggan: userID,
+        idVoucher: selectedVoucher.kode,
+        idMetodeBayar: selectedMetodeBayar,
+        hargaVoucher: selectedVoucher.harga
       };
   
       try {
-        // Call the API to create the transaction
+        // If payment method is MyPay, update balance first
+        if (selectedMethod?.nama === 'MyPay') {
+          if (userBalance < selectedVoucher.harga) {
+            setModalTitle('GAGAL');
+            setModalContent(
+              `Gagal membeli voucher ${selectedVoucher.kode}. 
+              Saldo Anda tidak mencukupi. Anda membutuhkan Rp${selectedVoucher.harga - userBalance} 
+              lebih untuk membeli voucher ini.`
+            );
+            setIsModalOpen(true);
+            return;
+          }
+  
+          // Call API to update balance for MyPay
+          const balanceResponse = await fetch('/api/update_duit_tr_pesan_voucher', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+          });
+  
+          if (!balanceResponse.ok) {
+            throw new Error('Gagal memperbarui saldo');
+          }
+  
+          // Update local balance
+          const newBalance = userBalance - selectedVoucher.harga;
+          setUserBalance(newBalance);
+        }
+  
+        // Proceed with voucher transaction
         const response = await fetch('/api/tr_pembelian_voucher', {
           method: 'POST',
           headers: {
@@ -193,30 +214,29 @@ const DiskonPage = () => {
         const result = await response.json();
   
         if (response.ok) {
-          console.log('Transaksi voucher berhasil ditambahkan:', result.message);
+          setModalTitle('SUKSES');
+          setModalContent(
+            selectedMethod?.nama === 'MyPay'
+              ? `Selamat! Anda berhasil membeli voucher kode ${selectedVoucher.kode}. 
+                 Saldo MyPay Anda berkurang Rp${selectedVoucher.harga}. 
+                 Sisa saldo: Rp${userBalance - selectedVoucher.harga}.`
+              : `Selamat! Anda berhasil membeli voucher kode ${selectedVoucher.kode} 
+                 dengan metode bayar ${selectedMethod?.nama}.`
+          );
         } else {
-          console.error('Gagal menambahkan transaksi:', result.error);
-          setModalTitle('GAGAL');
-          setModalContent('Gagal menambahkan transaksi pembelian voucher. Silakan coba lagi.');
+          throw new Error(result.error || 'Gagal menambahkan transaksi');
         }
       } catch (error) {
-        console.error('Error saat memanggil API:', error);
+        console.error('Error saat memproses transaksi:', error);
         setModalTitle('GAGAL');
         setModalContent('Terjadi kesalahan saat memproses transaksi.');
       }
   
       // Reset selected voucher
       setSelectedVoucher(null);
-    } else {
-      setModalTitle('GAGAL');
-      setModalContent(
-        `Gagal membeli voucher ${selectedVoucher?.kode}. 
-        Saldo Anda tidak mencukupi. Anda membutuhkan Rp${selectedVoucher ? selectedVoucher.harga - userBalance : 0} 
-        lebih untuk membeli voucher ini.`
-      );
+      setIsModalOpen(true);
     }
   };
-  
 
   const closeModal = () => {
     setIsModalOpen(false);

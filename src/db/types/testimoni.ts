@@ -7,6 +7,7 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Converter } from "./_convert";
 export interface Testimoni {
     idTrPemesanan: string;
     tgl:           Date;
@@ -16,12 +17,12 @@ export interface Testimoni {
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
-export class Convert {
-    public static toTestimoni(json: string): Testimoni[] {
+export class Convert extends Converter<Testimoni> {
+    public static toTestimoni<Testimoni>(json: string): Testimoni[] {
         return cast(JSON.parse(json), a(r("Testimoni")));
     }
 
-    public static testimoniToJson(value: Testimoni[]): string {
+    public static testimoniToJson<Testimoni>(value: Testimoni[]): string {
         return JSON.stringify(uncast(value, a(r("Testimoni"))), null, 2);
     }
 }

@@ -1,4 +1,4 @@
-import fs from 'fs';
+
 import path from 'path';
 import { Convert } from '@/src/db/types/promo';
 import { Promo } from '@/src/db/types/promo';

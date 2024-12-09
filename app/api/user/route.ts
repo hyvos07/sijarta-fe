@@ -16,6 +16,7 @@ export async function GET() {
       );
     }
 
+    // Ambil informasi pengguna berdasarkan token
     const user = await getUser();
 
     if (user === null) {
@@ -25,10 +26,11 @@ export async function GET() {
       );
     }
 
+    // Memanggil model Pelanggan dan Pekerja menggunakan getById berdasarkan user.id
     const isPelanggan = await new PelangganModel().getById(user.id);
     const isPekerja = await new PekerjaModel().getById(user.id);
 
-    // Prepare full user data
+    // Jika ditemukan pelanggan
     if (isPelanggan) {
       return NextResponse.json({
         role: 'pelanggan',
@@ -44,7 +46,9 @@ export async function GET() {
         },
         error: null
       }, { status: 200 });
-    } else if (isPekerja) {
+    }
+    // Jika ditemukan pekerja
+    else if (isPekerja) {
       return NextResponse.json({
         role: 'pekerja',
         data: {
@@ -64,6 +68,7 @@ export async function GET() {
       }, { status: 200 });
     }
 
+    // Jika tidak ada kecocokan, kembalikan status unknown user
     return NextResponse.json(
       { role: 'Unknown User', data: null, error: null },
       { status: 200 }
