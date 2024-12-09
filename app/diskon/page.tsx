@@ -5,13 +5,15 @@ import { Promo } from '@/src/db/types/promo';
 import { Voucher } from '@/src/db/types/voucher';
 import '@/app/_styles/diskon.css';
 import NavBar from '../_components/NavBar';
-import { useRouter } from 'next/navigation'; // Import router untuk redirect
+import { useRouter } from 'next/navigation';
 import { User } from '@/src/db/types/user';
+import { MetodeBayar } from '@/src/db/types/metodeBayar';
 
 const DiskonPage = () => {
   const [promos, setPromos] = useState<Promo[]>([]);
   const [vouchers, setVouchers] = useState<Voucher[]>([]);
-  const [ownedVouchers, setOwnedVouchers] = useState<string[]>([]); // Menyimpan voucher yang sudah dimiliki
+  const [ownedVouchers, setOwnedVouchers] = useState<string[]>([]);
+  const [metodeBayar, setMetodeBayar] = useState<MetodeBayar[]>([]);
   const [modalContent, setModalContent] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [userBalance, setUserBalance] = useState<number>(50000);
@@ -19,10 +21,12 @@ const DiskonPage = () => {
   const [userData, setDataUser] = useState<User | null>(null);
   const [currentPromoPage, setCurrentPromoPage] = useState<number>(1);
   const [currentVoucherPage, setCurrentVoucherPage] = useState<number>(1);
-  const [role, setRole] = useState<'pelanggan' | 'pekerja' | null>(null); // Tambahkan state role
-  const [error, setError] = useState<string | null>(null); // Tambahkan state error
+  const [role, setRole] = useState<'pelanggan' | 'pekerja' | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedMetodeBayar, setSelectedMetodeBayar] = useState<string | null>(null);
+  const [selectedVoucher, setSelectedVoucher] = useState<Voucher | null>(null);
   const itemsPerPage = 5;
-  const router = useRouter(); // Inisialisasi router
+  const router = useRouter();
   const [userID, setUserID] = useState<string | null>(null);
 
   // Fetch role data
@@ -73,24 +77,26 @@ const DiskonPage = () => {
 
       try {
         // Mengambil data promo, voucher yang sudah dimiliki, dan user
-        const [promoResponse, ownedVoucherResponse] = await Promise.all([
+        const [promoResponse, ownedVoucherResponse, metodeBayarResponse] = await Promise.all([
           fetch('/api/promo'),
-          fetch(`/api/tr_pembelian_voucher?userID=${userID}`), // Menggunakan userID di URL dengan template string
+          fetch(`/api/tr_pembelian_voucher?userID=${userID}`), 
+          fetch('/api/metode_bayar'),
         ]);
 
-        const [promoData, ownedVoucherData] = await Promise.all([ 
+        const [promoData, ownedVoucherData, metodeBayarData] = await Promise.all([ 
           promoResponse.json(),
           ownedVoucherResponse.json(),
+          metodeBayarResponse.json(),
         ]);
 
         // Memasukkan data promo dan voucher yang sudah dimiliki ke dalam state
         setPromos(promoData.promos);
-        setVouchers(promoData.vouchers); // Voucher sudah tersedia di dalam data promo
-  
+        setVouchers(promoData.vouchers);
+        setMetodeBayar(metodeBayarData.metodeBayar);
         // Jika ownedVoucherData.vouchers undefined atau null, set array kosong
         setOwnedVouchers(ownedVoucherData?.vouchers?.map((voucher: Voucher) => voucher.kode) || []);
         
-        setDataUser(userData); // Tetap menyimpan data user jika diperlukan
+        setDataUser(userData);
       } catch (error) {
         console.error('Error fetching data:', error);
         setError('Gagal mengambil data promo atau voucher');
@@ -99,6 +105,7 @@ const DiskonPage = () => {
   
     fetchData();
   }, [userID]);
+
   // Pagination logic tetap
   const totalPromoPages = Math.ceil(promos.length / itemsPerPage);
   const totalVoucherPages = Math.ceil(vouchers.length / itemsPerPage);
@@ -137,25 +144,49 @@ const DiskonPage = () => {
   };
 
   const handleBuyVoucher = (voucher: Voucher) => {
-    if (userBalance >= voucher.harga) {
-      const newBalance = userBalance - voucher.harga;
+    // Instead of immediately showing the modal, set the voucher and open method selection modal
+    setSelectedVoucher(voucher);
+    setSelectedMetodeBayar(null); // Reset selected method
+    setModalTitle('Pilih Metode Bayar');
+    setModalContent('select_method');
+    setIsModalOpen(true);
+  };
+
+  const handleMethodSelect = () => {
+    // Validation for method selection
+    if (!selectedMetodeBayar) {
+      window.alert('Silakan pilih metode pembayaran');
+      return;
+    }
+
+    // Proceed with voucher purchase logic
+    if (selectedVoucher && userBalance >= selectedVoucher.harga) {
+      const newBalance = userBalance - selectedVoucher.harga;
       setUserBalance(newBalance);
       setModalTitle('SUKSES');
       setModalContent(
-        `Selamat! Anda berhasil membeli voucher kode ${voucher.kode}. Voucher ini berlaku selama ${voucher.jmlHariBerlaku} hari dengan kuota penggunaan sebanyak ${voucher.kuotaPenggunaan} kali. Sisa saldo Anda: Rp${newBalance}.`
+        `Selamat! Anda berhasil membeli voucher kode ${selectedVoucher.kode} 
+        dengan metode bayar ${metodeBayar.find(m => m.id === selectedMetodeBayar)?.nama}. 
+        Voucher ini berlaku selama ${selectedVoucher.jmlHariBerlaku} hari 
+        dengan kuota penggunaan sebanyak ${selectedVoucher.kuotaPenggunaan} kali. 
+        Sisa saldo Anda: Rp${newBalance}.`
       );
+      // Reset selected voucher
+      setSelectedVoucher(null);
     } else {
       setModalTitle('GAGAL');
       setModalContent(
-        `Gagal membeli voucher ${voucher.kode}. Saldo Anda tidak mencukupi. Anda membutuhkan Rp${voucher.harga - userBalance
-        } lebih untuk membeli voucher ini.`
+        `Gagal membeli voucher ${selectedVoucher?.kode}. 
+        Saldo Anda tidak mencukupi. Anda membutuhkan Rp${selectedVoucher ? selectedVoucher.harga - userBalance : 0} 
+        lebih untuk membeli voucher ini.`
       );
     }
-    setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setSelectedMetodeBayar(null);
+    setSelectedVoucher(null);
   };
 
   return (
@@ -259,10 +290,38 @@ const DiskonPage = () => {
           <div className="modal-overlay">
             <div className="modal-content">
               <h3 className="font-semibold">{modalTitle}</h3>
-              <p>{modalContent}</p>
-              <button className="close-modal-btn" onClick={closeModal}>
-                OK
-              </button>
+              
+              {modalContent === 'select_method' ? (
+                <div>
+                  <select 
+                    value={selectedMetodeBayar || ''}
+                    onChange={(e) => setSelectedMetodeBayar(e.target.value)}
+                    className="w-full p-2 mb-4"
+                    style={{color: "black"}}
+                  >
+                    <option value="">Pilih Metode Pembayaran</option>
+                    {metodeBayar.map((metode) => (
+                      <option key={metode.id} value={metode.id} style={{color: "black"}}>
+                        {metode.nama}
+                      </option>
+                    ))}
+                  </select>
+                  <button 
+                    className="buy-voucher-btn w-full"
+                    onClick={handleMethodSelect}
+                    disabled={!selectedMetodeBayar}
+                  >
+                    Konfirmasi
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <p>{modalContent}</p>
+                  <button className="close-modal-btn" onClick={closeModal}>
+                    OK
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}

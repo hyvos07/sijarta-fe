@@ -1,8 +1,10 @@
 'use client';
-
-import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
 import NavBar from '@/app/_components/NavBar';
-
+import { TrPemesananJasa } from '@/src/db/types/trPemesananJasa';
+import { TrPemesananStatus } from '@/src/db/types/trPemesananStatus';
+import { StatusPesanan } from '@/src/db/types/statusPesanan';
 // Dummy data untuk subkategori jasa
 const dummyData = [
   {
@@ -47,7 +49,40 @@ const TestimoniPage = () => {
   const [testimoniStatus, setTestimoniStatus] = useState<{ [key: string]: boolean }>({});
   const [notification, setNotification] = useState<string | null>(null);
   const [sortStatus, setSortStatus] = useState<string>('All');
+  const router = useRouter();
+  useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const response = await fetch('/api/user');
+  
+        if (!response.ok) {
+          return;
+        }
+  
+        const data = await response.json();
+  
+        if (data.role) {
+          // Jika role bukan pelanggan, lakukan redirect
+          if (data.role !== 'pelanggan') {
+            window.alert('Role bukan pelanggan. Redirect ke halaman utama.');
+            router.push('/'); // Redirect jika bukan pelanggan
+          }
+        } else {
+        }
+  
+        // Ambil nilai saldo_mypay dan set ke userBalance
+        
+        // const userID = data.data.userID; 
+        // setUserID(userID);
+      } catch (error: any) {
+        console.error('Error fetching user data:', error.message);
+      }
+    }
+  
+    fetchUserData();
+  }, [router]);
 
+  
   // Handle perubahan dropdown untuk subkategori
   const handleSubcategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedId = parseInt(e.target.value, 10);
