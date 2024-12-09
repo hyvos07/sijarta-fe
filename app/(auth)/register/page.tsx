@@ -31,6 +31,7 @@ export default function RegisterPage() {
     gender: 'L',
   });
   const [error, setError] = useState<string | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const router = useRouter();
 
   const banks = ['GoPay', 'OVO', 'Virtual Account BCA', 'Virtual Account BNI', 'Virtual Account Mandiri'];
@@ -109,8 +110,12 @@ export default function RegisterPage() {
         return;
       }
 
-      alert('Registration successful!');
-      router.push('/login');
+      setShowSuccessModal(true);
+      setTimeout(() => {
+        setShowSuccessModal(false);
+        router.push('/login');
+      }, 2000);
+
     } catch (err) {
       setError('An error occurred during registration.');
     }
@@ -240,22 +245,25 @@ export default function RegisterPage() {
 
           {role === 'Pekerja' && (
             <>
-              <div>
-                <select
-                  name="bank"
-                  value={formData.bank || ''}
-                  onChange={handleInputChange}
-                  className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-sm focus:outline focus:outline-blue-500"
-                  required
-                >
-                  <option value="">Select Bank</option>
-                  {banks.map((bank) => (
-                    <option key={bank} value={bank}>
-                      {bank}
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <div>
+              <select
+                name="bank"
+                value={formData.bank || ''}
+                onChange={handleInputChange}
+                className="w-full py-3 md:px-5 px-3 border border-gray-600 rounded-lg bg-transparent md:text-base text-white focus:outline focus:outline-blue-500"
+                required
+              >
+                <option value="" style={{ color: 'black' }}>
+                  Select Bank
+                </option>
+                {banks.map((bank) => (
+                  <option key={bank} value={bank} style={{ color: 'black' }}>
+                    {bank}
+                  </option>
+                ))}
+              </select>
+            </div>
+
 
               <div>
                 <input
@@ -299,12 +307,21 @@ export default function RegisterPage() {
             <div className="text-red-500 text-sm text-center">{error}</div>
           )}
 
-          <button
-            type="submit"
-            className="w-full px-2 py-2 md:py-2.5 bg-stone-100 text-black font-medium rounded hover:bg-white mt-6"
-          >
-            Register
-          </button>
+          <div className="flex justify-center gap-4 mt-6">
+            <button
+              type="button"
+              onClick={() => router.push('/')}
+              className="w-1/2 px-2 py-2 md:py-2.5 bg-transparent text-white font-medium rounded hover:bg-stone-800 border border-white"
+            >
+              Back
+            </button>
+            <button
+              type="submit"
+              className="w-1/2 px-2 py-2 md:py-2.5 bg-stone-100 text-black font-medium rounded hover:bg-white"
+            >
+              Register
+            </button>
+          </div>
 
           <p className="text-center mt-4 text-sm">
             Already have an account?{' '}
@@ -313,6 +330,21 @@ export default function RegisterPage() {
             </a>
           </p>
         </form>
+      )}
+
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white text-black p-8 rounded-lg shadow-lg max-w-sm w-full mx-4 text-center">
+            <div className="text-green-500 mb-4">
+              <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold mb-4">Registration Successful!</h3>
+            <p className="text-gray-600 mb-4">Your account has been created successfully.</p>
+            <p className="text-gray-600 text-sm">Redirecting to login page...</p>
+          </div>
+        </div>
       )}
     </div>
   );
