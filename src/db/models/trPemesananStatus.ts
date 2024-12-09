@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/trPemesananStatus.ts
+
 import { TrPemesananStatus, Convert } from '../types/trPemesananStatus';
 import { StatusPesananModel } from './statusPesanan';
 import { BaseModel } from '../model';

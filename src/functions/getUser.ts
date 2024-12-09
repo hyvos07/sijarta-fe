@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/functions/getUser.ts
+
 import { cookies } from 'next/headers';
 import { decrypt } from './cipher';
 import { UserModel } from '@/src/db/models/user';

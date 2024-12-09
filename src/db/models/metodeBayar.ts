@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/metodeBayar.ts
+
 import { MetodeBayar, Convert } from '../types/metodeBayar';
 import metodeBayarJson from '../mocks/metodeBayar.json';
 import { BaseModel } from '../model';

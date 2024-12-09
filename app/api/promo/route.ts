@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/api/promo/route.ts
+
 import fs from 'fs';
 import path from 'path';
 import { Convert as convertPromo } from '@/src/db/types/promo';

@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/pekerjaKategoriJasa.ts
+
 import { PekerjaKategoriJasa, Convert } from '../types/pekerjaKategoriJasa';
 import { kategoriJasaService } from './kategoriJasa';
 import pekerjaKategoriJson from '../mocks/pekerjaKategoriJasa.json';

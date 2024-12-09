@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/kategoriTrMypay.ts
+
 import { KategoriTrMyPay, Convert } from '../types/kategoriTrMypay';
 import kategoriTrMyPayJson from '../mocks/kategoriTrMypay.json';
 

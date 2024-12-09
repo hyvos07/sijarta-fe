@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/statusPesanan.ts
+
 import { StatusPesanan, Convert } from "../types/statusPesanan";
 import { BaseModel } from "../model";
 import pool from "../db";

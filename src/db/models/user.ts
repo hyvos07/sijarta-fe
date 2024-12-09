@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/user.ts
+
 import { User, Convert } from '../types/user';
 import { BaseModel } from '../model';
 import pool from '../db';

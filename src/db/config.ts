@@ -1,5 +1,6 @@
-import pool from "./db";
+// path : sijarta-fe/src/db/types/config.ts
 
+import pool from "./db";
 
 // Seeding the database
 async function seed() {

@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/diskon/page.tsx
+
 'use client';
 
 import React, { useEffect, useState } from 'react';

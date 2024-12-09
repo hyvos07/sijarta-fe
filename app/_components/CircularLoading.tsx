@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/_components/CircularLoading.tsx
+
 export default function CircularLoading() {
   return (
     <div role="status" className="flex justify-center items-center">

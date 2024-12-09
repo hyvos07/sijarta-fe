@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/diskon.ts
+
 import fs from 'fs';
 import path from 'path';
 import { Convert } from '@/src/db/types/promo';

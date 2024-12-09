@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/mypay/transaksi/TransaksiContent.tsx
+
 "use client"
 import TransaksiForm from "@/app/_components/mypay/transaksi/TransaksiForm";
 import { User } from "@/src/db/types/user";

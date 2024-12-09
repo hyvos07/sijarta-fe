@@ -1,4 +1,5 @@
-// app/api/promos/route.ts
+// path : sijarta-fe/app/api/tr-mypay/route.ts
+
 import { TrMyPayModel } from '@/src/db/models/trMypay';
 import { NextRequest, NextResponse } from 'next/server';
 

@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/db/models/pemesanan.ts
+
 import { Pemesanan } from "../types/pemesanan";
 
 const pemesananList: Pemesanan[] = [

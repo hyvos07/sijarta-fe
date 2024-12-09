@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/subcategory/page.tsx
+
 'use client';
 
 import React, { useState } from "react";

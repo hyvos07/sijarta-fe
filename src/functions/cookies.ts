@@ -1,3 +1,5 @@
+// path : sijarta-fe/src/functions/cookies.ts
+
 import { cookies } from 'next/headers'
 
 export const setAuthCookie = async (token: string) => {

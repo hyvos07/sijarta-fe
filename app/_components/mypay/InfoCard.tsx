@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/_components/mypay/InfoCard.tsx
+
 interface InfoCardProps {
     noHP: string;
     saldoMyPay: number;

@@ -1,3 +1,5 @@
+// path : sijarta-fe/app/_components/mypay/TRCard.tsx
+
 import { TrMyPay } from "@/src/db/types/trMypay"
 
 export default function TRCard({ tgl, nominal, kategori }: TrMyPay & { kategori: string }) {
