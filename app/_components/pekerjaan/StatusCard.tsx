@@ -11,7 +11,7 @@ export default function StatusCard({ pesanan }: { pesanan: any }) {
     const handleStatus = async () => {
         if (status === 'Pesanan selesai' || status === 'Pesanan dibatalkan') return;
 
-        var statusPesanan = status;
+        let statusPesanan = status;
 
         if (status === 'Pekerja tiba di lokasi') {
             statusPesanan = 'Pelayanan jasa sedang dilakukan';
