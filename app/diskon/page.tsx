@@ -43,6 +43,8 @@ const DiskonPage = () => {
         }
   
         const data = await response.json();
+
+        console.log(data);
   
         if (data.role) {
           setRole(data.role);

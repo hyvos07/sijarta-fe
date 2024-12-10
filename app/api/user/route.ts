@@ -34,6 +34,7 @@ export async function GET() {
       return NextResponse.json({
         role: 'pelanggan',
         data: {
+          userID: user.id,
           name: user.nama,
           gender: user.jenisKelamin,
           phone: user.noHP,
@@ -48,6 +49,7 @@ export async function GET() {
       return NextResponse.json({
         role: 'pekerja',
         data: {
+          userID: user.id,
           name: user.nama,
           gender: user.jenisKelamin,
           phone: user.noHP,
