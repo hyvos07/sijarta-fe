@@ -164,10 +164,10 @@ const TestimoniPage = () => {
                   <div className="mt-4">
                     <div className="mt-2">
                       <p className="text-gray-600">
-                        Nama Pelanggan: {testimoniWithDetail.userPelanggan?.data.nama || 'N/A'}
+                        Nama Pelanggan: {testimoniWithDetail.userPelanggan?.nama || 'N/A'}
                       </p>
                       <p className="text-gray-600">
-                        Nama Pekerja: {testimoniWithDetail.userPekerja.data.nama || 'N/A'}
+                        Nama Pekerja: {testimoniWithDetail.userPekerja?.nama || 'N/A'}
                       </p>
                     </div>
                   </div>
