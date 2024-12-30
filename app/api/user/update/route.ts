@@ -15,8 +15,15 @@ export async function PUT(request: Request) {
 
     const body = await request.json();
     
-    // Basic validation
-    if (!body.name || !body.phone || !body.gender || !body.birthDate || !body.address) {
+    // Basic validation including link_foto for 'pekerja' role
+    if (
+      !body.name ||
+      !body.phone ||
+      !body.gender ||
+      !body.birthDate ||
+      !body.address ||
+      (body.role === 'pekerja' && (!body.bankName || !body.bankAccount || !body.npwp || !body.linkFoto))
+    ) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
@@ -43,13 +50,13 @@ export async function PUT(request: Request) {
       alamat: body.address,
     });
 
-    // If user is a Pekerja, update additional fields
     if (body.role === 'pekerja') {
       const pekerjaModel = new PekerjaModel();
       await pekerjaModel.updatePekerja(currentUser.id, {
         namaBank: body.bankName,
         nomorRekening: body.bankAccount,
         npwp: body.npwp,
+        linkFoto: body.linkFoto,
       });
     }
 
