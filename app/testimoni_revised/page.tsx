@@ -16,8 +16,8 @@ const TestimoniPage = () => {
   const [testimoniWithDetails, setTestimoniWithDetails] = useState<(
     Testimoni & {
       trPemesananJasa: TrPemesananJasa | null;
-      userPelanggan: User | null;
-      userPekerja: User | null;
+      userPelanggan: any;
+      userPekerja: any;
     }
   )[]>([]);
 
@@ -150,8 +150,8 @@ const TestimoniPage = () => {
                 <div className="mb-4">
                   <span className="text-gray-500 text-sm">Rating</span>
                   <p className="text-yellow-500 font-semibold">
-                    {'★'.repeat(testimoniWithDetail.rating)}{' '}
-                    <span className="text-gray-500">/ 5</span>
+                    {'★'.repeat(testimoniWithDetail.rating)}
+                    <span className="text-black text-xs ml-1.5">{'('}{testimoniWithDetail.rating}/5{')'}</span>
                   </p>
                 </div>
                 <div>
