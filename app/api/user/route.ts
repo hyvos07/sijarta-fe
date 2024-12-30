@@ -56,6 +56,7 @@ export async function GET() {
           birthdate: user.tglLahir,
           address: user.alamat,
           mypayBalance: user.saldoMyPay.toString(),
+          linkFoto: isPekerja.linkFoto,
           bankName: isPekerja.namaBank,
           bankAccount: isPekerja.nomorRekening,
           npwp: isPekerja.npwp,
